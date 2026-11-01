@@ -149,7 +149,7 @@ export const HeaderProfile: React.FC<HeaderProfileProps> = ({
                 </button>
               )}
               <a
-                href="/__l5e/assets-v1/4d08700f-035f-486b-9c71-f58d10089199/Professional_CV_Magazine_2026.pdf"
+                href="/__l5e/assets-v1/6bef889f-fb6c-48e8-8ab9-ffc780825d51/Professional_CV_Magazine_2026.pdf"
                 download="Professional_CV_Magazine_2026.pdf"
                 className="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-[#D9A441] hover:bg-[#e4b55c] text-[#072617] text-xs sm:text-sm font-extrabold shadow-sm hover:shadow-md transition-all duration-150 cursor-pointer border border-[#0C3823]/20 active:scale-95"
                 title="تحميل السيرة الذاتية PDF – الإصدار التنفيذي الفاخر"

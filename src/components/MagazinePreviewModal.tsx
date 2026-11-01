@@ -190,7 +190,7 @@ export const MagazinePreviewModal: React.FC<MagazinePreviewModalProps> = ({
           <div className="flex flex-wrap items-center justify-center gap-2.5">
             {/* Download Original 12-page version */}
             <a
-              href="/__l5e/assets-v1/4d08700f-035f-486b-9c71-f58d10089199/Professional_CV_Magazine_2026.pdf"
+              href="/__l5e/assets-v1/6bef889f-fb6c-48e8-8ab9-ffc780825d51/Professional_CV_Magazine_2026.pdf"
               download="Professional_CV_Magazine_2026.pdf"
               className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs text-slate-200 border border-white/20 transition-all cursor-pointer no-underline"
               title="تحميل الإصدار السابق (12 صفحة)"
@@ -201,7 +201,7 @@ export const MagazinePreviewModal: React.FC<MagazinePreviewModalProps> = ({
 
             {/* Primary Download: Final 14-page Executive Magazine */}
             <a
-              href="/__l5e/assets-v1/4d08700f-035f-486b-9c71-f58d10089199/Professional_CV_Magazine_2026.pdf"
+              href="/__l5e/assets-v1/6bef889f-fb6c-48e8-8ab9-ffc780825d51/Professional_CV_Magazine_2026.pdf"
               download="Professional_CV_Magazine_2026.pdf"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#D9A441] hover:bg-[#e4b55c] text-[#072617] text-xs sm:text-sm font-extrabold shadow-lg hover:shadow-xl transition-all cursor-pointer no-underline active:scale-95 border border-[#0C3823]/20"
               title="تحميل السيرة الذاتية PDF – الإصدار التنفيذي الفاخر"
