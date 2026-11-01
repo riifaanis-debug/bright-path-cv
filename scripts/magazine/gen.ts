@@ -187,7 +187,7 @@ ul{margin:0;padding-right:20px;font-size:16px;line-height:2}li::marker{color:#c9
 .c-card h3{margin:0 0 4px;font-size:19px;color:#fff}.c-card p{margin:0;font-size:15px;line-height:1.85;color:#d8d0b8}
 .c-sumh{margin-top:26px;font-size:26px;font-weight:700;color:#fff;display:flex;align-items:center;gap:12px}
 .c-sumh span{width:6px;height:28px;background:#c9a54a;border-radius:3px}
-.c-sum{margin-top:12px;background:#ffffff08;border:1px solid #c9a54a55;border-radius:12px;padding:20px 26px;font-size:15.5px;line-height:1.95;text-align:justify;color:#e9e2cc}
+.c-sum{margin-top:12px;background:#ffffff08;border:1px solid #c9a54a55;border-radius:12px;padding:22px 28px;font-size:16.5px;line-height:2;text-align:justify;color:#e9e2cc}
 .c-foot{margin-top:auto;margin-bottom:42px;padding-top:16px;border-top:1px solid #c9a54a55;display:flex;gap:14px;align-items:center;font-size:15px;color:#d8cfb6}
 .c-foot i{color:#c9a54a;font-style:normal;font-size:10px}.c-foot b{margin-right:auto;background:#c9a54a;color:#082416;padding:5px 14px;border-radius:6px}
 `;
