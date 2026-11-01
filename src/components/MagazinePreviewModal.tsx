@@ -8,7 +8,7 @@ interface MagazinePreviewModalProps {
   onOpenFullScreen?: (page?: number) => void;
 }
 
-const TOTAL_PAGES = 14;
+const TOTAL_PAGES = 12;
 
 export const MagazinePreviewModal: React.FC<MagazinePreviewModalProps> = ({
   isOpen,
@@ -56,7 +56,7 @@ export const MagazinePreviewModal: React.FC<MagazinePreviewModalProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="text-sm sm:text-base font-bold text-white">
-                  معاينة المجلة التنفيذية الفاخرة (14 صفحة)
+                  معاينة المجلة التنفيذية الفاخرة (12 صفحة)
                 </h3>
                 <span className="text-[10px] bg-[#D9A441] text-[#072617] font-extrabold px-2 py-0.5 rounded-full">
                   الإصدار النهائي
@@ -144,7 +144,7 @@ export const MagazinePreviewModal: React.FC<MagazinePreviewModalProps> = ({
               </div>
             </div>
           ) : (
-            /* Grid View of all 14 pages */
+            /* Grid View of all 12 pages */
             <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
               {Array.from({ length: TOTAL_PAGES }).map((_, idx) => {
                 const pageNum = idx + 1;
