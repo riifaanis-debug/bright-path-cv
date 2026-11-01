@@ -142,15 +142,15 @@ export const HeaderProfile: React.FC<HeaderProfileProps> = ({
                   type="button"
                   onClick={onOpenMagazinePreview}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-[#0C3823] text-xs sm:text-sm font-bold shadow-xs transition-all duration-150 cursor-pointer border border-slate-300 active:scale-95"
-                  title="معاينة صفحات المجلة التنفيذية (14 صفحة)"
+                  title="معاينة صفحات المجلة التنفيذية (12 صفحة)"
                 >
                   <BookOpen className="w-4 h-4 text-[#B8860B]" />
-                  <span>معاينة المجلة (14 صفحة)</span>
+                  <span>معاينة المجلة (12 صفحة)</span>
                 </button>
               )}
               <a
-                href="/__l5e/assets-v1/08cfe278-3eb6-415b-8906-ceadd79afb73/Professional_CV_Magazine_Final.pdf"
-                download="Professional_CV_Magazine_Final.pdf"
+                href="/__l5e/assets-v1/6bef889f-fb6c-48e8-8ab9-ffc780825d51/Professional_CV_Magazine_2026.pdf"
+                download="Professional_CV_Magazine_2026.pdf"
                 className="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-[#D9A441] hover:bg-[#e4b55c] text-[#072617] text-xs sm:text-sm font-extrabold shadow-sm hover:shadow-md transition-all duration-150 cursor-pointer border border-[#0C3823]/20 active:scale-95"
                 title="تحميل السيرة الذاتية PDF – الإصدار التنفيذي الفاخر"
               >

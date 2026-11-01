@@ -100,17 +100,17 @@ END:VCARD`;
                 <button
                   onClick={onOpenMagazinePreview}
                   className="inline-flex items-center justify-center gap-2 px-3.5 py-2.5 text-xs sm:text-sm font-semibold text-white bg-white/10 hover:bg-white/20 active:scale-95 border border-white/20 rounded-lg shadow-sm transition-all cursor-pointer"
-                  title="معاينة صفحات المجلة التنفيذية (14 صفحة)"
+                  title="معاينة صفحات المجلة التنفيذية (12 صفحة)"
                 >
                   <BookOpen className="w-4 h-4 text-[#D9A441]" />
-                  <span>معاينة المجلة (14 صفحة)</span>
+                  <span>معاينة المجلة (12 صفحة)</span>
                 </button>
               )}
 
               {/* Direct PDF Download Button */}
               <a
-                href="/__l5e/assets-v1/08cfe278-3eb6-415b-8906-ceadd79afb73/Professional_CV_Magazine_Final.pdf"
-                download="Professional_CV_Magazine_Final.pdf"
+                href="/__l5e/assets-v1/6bef889f-fb6c-48e8-8ab9-ffc780825d51/Professional_CV_Magazine_2026.pdf"
+                download="Professional_CV_Magazine_2026.pdf"
                 className="inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold text-[#072617] bg-[#D9A441] hover:bg-[#e4b55c] active:scale-95 rounded-lg shadow-sm transition-all cursor-pointer no-underline"
                 title="تحميل السيرة الذاتية PDF – الإصدار التنفيذي الفاخر"
               >

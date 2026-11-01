@@ -8,7 +8,7 @@ interface MagazinePreviewModalProps {
   onOpenFullScreen?: (page?: number) => void;
 }
 
-const TOTAL_PAGES = 14;
+const TOTAL_PAGES = 12;
 
 export const MagazinePreviewModal: React.FC<MagazinePreviewModalProps> = ({
   isOpen,
@@ -56,7 +56,7 @@ export const MagazinePreviewModal: React.FC<MagazinePreviewModalProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="text-sm sm:text-base font-bold text-white">
-                  معاينة المجلة التنفيذية الفاخرة (14 صفحة)
+                  معاينة المجلة التنفيذية الفاخرة (12 صفحة)
                 </h3>
                 <span className="text-[10px] bg-[#D9A441] text-[#072617] font-extrabold px-2 py-0.5 rounded-full">
                   الإصدار النهائي
@@ -144,7 +144,7 @@ export const MagazinePreviewModal: React.FC<MagazinePreviewModalProps> = ({
               </div>
             </div>
           ) : (
-            /* Grid View of all 14 pages */
+            /* Grid View of all 12 pages */
             <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
               {Array.from({ length: TOTAL_PAGES }).map((_, idx) => {
                 const pageNum = idx + 1;
@@ -183,15 +183,15 @@ export const MagazinePreviewModal: React.FC<MagazinePreviewModalProps> = ({
         {/* Modal Footer with Direct Download Actions */}
         <div className="px-4 sm:px-6 py-3.5 border-t border-[#D9A441]/30 bg-[#0C3823]/90 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="text-xs text-slate-300 text-center sm:text-right">
-            <span className="text-[#D9A441] font-bold">الملف بصيغة A4 عالي الدقة (14 صفحة كاملة)</span>
+            <span className="text-[#D9A441] font-bold">الملف بصيغة A4 عالي الدقة (12 صفحة كاملة)</span>
             <span className="block text-[11px] text-slate-400">حجم مثالي 13.1 ميجابايت • يدعم الطباعة والتمرير الفوري</span>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-2.5">
             {/* Download Original 12-page version */}
             <a
-              href="/__l5e/assets-v1/b096b0e3-f362-420e-9eba-39778934da6b/Professional_CV_Magazine.pdf"
-              download="Professional_CV_Magazine.pdf"
+              href="/__l5e/assets-v1/6bef889f-fb6c-48e8-8ab9-ffc780825d51/Professional_CV_Magazine_2026.pdf"
+              download="Professional_CV_Magazine_2026.pdf"
               className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs text-slate-200 border border-white/20 transition-all cursor-pointer no-underline"
               title="تحميل الإصدار السابق (12 صفحة)"
             >
@@ -201,8 +201,8 @@ export const MagazinePreviewModal: React.FC<MagazinePreviewModalProps> = ({
 
             {/* Primary Download: Final 14-page Executive Magazine */}
             <a
-              href="/__l5e/assets-v1/08cfe278-3eb6-415b-8906-ceadd79afb73/Professional_CV_Magazine_Final.pdf"
-              download="Professional_CV_Magazine_Final.pdf"
+              href="/__l5e/assets-v1/6bef889f-fb6c-48e8-8ab9-ffc780825d51/Professional_CV_Magazine_2026.pdf"
+              download="Professional_CV_Magazine_2026.pdf"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#D9A441] hover:bg-[#e4b55c] text-[#072617] text-xs sm:text-sm font-extrabold shadow-lg hover:shadow-xl transition-all cursor-pointer no-underline active:scale-95 border border-[#0C3823]/20"
               title="تحميل السيرة الذاتية PDF – الإصدار التنفيذي الفاخر"
             >
