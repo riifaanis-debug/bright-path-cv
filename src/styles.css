@@ -2,6 +2,7 @@
 @source "../src";
 @import "tw-animate-css";
 
+
 @custom-variant dark (&:is(.dark *));
 
 /*
@@ -140,5 +141,255 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+  }
+}
+
+@layer base {
+  :root {
+    --green-primary: #0C3823;
+    --green-dark: #072617;
+    --green-accent: #0D472A;
+    --green-light: #EBF5F0;
+    --gold-primary: #D9A441;
+    --gold-light: #F4E7CE;
+  }
+
+  body {
+    font-family: 'Cairo', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: #1e293b;
+    background-color: #f8fafc;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Safe area padding for modern mobile devices */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 16px);
+}
+
+.print-only {
+  display: none;
+}
+
+/* Continuous Horizontal Marquee Slider */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-scroll-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-infinite {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 35s linear infinite;
+}
+
+.animate-marquee-infinite:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll-reverse 80s linear infinite;
+}
+
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+
+/* Zero-Flicker Hardware Accelerated Slide Transitions */
+@keyframes honor-slide-in-next {
+  0% {
+    opacity: 0.85;
+    transform: translate3d(-18px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes honor-slide-in-prev {
+  0% {
+    opacity: 0.85;
+    transform: translate3d(18px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes honor-initial-pop {
+  0% {
+    opacity: 0.95;
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-honor-next {
+  animation: honor-slide-in-next 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.animate-honor-prev {
+  animation: honor-slide-in-prev 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.animate-honor-pop {
+  animation: honor-initial-pop 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+@keyframes cert-progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-cert-progress {
+  animation: cert-progress 3.5s linear;
+}
+
+/* Custom Print Rules for A4 Executive Resume */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 10mm 10mm 10mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 10.5pt !important;
+    line-height: 1.35 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .page-break-before {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  .page-break-avoid {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Ensure card backgrounds and borders print with high fidelity */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Remove screen shadow and sticky behavior during print */
+  .shadow-md, .shadow-lg, .shadow-sm {
+    box-shadow: none !important;
+  }
+  
+  .sticky {
+    position: static !important;
+  }
+}
+
+/* Skills Category Animated Sliders */
+@keyframes skill-glide-forward {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-33.333333%, 0, 0);
+  }
+}
+
+@keyframes skill-glide-reverse {
+  0% {
+    transform: translate3d(-33.333333%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-skill-slider-forward {
+  display: flex;
+  width: max-content;
+  animation: skill-glide-forward 26s linear infinite;
+  will-change: transform;
+}
+
+.animate-skill-slider-reverse {
+  display: flex;
+  width: max-content;
+  animation: skill-glide-reverse 30s linear infinite;
+  will-change: transform;
+}
+
+/* Skills Cards Deck Slider */
+@keyframes skill-cards-glide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-33.333333%, 0, 0);
+  }
+}
+
+.animate-skill-cards-glide {
+  display: flex;
+  width: max-content;
+  animation: skill-cards-glide 38s linear infinite;
+  will-change: transform;
+}
+
+.paused-slider {
+  animation-play-state: paused !important;
+}
+
+@media print {
+  .animate-skill-slider-forward,
+  .animate-skill-slider-reverse,
+  .animate-skill-cards-glide {
+    animation: none !important;
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
   }
 }
