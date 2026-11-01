@@ -11,7 +11,7 @@ interface FullScreenMagazineViewerProps {
   initialPage?: number;
 }
 
-const TOTAL_PAGES = 12;
+const TOTAL_PAGES = 10;
 
 export const FullScreenMagazineViewer: React.FC<FullScreenMagazineViewerProps> = ({
   isOpen,
