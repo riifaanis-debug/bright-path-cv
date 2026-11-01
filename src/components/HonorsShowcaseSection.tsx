@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { SectionHeader } from './SectionHeader';
+import surgeCupAsset from '@/assets/surge-cup-2026.png.asset.json';
 
 export interface ShowcaseItem {
   id: string;
@@ -76,6 +77,23 @@ export const showcaseItems: ShowcaseItem[] = [
       </div>
     ),
     caption: 'ثمرة جهود مستمرة وحرص على تقديم أفضل أداء تشغيلي .. كل الفخر بحصولي على : شهادة شكر وتقدير من البنك المركزي السعودي تقديراً للتميز في تنفيذ وإنجاز الإجراءات المصرفية القضائية',
+  },
+  {
+    id: 'honor-4',
+    src: surgeCupAsset.url,
+    topTitle: 'التأهل في مسابقة SURGE CUP 2026',
+    bottomContent: (
+      <div className="space-y-0.5 sm:space-y-1">
+        <div>
+          <span className="text-[#C5942B] font-bold">البنك الأهلي السعودي SNB</span>
+          <span className="text-slate-800 font-semibold">، وتأهل فكرتي ضمن أفضل 10 أفكار من بين 128 فكرة مشاركة، كمرحلة جديدة للابتكار والتنافس لتقديم الأفكار التي تحقق قيمة ملموسة للبنك وتسهم في تشكيل مستقبل SNB</span>
+        </div>
+        <div className="text-slate-800 font-semibold">
+          في إنجاز يعكس القدرة على الابتكار وتقديم حلول تطويرية تسهم في صناعة مستقبل البنك
+        </div>
+      </div>
+    ),
+    caption: 'التأهل في مسابقة SURGE CUP 2026 - البنك الأهلي السعودي SNB، وتأهل فكرتي ضمن أفضل 10 أفكار من بين 128 فكرة مشاركة، كمرحلة جديدة للابتكار والتنافس لتقديم الأفكار التي تحقق قيمة ملموسة للبنك وتسهم في تشكيل مستقبل SNB، في إنجاز يعكس القدرة على الابتكار وتقديم حلول تطويرية تسهم في صناعة مستقبل البنك.',
   },
 ];
 
