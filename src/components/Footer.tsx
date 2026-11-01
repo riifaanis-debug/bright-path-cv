@@ -109,8 +109,8 @@ END:VCARD`;
 
               {/* Direct PDF Download Button */}
               <a
-                href="/__l5e/assets-v1/08cfe278-3eb6-415b-8906-ceadd79afb73/Professional_CV_Magazine_Final.pdf"
-                download="Professional_CV_Magazine_Final.pdf"
+                href="/__l5e/assets-v1/6bef889f-fb6c-48e8-8ab9-ffc780825d51/Professional_CV_Magazine_2026.pdf"
+                download="Professional_CV_Magazine_2026.pdf"
                 className="inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold text-[#072617] bg-[#D9A441] hover:bg-[#e4b55c] active:scale-95 rounded-lg shadow-sm transition-all cursor-pointer no-underline"
                 title="تحميل السيرة الذاتية PDF – الإصدار التنفيذي الفاخر"
               >

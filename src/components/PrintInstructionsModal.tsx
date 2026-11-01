@@ -92,8 +92,8 @@ export const PrintInstructionsModal: React.FC<PrintInstructionsModalProps> = ({
             إلغاء
           </button>
           <a
-            href="/__l5e/assets-v1/08cfe278-3eb6-415b-8906-ceadd79afb73/Professional_CV_Magazine_Final.pdf"
-            download="Professional_CV_Magazine_Final.pdf"
+            href="/__l5e/assets-v1/6bef889f-fb6c-48e8-8ab9-ffc780825d51/Professional_CV_Magazine_2026.pdf"
+            download="Professional_CV_Magazine_2026.pdf"
             onClick={onClose}
             className="min-h-[44px] px-4 py-2.5 text-xs sm:text-sm font-bold text-white bg-[#0C3823] hover:bg-[#072617] rounded-lg shadow-sm transition-all cursor-pointer flex items-center gap-2 active:scale-95 no-underline border border-[#D9A441]/40"
             title="تحميل السيرة الذاتية PDF – الإصدار التنفيذي الفاخر"
