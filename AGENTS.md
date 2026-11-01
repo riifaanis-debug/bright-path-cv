@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- The CV site's components/data under src/components and src/data were ported verbatim from the source repo; keep its original styling. Why: user asked for an exact copy.
+- Large PDFs live as lovable-assets URLs (src/assets/docs/*.asset.json). Why: repo has a 10 MB per-file limit.
