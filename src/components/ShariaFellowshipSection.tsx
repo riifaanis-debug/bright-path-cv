@@ -20,6 +20,8 @@ import cert4 from '../assets/sharia/course-4-zakat.jpeg';
 import cert5 from '../assets/sharia/course-5-sharia-supervision.jpeg';
 import cert7 from '../assets/sharia/course-7-sukuk.jpeg';
 import cert8 from '../assets/sharia/course-8-islamic-financing.jpeg';
+import contractsCert from '../assets/sharia/sharia-contracts.jpeg.asset.json';
+import arbitrationCert from '../assets/sharia/sharia-arbitration.jpeg.asset.json';
 
 export interface ShariaCertificate {
   id: string;
@@ -230,6 +232,32 @@ export const shariaCertificatesList: ShariaCertificate[] = [
     accreditation: 'جامعة الإمام محمد بن سعود الإسلامية - وزارة التعليم',
     summary: 'التكييف الفقهي والنظامي لمنازعات سوق الأوراق المالية والأسهم، وضوابط لجان الفصل في منازعات الأوراق المالية.',
     src: '/assets/aistudio/IMG_7319_56154067.jpeg',
+  },
+  {
+    id: 'sharia-16',
+    order: 16,
+    title: 'أسس المحاماة والاستشارات وصياغة العقود',
+    hours: 6,
+    days: 'يومي السبت والأحد',
+    dateHijri: '01-02 / 04 / 1448 هـ',
+    dateMiladi: '12-13 / 09 / 2026 م',
+    issuer: 'الجمعية العلمية القضائية السعودية (قضاء)',
+    accreditation: 'جامعة الإمام محمد بن سعود الإسلامية - وزارة التعليم',
+    summary: 'أسس مهنة المحاماة وتقديم الاستشارات الشرعية والنظامية، ومهارات صياغة العقود وضبط الالتزامات التعاقدية.',
+    src: contractsCert.url,
+  },
+  {
+    id: 'sharia-17',
+    order: 17,
+    title: 'التحكيم والوساطة في تسوية المنازعات المالية',
+    hours: 6,
+    days: 'يومي الثلاثاء والأربعاء',
+    dateHijri: '04-05 / 04 / 1448 هـ',
+    dateMiladi: '15-16 / 09 / 2026 م',
+    issuer: 'الجمعية العلمية القضائية السعودية (قضاء)',
+    accreditation: 'جامعة الإمام محمد بن سعود الإسلامية - وزارة التعليم',
+    summary: 'أحكام وإجراءات التحكيم والوساطة كوسائل بديلة لتسوية المنازعات المالية والمصرفية، وتنفيذ أحكام التحكيم.',
+    src: arbitrationCert.url,
   },
 ];
 
