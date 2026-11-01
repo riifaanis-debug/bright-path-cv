@@ -337,7 +337,7 @@ export const ShariaFellowshipSection: React.FC = () => {
             <div className="w-full flex items-center justify-between gap-3 text-white mb-2 px-1">
               <div className="text-xs sm:text-sm font-bold text-[#D9A441] flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#D9A441]" />
-                <span className="truncate">{shariaCertificatesList[selectedCertIndex].title}</span>
+                <span className="truncate">{shariaCertificatesList[selectedCertIndex]!.title}</span>
                 <span className="text-white/60 text-xs shrink-0">
                   ({selectedCertIndex + 1} / {shariaCertificatesList.length})
                 </span>
@@ -356,8 +356,8 @@ export const ShariaFellowshipSection: React.FC = () => {
             {/* الصورة المكبرة للشهادة */}
             <div className="relative w-full flex items-center justify-center bg-black/75 rounded-2xl overflow-hidden border border-white/15 p-2 sm:p-4 shadow-2xl">
               <img
-                src={shariaCertificatesList[selectedCertIndex].src}
-                alt={shariaCertificatesList[selectedCertIndex].title}
+                src={shariaCertificatesList[selectedCertIndex]!.src}
+                alt={shariaCertificatesList[selectedCertIndex]!.title}
                 loading="eager"
                 decoding="async"
                 className="max-h-[75vh] w-auto max-w-full object-contain rounded-none select-none shadow-2xl"
@@ -398,9 +398,9 @@ export const ShariaFellowshipSection: React.FC = () => {
             {/* شريط معلومات جهة الإصدار أسفل الصورة المكبرة */}
             <div className="w-full flex flex-col sm:flex-row items-center justify-between text-[11px] sm:text-xs text-white/80 mt-2 px-1 gap-1">
               <div className="flex items-center gap-2">
-                <span>{shariaCertificatesList[selectedCertIndex].issuer}</span>
+                <span>{shariaCertificatesList[selectedCertIndex]!.issuer}</span>
                 <span className="text-white/40">•</span>
-                <span className="text-[#D9A441] font-semibold">{shariaCertificatesList[selectedCertIndex].dateMiladi} ({shariaCertificatesList[selectedCertIndex].hours} ساعات)</span>
+                <span className="text-[#D9A441] font-semibold">{shariaCertificatesList[selectedCertIndex]!.dateMiladi} ({shariaCertificatesList[selectedCertIndex]!.hours} ساعات)</span>
               </div>
               <span className="text-white/50 text-[10px]">استخدم الأسهم أو Esc للتنقل والإغلاق</span>
             </div>
