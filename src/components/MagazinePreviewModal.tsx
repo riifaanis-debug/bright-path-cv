@@ -183,7 +183,7 @@ export const MagazinePreviewModal: React.FC<MagazinePreviewModalProps> = ({
         {/* Modal Footer with Direct Download Actions */}
         <div className="px-4 sm:px-6 py-3.5 border-t border-[#D9A441]/30 bg-[#0C3823]/90 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="text-xs text-slate-300 text-center sm:text-right">
-            <span className="text-[#D9A441] font-bold">الملف بصيغة A4 عالي الدقة (14 صفحة كاملة)</span>
+            <span className="text-[#D9A441] font-bold">الملف بصيغة A4 عالي الدقة (12 صفحة كاملة)</span>
             <span className="block text-[11px] text-slate-400">حجم مثالي 13.1 ميجابايت • يدعم الطباعة والتمرير الفوري</span>
           </div>
 

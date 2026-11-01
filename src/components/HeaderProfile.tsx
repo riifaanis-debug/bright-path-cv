@@ -142,10 +142,10 @@ export const HeaderProfile: React.FC<HeaderProfileProps> = ({
                   type="button"
                   onClick={onOpenMagazinePreview}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-[#0C3823] text-xs sm:text-sm font-bold shadow-xs transition-all duration-150 cursor-pointer border border-slate-300 active:scale-95"
-                  title="معاينة صفحات المجلة التنفيذية (14 صفحة)"
+                  title="معاينة صفحات المجلة التنفيذية (12 صفحة)"
                 >
                   <BookOpen className="w-4 h-4 text-[#B8860B]" />
-                  <span>معاينة المجلة (14 صفحة)</span>
+                  <span>معاينة المجلة (12 صفحة)</span>
                 </button>
               )}
               <a

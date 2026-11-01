@@ -137,10 +137,10 @@ function App() {
         <button
           onClick={handleOpenMagazinePreview}
           className="h-10 px-3.5 rounded-full bg-[#0C3823] hover:bg-[#072617] text-[#D9A441] font-bold text-xs shadow-lg flex items-center gap-2 transition-all cursor-pointer border border-[#D9A441]/40 active:scale-95"
-          title="معاينة صفحات المجلة (14 صفحة)"
+          title="معاينة صفحات المجلة (12 صفحة)"
         >
           <BookOpen className="w-4 h-4 text-[#D9A441]" />
-          <span>معاينة المجلة (14 صفحة)</span>
+          <span>معاينة المجلة (12 صفحة)</span>
         </button>
         <a
           href="/__l5e/assets-v1/08cfe278-3eb6-415b-8906-ceadd79afb73/Professional_CV_Magazine_Final.pdf"
