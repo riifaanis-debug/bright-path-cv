@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { SectionHeader } from './SectionHeader.tsx';
+import { SectionHeader } from './SectionHeader';
 import { resumeData } from '../data/resumeData.ts';
 import { Maximize2, ChevronRight, ChevronLeft, X, Award, CheckCircle2 } from 'lucide-react';
 

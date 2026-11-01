@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { SectionHeader } from './SectionHeader.tsx';
+import { SectionHeader } from './SectionHeader';
 import { resumeData } from '../data/resumeData.ts';
 
 export const AwardsSection: React.FC = () => {

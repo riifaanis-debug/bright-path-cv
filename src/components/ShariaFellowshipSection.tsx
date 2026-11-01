@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { SectionHeader } from './SectionHeader.tsx';
+import { SectionHeader } from './SectionHeader';
 import { 
   Maximize2, 
   ChevronRight, 

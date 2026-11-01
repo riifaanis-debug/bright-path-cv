@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useRef, useEffect } from 'react';
-import { SectionHeader } from './SectionHeader.tsx';
+import { SectionHeader } from './SectionHeader';
 import { resumeData } from '../data/resumeData.ts';
 import { Play, Maximize2, ChevronRight, ChevronLeft, X, ExternalLink, Video } from 'lucide-react';
 

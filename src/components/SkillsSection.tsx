@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { SectionHeader } from './SectionHeader.tsx';
+import { SectionHeader } from './SectionHeader';
 import { resumeData, SkillCategory } from '../data/resumeData.ts';
 
 interface SkillCardProps {
