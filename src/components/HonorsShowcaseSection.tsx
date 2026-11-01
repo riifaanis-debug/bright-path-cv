@@ -6,7 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { SectionHeader } from './SectionHeader';
-import surgeCupAsset from '@/assets/surge-cup-2026.png.asset.json';
+import surgeCupAsset from '@/assets/surge-cup-2026-v2.jpeg.asset.json';
 
 export interface ShowcaseItem {
   id: string;
