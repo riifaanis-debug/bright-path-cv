@@ -68,8 +68,8 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ onPrint, onOpe
 
         {/* Tab 5: Direct PDF Download */}
         <a
-          href="/__l5e/assets-v1/6bef889f-fb6c-48e8-8ab9-ffc780825d51/Professional_CV_Magazine_2026.pdf"
-          download="Professional_CV_Magazine_2026.pdf"
+          href="/downloads/Majid_Al-Sofyani_CV_Magazine.pdf"
+          download="Majid_Al-Sofyani_CV_Magazine.pdf"
           className="flex flex-col items-center justify-center min-h-[44px] text-[#0C3823] active:scale-95 transition-all cursor-pointer no-underline"
           title="تحميل السيرة الذاتية PDF – الإصدار التنفيذي الفاخر"
         >

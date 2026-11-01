@@ -188,26 +188,15 @@ export const MagazinePreviewModal: React.FC<MagazinePreviewModalProps> = ({
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-2.5">
-            {/* Download Original 12-page version */}
-            <a
-              href="/__l5e/assets-v1/6bef889f-fb6c-48e8-8ab9-ffc780825d51/Professional_CV_Magazine_2026.pdf"
-              download="Professional_CV_Magazine_2026.pdf"
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs text-slate-200 border border-white/20 transition-all cursor-pointer no-underline"
-              title="تحميل الإصدار السابق (12 صفحة)"
-            >
-              <FileText className="w-3.5 h-3.5 text-[#D9A441]" />
-              <span>تحميل الإصدار السابق (12 صفحة)</span>
-            </a>
-
             {/* Primary Download: Final 14-page Executive Magazine */}
             <a
-              href="/__l5e/assets-v1/6bef889f-fb6c-48e8-8ab9-ffc780825d51/Professional_CV_Magazine_2026.pdf"
-              download="Professional_CV_Magazine_2026.pdf"
+              href="/downloads/Majid_Al-Sofyani_CV_Magazine.pdf"
+              download="Majid_Al-Sofyani_CV_Magazine.pdf"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#D9A441] hover:bg-[#e4b55c] text-[#072617] text-xs sm:text-sm font-extrabold shadow-lg hover:shadow-xl transition-all cursor-pointer no-underline active:scale-95 border border-[#0C3823]/20"
               title="تحميل السيرة الذاتية PDF – الإصدار التنفيذي الفاخر"
             >
               <Download className="w-4 h-4 text-[#072617]" />
-              <span>تحميل السيرة الذاتية PDF (الإصدار النهائي الفاخر)</span>
+              <span>تحميل السيرة الذاتية PDF </span>
             </a>
           </div>
         </div>
