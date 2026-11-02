@@ -61,12 +61,11 @@ const pages = [
   page('PROFILE', 'الملخص المهني', `${d.summary.paragraphs.map(p => `<p>${p}</p>`).join('')}
 ${h2(d.objective.title)}${d.objective.paragraphs.map(p => `<p>${p}</p>`).join('')}
 ${h2('المؤهل العلمي')}<div class="edu"><b>${d.education.degree}</b><span>${d.education.institution} · ${d.education.year}</span></div>
-${h2('أبرز الإنجازات')}<div class="kms">${d.keyMetrics.map(m => `<div class="km"><b>${m.title}</b><p>${m.description}</p></div>`).join('')}</div>`),
+${h2('الشهادات المهنية')}${certificateGrid}`),
   page('EXECUTIVE HONORS & LEADERSHIP RECOGNITION', 'مميز', `<div class="hon">${honors.map((h,i) => `<div class="hc${i%2?' rev':''}"><div class="hi"><img src="${img(h.src)}"/></div><div class="ht"><h3>${h.t}</h3><div class="hx">${h.x}</div></div></div>`).join('')}</div>`, 'fixed'),
   page('PROFESSIONAL EXPERIENCE', 'الخبرات المهنية', ex(d.experiences[0])),
   page('PROFESSIONAL EXPERIENCE', 'الخبرات المهنية', ex(d.experiences[1])),
-  page('CERTIFICATIONS', 'الشهادات المهنية والمهارات', certificateGrid + `
-${h2('المهارات')}<div class="grid2">${d.skillCategories.map(c => `<div class="card"><b>${c.categoryName}</b>${ul(c.skills.slice(0, 2).map(s => s.split(/[:.،(]/)[0].trim()))}</div>`).join('')}</div>`),
+  page('SKILLS', 'المهارات', `<div class="grid2">${d.skillCategories.map(c => `<div class="card"><b>${c.categoryName}</b>${ul(c.skills.slice(0, 2).map(s => s.split(/[:.،(]/)[0].trim()))}</div>`).join('')}</div>`),
   page('TRAINING', 'الدورات التدريبية', `<div class="crs">${d.courses.map((c, i) => `<div class="cr"><i dir="ltr">${String(i + 1).padStart(2, '0')}</i><div><b>${c.titleAr}</b><span class="en2">${c.titleEn}</span><span class="pv">${c.provider}</span></div></div>`).join('')}</div>`),
   page('PROJECTS & INNOVATION', 'المشاريع والابتكار', `<div class="role"><div class="rt">${ip.titleAr}</div><div class="ren">${ip.titleEn}</div><div class="meta">${ip.organization} · ${ip.competition} · ${ip.status}</div></div>
 <p>${ip.description}</p>${h2('المشكلة')}${ip.problem.split('\n\n').map(p => `<p>${p}</p>`).join('')}
