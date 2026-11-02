@@ -40,9 +40,9 @@ const cover = (() => { n++; return `<section class="page cover cv2"><div class="
 </section>`; })();
 
 const ex = (e: any) => `<div class="role"><div class="rt">${e.roleAr}</div><div class="ren">${e.roleEn}</div><div class="meta">${e.companyAr} · ${e.periodAr}</div></div>
-${e.paragraphs.map((p: string) => `<p>${p}</p>`).join('')}
-${h2('أبرز الإنجازات')}${ul(e.achievements)}
-${h2('المهارات المكتسبة')}<ul class="g3">${e.skillsList.map((s: string) => `<li>${s}</li>`).join('')}</ul>`;
+<section class="xs"><div class="xh">المهام والمسؤوليات</div>${e.paragraphs.map((p: string) => `<p>${p}</p>`).join('')}</section>
+<section class="xs"><div class="xh">أبرز الإنجازات</div>${ul(e.achievements)}</section>
+<section class="xs"><div class="xh">المهارات المكتسبة</div><ul class="g3">${e.skillsList.map((s: string) => `<li>${s}</li>`).join('')}</ul></section>`;
 
 const ip = d.innovativeProject;
 const specs = [
@@ -116,6 +116,7 @@ footer{display:flex;justify-content:space-between;border-top:1px solid #d9c690;p
 .tl>div{border-right:3px solid #c9a54a;padding:0 1em .5em}.tl b{color:#0b2719;display:block}.tl p{margin:0}
 table{width:100%;border-collapse:collapse}td{padding:.45em .6em;border-bottom:1px solid #e3d6ae;vertical-align:top}td b{display:block;color:#0b2719}td.i{color:#b08a33;font-weight:700;width:3em}td.pv{width:30%}
 tr:nth-child(odd){background:#f4eedd}
+.xs{border:1.5px solid rgba(201,165,74,.55);background:rgba(255,255,255,.035);border-radius:14px;padding:.55em 1em .6em;margin-top:.8em}.xs p{margin:.35em 0}.xs ul{margin:.3em 0}.xh{display:inline-block;background:#c9a54a;color:#0b2719;font-weight:800;font-size:1.25em;padding:.15em .9em;border-radius:8px;margin-bottom:.35em}
 .ach{margin-top:1em;background:#c9a54a;color:#0b2719;font-weight:700;border-radius:12px;padding:.8em 1.1em;text-align:center}
 .cover{background:radial-gradient(circle at 50% 30%,#164a30,#0b2719 70%);color:#fff;justify-content:center;align-items:center;text-align:center}
 .cover::before{content:'';position:absolute;inset:40px;border:2px solid #c9a54a;border-radius:8px}
