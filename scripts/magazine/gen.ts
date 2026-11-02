@@ -28,7 +28,7 @@ const pi = d.personalInfo;
 // Cover backdrop /tmp/mag/bank.jpg = SNB building cropped from the user's reference design.
 const cover = (() => { n++; return `<section class="page cover cv2"><div class="topline"></div>
 <div class="chead"><b>السيرة الذاتية المهنية التنفيذية</b><div class="cbank"><img src="${img('/tmp/mag/logo.png')}"/></div></div>
-<div class="hero"><img class="hphoto" src="${img(pi.photoUrl)}"/>
+<div class="hero"><img class="hphoto" src="file:///dev-server/scripts/magazine/cover-photo.jpeg"/>
 <div class="hside"><div class="bank" style="background-image:url('${img('/tmp/mag/bank.jpg')}')"></div>
 <h1 class="cname">${pi.name}</h1><div class="en">${pi.nameEn}</div><div class="grule"></div>
 <ul class="ctitles">${pi.titles.map((t, i) => `<li${i === pi.titles.length - 1 ? ' class="gold"' : ''}>${t}</li>`).join('')}</ul></div></div>
