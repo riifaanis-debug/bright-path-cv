@@ -166,6 +166,10 @@ h2{border-color:#0f4a2c!important}
 .chips span{color:#14261b}tr:nth-child(odd){background:rgba(11,39,25,.04)!important}
 .certificate-grid figure{background:rgba(11,39,25,.05)!important;border-color:rgba(11,39,25,.18)!important}
 .cbank img,.bank-logo{filter:invert(1) brightness(.25)}
+.cv2 .bank{height:100%!important;opacity:1!important;-webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 85%,transparent)!important;mask-image:linear-gradient(to right,transparent,#000 8%,#000 85%,transparent)!important}
+.cv2 .bank::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(6,28,17,.75) 75%,rgba(6,28,17,.85))}
+.cv2 .hside .cname,.cv2 .hside .ctitles{color:#fff!important;text-shadow:0 3px 12px #000c!important}
+.cv2 .hside .en,.cv2 .hside .ctitles li.gold{color:#e8cf8a!important;text-shadow:0 3px 12px #000c!important}
 .cr b{color:#0b2719}
 ` : '';
 const OUT = process.env.THEME === 'light' ? '/tmp/mag/mag-light.html' : '/tmp/mag/mag.html';
