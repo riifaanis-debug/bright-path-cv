@@ -16,6 +16,7 @@ import { Footer } from '@/components/Footer';
 import { PrintInstructionsModal } from '@/components/PrintInstructionsModal';
 import { MagazinePreviewModal } from '@/components/MagazinePreviewModal';
 import { FullScreenMagazineViewer } from '@/components/FullScreenMagazineViewer';
+import { DownloadChooser } from '@/components/DownloadChooser';
 import { Printer, ArrowUp, BookOpen, Maximize } from 'lucide-react';
 
 function App() {
