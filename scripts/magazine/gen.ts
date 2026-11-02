@@ -32,7 +32,7 @@ const cover = (() => { n++; return `<section class="page cover cv2"><div class="
 <div class="hside"><div class="bank" style="background-image:url('${img('/tmp/mag/bank.jpg')}')"></div>
 <h1 class="cname">${pi.name}</h1><div class="en">${pi.nameEn}</div><div class="grule"></div>
 <ul class="ctitles">${pi.titles.map((t, i) => `<li${i === pi.titles.length - 1 ? ' class="gold"' : ''}>${t}</li>`).join('')}</ul></div></div>
-<div class="csum">${d.summary.paragraphs[0]}</div>
+<div class="csum">مستشار شرعي معتمد ، حاصل على درجة زمالة المستشار الشرعي في فقه المالية الإسلامية وتسوية المنازعات المصرفية والتمويلية ، وأخصائي ائتمان ومعالجة ديون، وخبير مصرفي بخبرة عملية تتجاوز عشر سنوات في البنك الأهلي السعودي ، أخصائي معتمد في المالية الإسلامية ، وأخصائي معتمد في تسوية المنازعات المالية ، حاصل على الرخصة الدولية لمهارات تقنية المعلومات من أكاديمية كامبردج رقم الاعتماد : <span dir="ltr">JIH421164 TAGSA449</span> ، وشهادة اتمام برنامج الأمن السيبراني من أكاديمية سيسكو للشبكات</div>
 <div class="cach"><h3>أبرز الإنجازات</h3>${d.keyMetrics.map(m => `<div class="ca"><b>${m.title}</b><p>${m.description}</p></div>`).join('')}</div>
 <div class="contact"><span dir="ltr">${pi.phone}</span><span>${pi.email}</span><span>${pi.location}</span></div>
 </section>`; })();
@@ -130,7 +130,7 @@ ul.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.2em 1.4em}
 .cv2 .cname{font-size:76px;color:#fff;line-height:1.15;margin:0;text-shadow:0 4px 18px #000a}.cv2 .en{font-size:36px;color:#e8cf8a;margin:4px 0 0;opacity:1}
 .grule{height:2px;background:#c9a54a;margin:18px 0}
 .ctitles{list-style:none;padding:0;margin:0;font-size:30px;display:flex;flex-direction:column;gap:10px}.ctitles li::before{content:'';display:inline-block;width:12px;height:12px;background:#c9a54a;margin-left:16px;vertical-align:middle}.ctitles li.gold{color:#e8cf8a}
-.csum{position:relative;border:2px solid #c9a54a;border-radius:20px;background:#ffffff0d;padding:22px 28px;font-size:19px;line-height:1.7;color:#f3ecd9;text-align:justify}
+.csum{position:relative;border:2px solid #c9a54a;border-radius:20px;background:#ffffff0d;padding:22px 28px;font-size:24px;line-height:1.8;color:#f3ecd9;text-align:justify}
 .cach{position:relative;border:2px solid #c9a54a88;border-radius:20px;background:#06180f88;padding:18px 24px;display:flex;flex-direction:column;gap:12px}
 .cach h3{margin:0;font-size:28px;color:#fff;border-right:6px solid #c9a54a;padding-right:12px}
 .ca{background:#164a30;border-radius:12px;padding:9px 16px}.ca b{color:#e8cf8a;font-size:22px}.ca p{margin:2px 0 0;font-size:17px;color:#f3ecd9;line-height:1.6}
