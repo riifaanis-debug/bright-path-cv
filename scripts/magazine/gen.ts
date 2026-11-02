@@ -1,4 +1,4 @@
-// Generates the 10-page CV magazine HTML (/tmp/mag/mag.html) from resumeData.
+// Generates the 9-page CV magazine HTML (/tmp/mag/mag.html) from resumeData.
 // Run: mkdir -p /tmp/mag && curl surge image to /tmp/mag/surge.jpg, bun scripts/magazine/gen.ts, python3 scripts/magazine/render.py
 import { resumeData as d } from '../../src/data/resumeData.ts';
 import { readFileSync, writeFileSync } from 'fs';
@@ -13,7 +13,7 @@ const honors = [
   { src: '/assets/aistudio/IMG_7282_f95ad64c.jpeg', t: 'شهادة شكر وتقدير من البنك المركزي السعودي', x: `ثمرة جهود مستمرة وحرص على تقديم أفضل أداء تشغيلي .. كل الفخر بحصولي على : ${g('شهادة شكر وتقدير من البنك المركزي السعودي')} تقديراً للتميز في تنفيذ وإنجاز الإجراءات المصرفية القضائية` },
   { src: '/tmp/mag/surge.jpg', t: 'التأهل في مسابقة SURGE CUP 2026', x: `${g('البنك الأهلي السعودي SNB')}، وتأهل فكرتي ضمن أفضل 10 أفكار من بين 128 فكرة مشاركة، كمرحلة جديدة للابتكار والتنافس لتقديم الأفكار التي تحقق قيمة ملموسة للبنك وتسهم في تشكيل مستقبل SNB، في إنجاز يعكس القدرة على الابتكار وتقديم حلول تطويرية تسهم في صناعة مستقبل البنك.` },
 ];
-const N = 10;
+const N = 9;
 let n = 0;
 const page = (kicker: string, title: string, body: string, cls = '') => {
   n++;
@@ -56,9 +56,9 @@ ${h2('أبرز الإنجازات')}<div class="kms">${d.keyMetrics.map(m => `<d
   page('EXECUTIVE HONORS & LEADERSHIP RECOGNITION', 'مميز', `<div class="hon">${honors.map(h => `<div class="hc"><div class="hi"><img src="${img(h.src)}"/></div><div class="ht"><h3>${h.t}</h3><div class="hx">${h.x}</div></div></div>`).join('')}</div>`, 'fixed'),
   page('PROFESSIONAL EXPERIENCE', 'الخبرات المهنية', ex(d.experiences[0])),
   page('PROFESSIONAL EXPERIENCE', 'الخبرات المهنية', ex(d.experiences[1])),
-  page('CERTIFICATIONS', 'الشهادات المهنية', `<div class="fel"><b>${d.certifications.fellowship.titleAr}</b><span>${d.certifications.fellowship.titleEn}</span></div>
-<div class="grid2">${specs.map((c: any) => `<div class="card"><b>${c.titleAr}</b><span class="en2">${c.titleEn}</span>${c.provider ? `<span class="pv">${c.provider}${c.codeOrDate ? ' · ' + c.codeOrDate : ''}</span>` : ''}</div>`).join('')}</div>`),
-  page('SKILLS', 'المهارات', `<div class="grid2">${d.skillCategories.map(c => `<div class="card"><b>${c.categoryName}</b>${ul(c.skills.slice(0, 4).map(s => s.split(/[:.،(]/)[0].trim()))}</div>`).join('')}</div>`),
+  page('CERTIFICATIONS', 'الشهادات المهنية والمهارات', `<div class="fel"><b>${d.certifications.fellowship.titleAr}</b><span>${d.certifications.fellowship.titleEn}</span></div>
+<div class="grid2">${specs.map((c: any) => `<div class="card"><b>${c.titleAr}</b><span class="en2">${c.titleEn}</span>${c.provider ? `<span class="pv">${c.provider}${c.codeOrDate ? ' · ' + c.codeOrDate : ''}</span>` : ''}</div>`).join('')}</div>
+${h2('المهارات')}<div class="grid2">${d.skillCategories.map(c => `<div class="card"><b>${c.categoryName}</b>${ul(c.skills.slice(0, 4).map(s => s.split(/[:.،(]/)[0].trim()))}</div>`).join('')}</div>`),
   page('TRAINING', 'الدورات التدريبية', `<div class="crs">${d.courses.map((c, i) => `<div class="cr"><i dir="ltr">${String(i + 1).padStart(2, '0')}</i><div><b>${c.titleAr}</b><span class="en2">${c.titleEn}</span><span class="pv">${c.provider}</span></div></div>`).join('')}</div>`),
   page('PROJECTS & INNOVATION', 'المشاريع والابتكار', `<div class="role"><div class="rt">${ip.titleAr}</div><div class="ren">${ip.titleEn}</div><div class="meta">${ip.organization} · ${ip.competition} · ${ip.status}</div></div>
 <p>${ip.description}</p>${h2('المشكلة')}${ip.problem.split('\n\n').map(p => `<p>${p}</p>`).join('')}
@@ -130,7 +130,7 @@ ul.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.2em 1.4em}
 .cv2 .cname{font-size:76px;color:#fff;line-height:1.15;margin:0;text-shadow:0 4px 18px #000a}.cv2 .en{font-size:36px;color:#e8cf8a;margin:4px 0 0;opacity:1}
 .grule{height:2px;background:#c9a54a;margin:18px 0}
 .ctitles{list-style:none;padding:0;margin:0;font-size:30px;display:flex;flex-direction:column;gap:10px}.ctitles li::before{content:'';display:inline-block;width:12px;height:12px;background:#c9a54a;margin-left:16px;vertical-align:middle}.ctitles li.gold{color:#e8cf8a}
-.csum{position:relative;border:2px solid #c9a54a;border-radius:20px;background:#ffffff0d;padding:22px 28px;font-size:24px;line-height:1.8;color:#f3ecd9;text-align:justify}
+.csum{position:relative;border:0;border-right:5px solid #c9a54a;background:none;padding:6px 26px 6px 0;font-size:27px;font-weight:600;line-height:1.85;color:#fff;text-align:justify;text-shadow:0 2px 8px #0006}
 .cach{position:relative;border:2px solid #c9a54a88;border-radius:20px;background:#06180f88;padding:18px 24px;display:flex;flex-direction:column;gap:12px}
 .cach h3{margin:0;font-size:28px;color:#fff;border-right:6px solid #c9a54a;padding-right:12px}
 .ca{background:#164a30;border-radius:12px;padding:9px 16px}.ca b{color:#e8cf8a;font-size:22px}.ca p{margin:2px 0 0;font-size:17px;color:#f3ecd9;line-height:1.6}
