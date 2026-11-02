@@ -8,7 +8,7 @@ function save(href: string) {
   const a = document.createElement('a');
   a.href = href;
   a.download = href.split('/').pop()!;
-  a.dataset.direct = '1';
+  a.dataset['direct'] = '1';
   document.body.appendChild(a);
   a.click();
   a.remove();
@@ -21,7 +21,7 @@ export function DownloadChooser() {
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       const a = (e.target as HTMLElement)?.closest?.('a');
-      if (a && a.getAttribute('href') === SINGLE && !a.dataset.direct) {
+      if (a && a.getAttribute('href') === SINGLE && !a.dataset['direct']) {
         e.preventDefault();
         e.stopPropagation();
         setOpen(true);
