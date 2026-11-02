@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FileText, BookOpen, Sun, X } from 'lucide-react';
+import { FileText, BookOpen, Sun, X, ClipboardCopy } from 'lucide-react';
 
 const SINGLE = '/downloads/Majid_Al-Sofyani_CV_Magazine.pdf';
 const BOOK = '/downloads/Majid_Al-Sofyani_CV_Magazine_Book.pdf';
@@ -54,6 +54,10 @@ export function DownloadChooser() {
           <Sun className="w-6 h-6 text-[#c9a54a] shrink-0" />
           <span><span className="block font-bold">الوضع الفاتح</span><span className="text-sm text-white/70">خلفية بيضاء (أوف وايت)</span></span>
         </button>
+        <a href="/magazine-text" data-direct="1" onClick={() => setOpen(false)} className="w-full flex items-center gap-3 rounded-xl border border-[#c9a54a]/50 p-4 mt-3 hover:bg-white/5 text-right">
+          <ClipboardCopy className="w-6 h-6 text-[#c9a54a] shrink-0" />
+          <span><span className="block font-bold">فتح الملف</span><span className="text-sm text-white/70">نصوص المجلة مع زر نسخ لكل جزء</span></span>
+        </a>
       </div>
     </div>
   );
