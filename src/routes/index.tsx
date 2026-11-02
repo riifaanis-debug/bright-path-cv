@@ -137,10 +137,10 @@ function App() {
         <button
           onClick={handleOpenMagazinePreview}
           className="h-10 px-3.5 rounded-full bg-[#0C3823] hover:bg-[#072617] text-[#D9A441] font-bold text-xs shadow-lg flex items-center gap-2 transition-all cursor-pointer border border-[#D9A441]/40 active:scale-95"
-          title="معاينة صفحات المجلة (9 صفحات)"
+          title="معاينة صفحات المجلة (18 صفحة)"
         >
           <BookOpen className="w-4 h-4 text-[#D9A441]" />
-          <span>معاينة المجلة (9 صفحات)</span>
+          <span>معاينة المجلة (18 صفحة)</span>
         </button>
         <a
           href="/downloads/Majid_Al-Sofyani_CV_Magazine.pdf"
