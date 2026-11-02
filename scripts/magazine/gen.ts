@@ -180,7 +180,7 @@ li::marker{color:#b8913a}
 .ach{background:#0b2719!important;color:#e8cf8a!important}
 .cv2{padding:0 70px 50px!important}
 .cv2 .topline{display:none}
-.cv2 .hero{margin:0 -70px;padding:0 70px 0 0;height:700px;background:#0b2719;border-bottom:6px solid #b8913a}
+.cv2 .hero{margin:0 -70px;padding:0;height:700px;background:#0b2719;border-bottom:6px solid #b8913a}
 .cv2 .hphoto{height:700px}
 .cv2 .bank{left:0!important;right:-120px!important;-webkit-mask-image:linear-gradient(#000 55%,transparent),linear-gradient(to right,transparent,#000 25%,#000 80%,transparent)!important}
 .cv2 .hside{padding-left:50px}
