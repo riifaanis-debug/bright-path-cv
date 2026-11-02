@@ -53,7 +53,7 @@ const pages = [
 ${h2(d.objective.title)}${d.objective.paragraphs.map(p => `<p>${p}</p>`).join('')}
 ${h2('المؤهل العلمي')}<div class="edu"><b>${d.education.degree}</b><span>${d.education.institution} · ${d.education.year}</span></div>
 ${h2('أبرز الإنجازات')}<div class="kms">${d.keyMetrics.map(m => `<div class="km"><b>${m.title}</b><p>${m.description}</p></div>`).join('')}</div>`),
-  page('EXECUTIVE HONORS & LEADERSHIP RECOGNITION', 'مميز', `<div class="hon">${honors.map(h => `<div class="hc"><div class="hi"><img src="${img(h.src)}"/></div><div class="ht"><h3>${h.t}</h3><div class="hx">${h.x}</div></div></div>`).join('')}</div>`, 'fixed'),
+  page('EXECUTIVE HONORS & LEADERSHIP RECOGNITION', 'مميز', `${honors.map(h => `<div class="hon"><div class="hc"><div class="hi"><img src="${img(h.src)}"/></div><div class="ht"><h3>${h.t}</h3><div class="hx">${h.x}</div></div></div></div>`).join('')}`),
   page('PROFESSIONAL EXPERIENCE', 'الخبرات المهنية', ex(d.experiences[0])),
   page('PROFESSIONAL EXPERIENCE', 'الخبرات المهنية', ex(d.experiences[1])),
   page('CERTIFICATIONS', 'الشهادات المهنية والمهارات', `<div class="fel"><b>${d.certifications.fellowship.titleAr}</b><span>${d.certifications.fellowship.titleEn}</span></div>
@@ -136,7 +136,30 @@ ul.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.2em 1.4em}
 .ca{background:#164a30;border-radius:12px;padding:9px 16px}.ca b{color:#e8cf8a;font-size:22px}.ca p{margin:2px 0 0;font-size:17px;color:#f3ecd9;line-height:1.6}
 .cv2 .contact{position:relative;justify-content:center;font-size:20px;color:#e8cf8a}
 
+
+.content{font-size:27px!important;font-weight:600;line-height:1.85;color:#fff}
+header h1{font-size:44px!important}h2{font-size:32px!important;margin:.9em 0 .5em}
+.rt,.fel b{font-size:32px!important}.card b,.cr b,.edu b,.km b,.ht h3{font-size:27px!important;color:#e8cf8a}
+.hx,.km p,.en2,.pv,.chips span,.cr i,.ren,.meta,.fel span,.edu span{font-size:1em!important;font-weight:600}
+.hx{font-size:27px!important;color:#fff;line-height:1.85}.en2,.pv,.ren,.meta,.edu span,.fel span{color:#f3ecd9;opacity:1}
+.hon{display:block;height:auto;margin-bottom:26px}.hc{flex-direction:column}.hi{width:100%;height:420px}.hi img{object-fit:contain}
+.grid2,.crs{grid-template-columns:1fr}.cr i{min-width:1.8em;height:1.8em}
+.content p,.content li{color:#fff}
 `;
-const fit = `<script>document.fonts.ready.then(()=>{for(const c of document.querySelectorAll('.page:not(.fixed) .content')){let f=34;c.style.setProperty('--fs',f+'px');while(c.scrollHeight>c.clientHeight+1&&f>12){f-=.5;c.style.setProperty('--fs',f+'px')}}document.body.dataset.ready=1})</script>`;
+const fit = `<script>document.fonts.ready.then(()=>{
+const over=c=>c.scrollHeight>c.clientHeight+1;
+let pg=document.querySelector('.page:not(.cover)');
+for(let guard=0;guard<60;guard++){
+ const all=[...document.querySelectorAll('.page:not(.cover)')];const p=all.find(x=>over(x.querySelector('.content')));if(!p)break;
+ const c=p.querySelector('.content');const np=p.cloneNode(true);const nc=np.querySelector('.content');nc.innerHTML='';p.after(np);
+ while(over(c)&&c.children.length){const last=c.lastElementChild;const kids=last.children.length;
+  if(last.matches('ul,.grid2,.crs,.kms')&&kids>1){let t=nc.firstElementChild;if(!t||!t.dataset.split){t=last.cloneNode(false);t.dataset.split=1;nc.prepend(t)}t.prepend(last.lastElementChild)}
+  else if(last.tagName==='P'&&last.textContent.length>200&&!last.dataset.cut){const w=last.textContent.split(' ');const q=document.createElement('p');nc.prepend(q);while(over(c)&&w.length>5){q.textContent=w.pop()+(q.textContent?' '+q.textContent:'');last.textContent=w.join(' ')}last.dataset.cut=1}
+  else nc.prepend(last)}
+ for(const x of nc.querySelectorAll('[data-split]'))delete x.dataset.split;
+ while(c.lastElementChild&&c.lastElementChild.tagName==='H2')nc.prepend(c.lastElementChild);
+}
+const ps=[...document.querySelectorAll('.page')];ps.forEach((p,i)=>{const s=p.querySelector('footer span[dir=ltr]');if(s)s.textContent=String(i+1).padStart(2,'0')+' / '+String(ps.length).padStart(2,'0')});
+document.body.dataset.pages=ps.length;document.body.dataset.ready=1})</script>`;
 writeFileSync('/tmp/mag/mag.html', `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>${css}</style></head><body>${pages.join('')}${fit}</body></html>`);
 console.log('pages', n);
