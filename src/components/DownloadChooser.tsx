@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { FileText, BookOpen, X } from 'lucide-react';
+import { FileText, BookOpen, Sun, X } from 'lucide-react';
 
 const SINGLE = '/downloads/Majid_Al-Sofyani_CV_Magazine.pdf';
 const BOOK = '/downloads/Majid_Al-Sofyani_CV_Magazine_Book.pdf';
+const LIGHT = '/downloads/Majid_Al-Sofyani_CV_Magazine_Light.pdf';
 
 function save(href: string) {
   const a = document.createElement('a');
@@ -48,6 +49,10 @@ export function DownloadChooser() {
         <button onClick={() => pick(BOOK)} className="w-full flex items-center gap-3 rounded-xl border border-[#c9a54a]/50 p-4 hover:bg-white/5 text-right">
           <BookOpen className="w-6 h-6 text-[#c9a54a] shrink-0" />
           <span><span className="block font-bold">كتاب مفتوح</span><span className="text-sm text-white/70">صفحتان متقابلتان مثل الكتاب</span></span>
+        </button>
+        <button onClick={() => pick(LIGHT)} className="w-full flex items-center gap-3 rounded-xl border border-[#c9a54a]/50 p-4 mt-3 hover:bg-white/5 text-right">
+          <Sun className="w-6 h-6 text-[#c9a54a] shrink-0" />
+          <span><span className="block font-bold">الوضع الفاتح</span><span className="text-sm text-white/70">خلفية بيضاء (أوف وايت)</span></span>
         </button>
       </div>
     </div>

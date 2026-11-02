@@ -136,6 +136,23 @@ ul.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.2em 1.4em}
 .cv2 .contact{position:relative;justify-content:center;font-size:20px;color:#e8cf8a}
 
 `;
+
+const LIGHT = process.env.THEME === 'light' ? `
+.page,.page:not(.cover),.cover{background:#faf6ec!important;color:#1d2a22!important}
+.page::before{border-color:#c9a54a!important}
+header h1,h2,.card b,.edu b,td b,.tl b,.ht h3,.rt,.km b,.fel b,.ca b{color:#9a7a2c!important}
+footer{color:#7c6a3a!important}
+.role,.km,.fel{background:#fff!important;color:#1d2a22!important;border:1px solid #d9c690}
+.meta{color:#7c6a3a!important}
+.edu,.card,.hc,.cr{background:#fff!important;border-color:#d9c690!important}
+.hx,.ca p,.csum,.ctitles,.cv2 .cname{color:#1d2a22!important;text-shadow:none!important}
+.cv2 .en,.cv2 .contact,.ctitles li.gold{color:#9a7a2c!important;text-shadow:none!important}
+.en2{color:#5d6a60!important}.pv{color:#9a7a2c!important}
+.chips span{color:#1d2a22}tr:nth-child(odd){background:#f4eedd!important}
+.cbank img,.bank-logo{filter:invert(1) brightness(.25)}
+.cr b{color:#0b2719}
+` : '';
+const OUT = process.env.THEME === 'light' ? '/tmp/mag/mag-light.html' : '/tmp/mag/mag.html';
 const fit = `<script>document.fonts.ready.then(()=>{for(const c of document.querySelectorAll('.page:not(.fixed) .content')){let f=34;c.style.setProperty('--fs',f+'px');while(c.scrollHeight>c.clientHeight+1&&f>12){f-=.5;c.style.setProperty('--fs',f+'px')}}document.body.dataset.ready=1})</script>`;
-writeFileSync('/tmp/mag/mag.html', `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800&display=swap" rel="stylesheet"><style>${css}</style></head><body>${pages.join('')}${fit}</body></html>`);
+writeFileSync(OUT, `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800&display=swap" rel="stylesheet"><style>${css}${LIGHT}</style></head><body>${pages.join('')}${fit}</body></html>`);
 console.log('pages', n);
