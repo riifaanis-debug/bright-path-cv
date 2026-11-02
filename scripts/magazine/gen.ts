@@ -17,7 +17,7 @@ const N = 10;
 let n = 0;
 const page = (kicker: string, title: string, body: string, cls = '') => {
   n++;
-  return `<section class="page ${cls}"><header><div class="kick">${kicker}</div><h1>${title}</h1><div class="rule"></div></header>
+  return `<section class="page ${cls}"><header><h1>${title}</h1><div class="rule"></div></header>
 <div class="content">${body}</div>
 <footer><span>${d.personalInfo.name}</span><span dir="ltr">${String(n).padStart(2, '0')} / ${String(N).padStart(2, '0')}</span></footer></section>`;
 };
@@ -37,7 +37,7 @@ const cover = (() => { n++; return `<section class="page cover"><div class="cv-i
 const ex = (e: any) => `<div class="role"><div class="rt">${e.roleAr}</div><div class="ren">${e.roleEn}</div><div class="meta">${e.companyAr} · ${e.periodAr}</div></div>
 ${e.paragraphs.map((p: string) => `<p>${p}</p>`).join('')}
 ${h2('أبرز الإنجازات')}${ul(e.achievements)}
-${h2('المهارات المكتسبة')}<div class="chips">${e.skillsList.map((s: string) => `<span>${s}</span>`).join('')}</div>`;
+${h2('المهارات المكتسبة')}<ul class="g3">${e.skillsList.map((s: string) => `<li>${s}</li>`).join('')}</ul>`;
 
 const ip = d.innovativeProject;
 const specs = [
@@ -54,11 +54,9 @@ ${h2('أبرز الإنجازات')}<div class="kms">${d.keyMetrics.map(m => `<d
   page('PROFESSIONAL EXPERIENCE', 'الخبرات المهنية', ex(d.experiences[0])),
   page('PROFESSIONAL EXPERIENCE', 'الخبرات المهنية', ex(d.experiences[1])),
   page('CERTIFICATIONS', 'الشهادات المهنية', `<div class="fel"><b>${d.certifications.fellowship.titleAr}</b><span>${d.certifications.fellowship.titleEn}</span></div>
-<div class="grid2">${specs.map((c: any) => `<div class="card"><b>${c.titleAr}</b><span class="en2">${c.titleEn}</span>${c.provider ? `<span class="pv">${c.provider}${c.codeOrDate ? ' · ' + c.codeOrDate : ''}</span>` : ''}</div>`).join('')}</div>
-${h2('محاور زمالة المستشار الشرعي')}<div class="chips num">${sharia.map((s, i) => `<span><i>${i + 1}</i>${s}</span>`).join('')}</div>`),
-  page('SKILLS & AWARDS', 'المهارات والجوائز والتكريمات', `<div class="grid2">${d.skillCategories.map(c => `<div class="card"><b>${c.categoryName}</b>${ul(c.skills.map(s => s.replace(/\.$/, '')))}</div>`).join('')}</div>
-${h2('الجوائز والتكريمات')}<div class="tl">${d.awards.map(a => `<div><b>${a.title}</b><span class="pv">${a.organization}${a.date ? ' · ' + a.date : ''}</span><p>${a.description}</p></div>`).join('')}</div>`),
-  page('TRAINING', 'الدورات التدريبية', `<table>${d.courses.map((c, i) => `<tr><td class="i" dir="ltr">${String(i + 1).padStart(2, '0')}</td><td><b>${c.titleAr}</b><span class="en2">${c.titleEn}</span></td><td class="pv">${c.provider}</td></tr>`).join('')}</table>`),
+<div class="grid2">${specs.map((c: any) => `<div class="card"><b>${c.titleAr}</b><span class="en2">${c.titleEn}</span>${c.provider ? `<span class="pv">${c.provider}${c.codeOrDate ? ' · ' + c.codeOrDate : ''}</span>` : ''}</div>`).join('')}</div>`),
+  page('SKILLS', 'المهارات', `<div class="grid2">${d.skillCategories.map(c => `<div class="card"><b>${c.categoryName}</b>${ul(c.skills.slice(0, 4).map(s => s.split(/[:.،(]/)[0].trim()))}</div>`).join('')}</div>`),
+  page('TRAINING', 'الدورات التدريبية', `<div class="crs">${d.courses.map((c, i) => `<div class="cr"><i dir="ltr">${String(i + 1).padStart(2, '0')}</i><div><b>${c.titleAr}</b><span class="en2">${c.titleEn}</span><span class="pv">${c.provider}</span></div></div>`).join('')}</div>`),
   page('PROJECTS & INNOVATION', 'المشاريع والابتكار', `<div class="role"><div class="rt">${ip.titleAr}</div><div class="ren">${ip.titleEn}</div><div class="meta">${ip.organization} · ${ip.competition} · ${ip.status}</div></div>
 <p>${ip.description}</p>${h2('المشكلة')}${ip.problem.split('\n\n').map(p => `<p>${p}</p>`).join('')}
 ${h2('الحل')}${ip.solution.split('\n\n').map(p => `<p>${p}</p>`).join('')}
@@ -73,10 +71,10 @@ const css = `
 *{box-sizing:border-box;margin:0;padding:0}body{background:#222;font-family:'IBM Plex Sans Arabic',sans-serif}
 .page{width:1191px;height:1685px;background:#fbf8f1;color:#1d2a22;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:90px 90px 70px}
 header .kick{font-family:'Playfair Display';letter-spacing:6px;color:#b08a33;font-size:20px;direction:ltr;text-align:right}
-header h1{font-size:62px;color:#0b2719;font-weight:700;margin-top:6px}.rule{height:4px;width:140px;background:#c9a54a;margin:18px 0 30px}
+header h1{font-size:46px;color:#0b2719;font-weight:700;margin-top:6px}.rule{height:4px;width:140px;background:#c9a54a;margin:18px 0 30px}
 .content{flex:1;overflow:hidden;font-size:var(--fs,22px);line-height:1.75}
 .content p{margin-bottom:.7em;text-align:justify}
-h2{font-size:1.45em;color:#0b2719;margin:1em 0 .5em;padding-right:16px;border-right:6px solid #c9a54a;line-height:1.3}
+h2{font-size:1.15em;color:#0b2719;margin:1em 0 .5em;padding-right:16px;border-right:6px solid #c9a54a;line-height:1.3}
 ul{padding-right:1.3em}li{margin-bottom:.3em}li::marker{color:#c9a54a}
 footer{display:flex;justify-content:space-between;border-top:1px solid #d9c690;padding-top:18px;color:#7c6a3a;font-size:18px}
 .role{background:#0b2719;color:#fff;border-radius:14px;padding:.9em 1.2em;margin-bottom:1em;border-right:8px solid #c9a54a}
@@ -108,6 +106,15 @@ tr:nth-child(odd){background:#f4eedd}
 .titles{display:flex;flex-direction:column;gap:10px;font-size:30px}
 .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width:960px}.metrics div{border:1px solid #c9a54a;border-radius:12px;padding:18px;font-size:22px;color:#e8cf8a}
 .contact{display:flex;gap:30px;font-size:22px;opacity:.9;flex-wrap:wrap;justify-content:center}.contact.big{flex-direction:column;gap:18px;font-size:32px;margin-top:40px}
+.page:not(.cover){background:radial-gradient(circle at 50% 30%,#164a30,#0b2719 70%);color:#f3ecd9}
+.page:not(.cover)::before{content:'';position:absolute;inset:40px;border:2px solid #c9a54a;border-radius:8px;pointer-events:none}
+header h1,h2,.card b,.edu b,td b,.tl b{color:#e8cf8a}footer{color:#d9c690;border-color:#c9a54a66}
+.role,.km,.fel{background:#164a30}.edu,.card,.hc{background:#ffffff0d;border-color:#c9a54a88}
+.hx{background:#ffffff12;color:#f3ecd9}.ht h3{color:#e8cf8a}.hi{background:#06180f}
+.en2{color:#cfc6ad}.pv{color:#d9b866}
+ul.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.2em 1.4em}
+.crs{display:grid;grid-template-columns:1fr 1fr;gap:.6em}.cr{display:flex;gap:.7em;align-items:flex-start;background:#ffffff0d;border:1px solid #c9a54a88;border-radius:10px;padding:.6em .9em}
+.cr i{font-style:normal;font-weight:700;color:#0b2719;background:#c9a54a;border-radius:50%;min-width:2em;height:2em;display:flex;align-items:center;justify-content:center;font-size:.85em}.cr b{display:block}
 `;
 const fit = `<script>document.fonts.ready.then(()=>{for(const c of document.querySelectorAll('.page:not(.fixed) .content')){let f=34;c.style.setProperty('--fs',f+'px');while(c.scrollHeight>c.clientHeight+1&&f>12){f-=.5;c.style.setProperty('--fs',f+'px')}}document.body.dataset.ready=1})</script>`;
 writeFileSync('/tmp/mag/mag.html', `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>${css}</style></head><body>${pages.join('')}${fit}</body></html>`);
