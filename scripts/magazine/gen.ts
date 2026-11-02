@@ -1,4 +1,4 @@
-// Generates the 10-page CV magazine HTML (/tmp/mag/mag.html) from resumeData.
+// Generates the 9-page CV magazine HTML (/tmp/mag/mag.html) from resumeData.
 // Run: mkdir -p /tmp/mag && curl surge image to /tmp/mag/surge.jpg, bun scripts/magazine/gen.ts, python3 scripts/magazine/render.py
 import { resumeData as d } from '../../src/data/resumeData.ts';
 import { readFileSync, writeFileSync } from 'fs';
@@ -13,7 +13,7 @@ const honors = [
   { src: '/assets/aistudio/IMG_7282_f95ad64c.jpeg', t: 'شهادة شكر وتقدير من البنك المركزي السعودي', x: `ثمرة جهود مستمرة وحرص على تقديم أفضل أداء تشغيلي .. كل الفخر بحصولي على : ${g('شهادة شكر وتقدير من البنك المركزي السعودي')} تقديراً للتميز في تنفيذ وإنجاز الإجراءات المصرفية القضائية` },
   { src: '/tmp/mag/surge.jpg', t: 'التأهل في مسابقة SURGE CUP 2026', x: `${g('البنك الأهلي السعودي SNB')}، وتأهل فكرتي ضمن أفضل 10 أفكار من بين 128 فكرة مشاركة، كمرحلة جديدة للابتكار والتنافس لتقديم الأفكار التي تحقق قيمة ملموسة للبنك وتسهم في تشكيل مستقبل SNB، في إنجاز يعكس القدرة على الابتكار وتقديم حلول تطويرية تسهم في صناعة مستقبل البنك.` },
 ];
-const N = 10;
+const N = 9;
 let n = 0;
 const page = (kicker: string, title: string, body: string, cls = '') => {
   n++;
