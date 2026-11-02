@@ -122,8 +122,8 @@ ul.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.2em 1.4em}
 .cv2 .topline{position:absolute;top:0;left:0;right:0;height:8px;background:linear-gradient(90deg,#c9a54a,#e8cf8a,#c9a54a)}
 .chead{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #c9a54a;padding-bottom:14px;position:relative}
 .chead b{font-size:32px;color:#fff}.cbank{display:flex;flex-direction:column;font-size:21px;color:#e8cf8a;text-align:left}
-.hero{display:flex;gap:28px;position:relative;height:520px}
-.hphoto{width:380px;height:520px;object-fit:cover;border-radius:22px;border:3px solid #c9a54a;box-shadow:0 20px 50px #0008}
+.hero{display:flex;gap:28px;position:relative;height:650px}
+.hphoto{width:430px;height:650px;object-fit:cover;border-radius:22px;border:3px solid #c9a54a;box-shadow:0 20px 50px #0008}
 .hside{flex:1;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:20px;border-radius:22px;overflow:hidden}
 .bank{position:absolute;inset:0 0 45% 0;background-size:cover;background-position:center;opacity:.55;-webkit-mask-image:linear-gradient(#000 55%,transparent)}
 .hside>*:not(.bank){position:relative}
