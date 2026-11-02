@@ -367,7 +367,64 @@
  },
  {
   "title": "الدورات التدريبية",
-  "items": []
+  "items": [
+   {
+    "h": false,
+    "t": "مقدمة في المحاسبة — Accounting – An Introduction — Saudi National Bank Academy (SNB Academy)"
+   },
+   {
+    "h": false,
+    "t": "مكافحة الرشوة والفساد والإبلاغ عن المخالفات — Anti-Bribery, Anti-Corruption & Whistleblowing — Saudi National Bank Academy (SNB Academy)"
+   },
+   {
+    "h": false,
+    "t": "مكافحة غسل الأموال وتمويل الإرهاب — Combating Money Laundering and Terrorism Financing — Saudi National Bank Academy (SNB Academy)"
+   },
+   {
+    "h": false,
+    "t": "الوقاية من الاحتيال المالي — Fraud Prevention — Saudi National Bank Academy (SNB Academy)"
+   },
+   {
+    "h": false,
+    "t": "برنامج الوعي بالمصرفية الإسلامية — Islamic Banking Awareness Program — Saudi National Bank Academy (SNB Academy)"
+   },
+   {
+    "h": false,
+    "t": "بالمخاطر التشغيلية — Operational Risk Awareness — Saudi National Bank Academy (SNB Academy)"
+   },
+   {
+    "h": false,
+    "t": "الامتثال المصرفي — Compliance — Saudi National Bank Academy (SNB Academy)"
+   },
+   {
+    "h": false,
+    "t": "مبادئ وقواعد حماية عملاء المؤسسات المالية (FCPP) — Financial Consumer Protection Principles and Rules (FCPP) — Saudi National Bank Academy (SNB Academy)"
+   },
+   {
+    "h": false,
+    "t": "الالتزام وحماية أعمالنا — A Culture of Compliance – Safeguarding Our Business — Saudi National Bank Academy (SNB Academy)"
+   },
+   {
+    "h": false,
+    "t": "العقوبات المالية — Sanctions Training — Saudi National Bank Academy (SNB Academy)"
+   },
+   {
+    "h": false,
+    "t": "التداول بناء على المعلومات الداخلية والتلاعب بالأسواق — Insider Trading & Market Manipulation Training — Saudi National Bank Academy (SNB Academy)"
+   },
+   {
+    "h": false,
+    "t": "التصنيفات الائتمانية — Introduction to Credit Ratings — The Financial Academy"
+   },
+   {
+    "h": false,
+    "t": "مخاطر الجرائم المالية — Emerging Financial Crime Risks and Best Practice in Financial Institutions — The Financial Academy"
+   },
+   {
+    "h": false,
+    "t": "المنتجات الاستثمارية في السوق المالية — Investment Products in the Financial Market — The Financial Academy"
+   }
+  ]
  },
  {
   "title": "المشاريع والابتكار",
@@ -427,7 +484,7 @@
   ]
  },
  {
-  "title": "الغلاف",
+  "title": "الخاتمة",
   "items": [
    {
     "h": false,
