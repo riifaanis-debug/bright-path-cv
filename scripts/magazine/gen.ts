@@ -1,17 +1,17 @@
 // Generates the 9-page CV magazine HTML (/tmp/mag/mag.html) from resumeData.
-// Run: mkdir -p /tmp/mag && curl surge image to /tmp/mag/surge.jpg, bun scripts/magazine/gen.ts, python3 scripts/magazine/render.py
+// Run: mkdir -p /tmp/mag && curl surge image to /dev-server/scripts/magazine/surge.jpg, bun scripts/magazine/gen.ts, python3 scripts/magazine/render.py
 import { resumeData as d } from '../../src/data/resumeData.ts';
 import { readFileSync, writeFileSync } from 'fs';
 
 const P = '/dev-server/public';
-const img = (p: string) => 'file://' + (p.startsWith('/tmp') ? p : P + p);
+const img = (p: string) => 'file://' + ((p.startsWith('/tmp')||p.startsWith('/dev-server')) ? p : P + p);
 const sharia = [...readFileSync('/dev-server/src/components/ShariaFellowshipSection.tsx', 'utf8').matchAll(/^\s{4}title: '([^']+)'/gm)].map(m => m[1]);
 const g = (t: string) => `<em>${t}</em>`;
 const honors = [
   { src: '/assets/aistudio/2b5f7485-e301-46a5-81f5-b7d6e23ff318_d953eee4.jpeg', t: 'حاصل على المركز الأول لعامين متتاليين على إدارة تحصيل الأفراد', x: `حصاد الجد والاجتهاد .. حظيت بالتكريم من : ${g('سعادة الأستاذ صالح الصالح رئيس الخدمات المشتركة لمجموعة البنك الأهلي السعودي')} لحصولي على المركز الأول للعام الثاني على التوالي` },
   { src: '/assets/aistudio/_________________757b7be5.png', t: 'تحقيق أعلى مبلغ استرداد بقيمة 7,500,000 خلال عام واحد', x: `نجم التحصيل .. حظيت بالتكريم من : ${g('سعادة الأستاذ وائل عرابي رئيس التحصيل بالبنك الأهلي السعودي')} لتحقيق أعلى أداء تحصيلي وكسر حاجز أعلى مبلغ استرداد على مستو إدارة تحصيل الأفراد` },
   { src: '/assets/aistudio/IMG_7282_f95ad64c.jpeg', t: 'شهادة شكر وتقدير من البنك المركزي السعودي', x: `ثمرة جهود مستمرة وحرص على تقديم أفضل أداء تشغيلي .. كل الفخر بحصولي على : ${g('شهادة شكر وتقدير من البنك المركزي السعودي')} تقديراً للتميز في تنفيذ وإنجاز الإجراءات المصرفية القضائية` },
-  { src: '/tmp/mag/surge.jpg', t: 'التأهل في مسابقة SURGE CUP 2026', x: `${g('البنك الأهلي السعودي SNB')}، وتأهل فكرتي ضمن أفضل 10 أفكار من بين 128 فكرة مشاركة، كمرحلة جديدة للابتكار والتنافس لتقديم الأفكار التي تحقق قيمة ملموسة للبنك وتسهم في تشكيل مستقبل SNB، في إنجاز يعكس القدرة على الابتكار وتقديم حلول تطويرية تسهم في صناعة مستقبل البنك.` },
+  { src: '/dev-server/scripts/magazine/surge.jpg', t: 'التأهل في مسابقة SURGE CUP 2026', x: `${g('البنك الأهلي السعودي SNB')}، وتأهل فكرتي ضمن أفضل 10 أفكار من بين 128 فكرة مشاركة، كمرحلة جديدة للابتكار والتنافس لتقديم الأفكار التي تحقق قيمة ملموسة للبنك وتسهم في تشكيل مستقبل SNB، في إنجاز يعكس القدرة على الابتكار وتقديم حلول تطويرية تسهم في صناعة مستقبل البنك.` },
 ];
 const N = 9;
 let n = 0;
@@ -25,11 +25,11 @@ const h2 = (t: string) => `<h2>${t}</h2>`;
 const ul = (a: string[]) => `<ul>${a.map(x => `<li>${x}</li>`).join('')}</ul>`;
 const pi = d.personalInfo;
 
-// Cover backdrop /tmp/mag/bank.jpg = SNB building cropped from the user's reference design.
+// Cover backdrop /dev-server/scripts/magazine/bank.jpg = SNB building cropped from the user's reference design.
 const cover = (() => { n++; return `<section class="page cover cv2"><div class="topline"></div>
-<div class="chead"><b>السيرة الذاتية المهنية التنفيذية</b><div class="cbank"><img src="${img('/tmp/mag/logo.png')}"/></div></div>
+<div class="chead"><b>السيرة الذاتية المهنية التنفيذية</b><div class="cbank"><img src="${img('/dev-server/scripts/magazine/logo.png')}"/></div></div>
 <div class="hero"><img class="hphoto" src="file:///dev-server/scripts/magazine/cover-photo.jpeg"/>
-<div class="hside"><div class="bank" style="background-image:url('${img('/tmp/mag/bank.jpg')}')"></div>
+<div class="hside"><div class="bank" style="background-image:url('${img('/dev-server/scripts/magazine/bank.jpg')}')"></div>
 <h1 class="cname">${pi.name}</h1><div class="en">${pi.nameEn}</div><div class="grule"></div>
 <ul class="ctitles">${pi.titles.map((t, i) => `<li${i === pi.titles.length - 1 ? ' class="gold"' : ''}>${t}</li>`).join('')}</ul></div></div>
 <div class="csum">مستشار شرعي معتمد ، حاصل على درجة زمالة المستشار الشرعي في فقه المالية الإسلامية وتسوية المنازعات المصرفية والتمويلية ، وأخصائي ائتمان ومعالجة ديون، وخبير مصرفي بخبرة عملية تتجاوز عشر سنوات في البنك الأهلي السعودي ، أخصائي معتمد في المالية الإسلامية ، وأخصائي معتمد في تسوية المنازعات المالية ، حاصل على الرخصة الدولية لمهارات تقنية المعلومات من أكاديمية كامبردج رقم الاعتماد : <span dir="ltr">JIH421164 TAGSA449</span> ، وشهادة اتمام برنامج الأمن السيبراني من أكاديمية سيسكو للشبكات</div>
@@ -123,20 +123,20 @@ ul.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.2em 1.4em}
 .chead{display:flex;align-items:flex-end;position:relative}.chead>*{flex:1 1 50%}
 .chead b{font-size:32px;color:#fff;border-bottom:2px solid #c9a54a;padding-bottom:14px}.cbank{display:flex;justify-content:flex-end;padding-bottom:6px}.cbank img{height:96px}
 .hero{display:flex;gap:28px;position:relative;height:650px}
-.hphoto{width:430px;height:650px;object-fit:cover;border-radius:22px;border:3px solid #c9a54a;box-shadow:0 20px 50px #0008}
-.hside{flex:1;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:20px;border-radius:22px;overflow:hidden}
-.bank{position:absolute;inset:0 0 45% 0;background-size:cover;background-position:center;opacity:.55;-webkit-mask-image:linear-gradient(#000 55%,transparent)}
+.hphoto{width:440px;height:650px;object-fit:cover;-webkit-mask-image:linear-gradient(to left,#000 75%,transparent),linear-gradient(#000 80%,transparent);-webkit-mask-composite:source-in;mask-composite:intersect;position:relative;z-index:1}
+.hside{flex:1;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:20px}
+.bank{position:absolute;top:0;left:-30px;right:-90px;height:62%;background-size:cover;background-position:center;opacity:.95;-webkit-mask-image:linear-gradient(#000 60%,transparent),linear-gradient(to right,transparent,#000 10%,#000 80%,transparent);-webkit-mask-composite:source-in;mask-composite:intersect}
 .hside>*:not(.bank){position:relative}
-.cv2 .cname{font-size:76px;color:#fff;line-height:1.15;margin:0;text-shadow:0 4px 18px #000a}.cv2 .en{font-size:36px;color:#e8cf8a;margin:4px 0 0;opacity:1}
+.cv2 .cname{font-family:Cairo,sans-serif;font-weight:800;font-size:64px;white-space:nowrap;color:#fff;line-height:1.15;margin:0;text-shadow:0 4px 18px #000c}.cv2 .en{font-family:Cairo,sans-serif;font-weight:700;font-size:40px;color:#e8cf8a;margin:2px 0 0;opacity:1;direction:ltr;text-align:right;text-shadow:0 3px 12px #000c}
 .grule{height:2px;background:#c9a54a;margin:18px 0}
 .ctitles{list-style:none;padding:0;margin:0;font-size:30px;display:flex;flex-direction:column;gap:10px}.ctitles li::before{content:'';display:inline-block;width:12px;height:12px;background:#c9a54a;margin-left:16px;vertical-align:middle}.ctitles li.gold{color:#e8cf8a}
 .csum{position:relative;border:0;border-right:5px solid #c9a54a;background:none;padding:6px 26px 6px 0;font-size:27px;font-weight:600;line-height:1.85;color:#fff;text-align:justify;text-shadow:0 2px 8px #0006}
-.cach{position:relative;border:2px solid #c9a54a88;border-radius:20px;background:#06180f88;padding:18px 24px;display:flex;flex-direction:column;gap:12px}
+.cach{position:relative;padding:4px 0;display:flex;flex-direction:column;gap:12px}
 .cach h3{margin:0;font-size:28px;color:#fff;border-right:6px solid #c9a54a;padding-right:12px}
-.ca{background:#164a30;border-radius:12px;padding:9px 16px}.ca b{color:#e8cf8a;font-size:22px}.ca p{margin:2px 0 0;font-size:17px;color:#f3ecd9;line-height:1.6}
+.ca{padding:4px 0 14px;border-bottom:1px solid #c9a54a66}.ca:last-child{border-bottom:0}.ca b{color:#e8cf8a;font-size:22px}.ca p{margin:2px 0 0;font-size:17px;color:#f3ecd9;line-height:1.6}
 .cv2 .contact{position:relative;justify-content:center;font-size:20px;color:#e8cf8a}
 
 `;
 const fit = `<script>document.fonts.ready.then(()=>{for(const c of document.querySelectorAll('.page:not(.fixed) .content')){let f=34;c.style.setProperty('--fs',f+'px');while(c.scrollHeight>c.clientHeight+1&&f>12){f-=.5;c.style.setProperty('--fs',f+'px')}}document.body.dataset.ready=1})</script>`;
-writeFileSync('/tmp/mag/mag.html', `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>${css}</style></head><body>${pages.join('')}${fit}</body></html>`);
+writeFileSync('/tmp/mag/mag.html', `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800&display=swap" rel="stylesheet"><style>${css}</style></head><body>${pages.join('')}${fit}</body></html>`);
 console.log('pages', n);
