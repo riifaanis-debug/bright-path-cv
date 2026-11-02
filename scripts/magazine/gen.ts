@@ -25,14 +25,17 @@ const h2 = (t: string) => `<h2>${t}</h2>`;
 const ul = (a: string[]) => `<ul>${a.map(x => `<li>${x}</li>`).join('')}</ul>`;
 const pi = d.personalInfo;
 
-const cover = (() => { n++; return `<section class="page cover"><div class="cv-in">
-<div class="brand">SAUDI NATIONAL BANK · EXECUTIVE PROFILE</div>
-<img class="photo" src="${img(pi.photoUrl)}"/>
-<h1 class="cname">${pi.name}</h1><div class="en">${pi.nameEn}</div>
-<div class="titles">${pi.titles.map(t => `<span>${t}</span>`).join('')}</div>
-<div class="metrics">${d.keyMetrics.map(m => `<div>${m.title}</div>`).join('')}</div>
+// Cover backdrop /tmp/mag/bank.jpg = SNB building cropped from the user's reference design.
+const cover = (() => { n++; return `<section class="page cover cv2"><div class="topline"></div>
+<div class="chead"><b>السيرة الذاتية المهنية التنفيذية</b><div class="cbank"><span>البنك الأهلي السعودي (SNB)</span><span>المملكة العربية السعودية • 2026</span></div></div>
+<div class="hero"><img class="hphoto" src="${img(pi.photoUrl)}"/>
+<div class="hside"><div class="bank" style="background-image:url('${img('/tmp/mag/bank.jpg')}')"></div>
+<h1 class="cname">${pi.name}</h1><div class="en">${pi.nameEn}</div><div class="grule"></div>
+<ul class="ctitles">${pi.titles.map((t, i) => `<li${i === pi.titles.length - 1 ? ' class="gold"' : ''}>${t}</li>`).join('')}</ul></div></div>
+<div class="csum">${d.summary.paragraphs[0]}</div>
+<div class="cach"><h3>أبرز الإنجازات</h3>${d.keyMetrics.map(m => `<div class="ca"><b>${m.title}</b><p>${m.description}</p></div>`).join('')}</div>
 <div class="contact"><span dir="ltr">${pi.phone}</span><span>${pi.email}</span><span>${pi.location}</span></div>
-</div></section>`; })();
+</section>`; })();
 
 const ex = (e: any) => `<div class="role"><div class="rt">${e.roleAr}</div><div class="ren">${e.roleEn}</div><div class="meta">${e.companyAr} · ${e.periodAr}</div></div>
 ${e.paragraphs.map((p: string) => `<p>${p}</p>`).join('')}
