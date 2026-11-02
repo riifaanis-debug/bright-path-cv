@@ -34,7 +34,6 @@ const cover = (() => { n++; return `<section class="page cover cv2"><div class="
 <ul class="ctitles">${pi.titles.map((t, i) => `<li${i === pi.titles.length - 1 ? ' class="gold"' : ''}>${t}</li>`).join('')}</ul></div></div>
 <div class="csum">مستشار شرعي معتمد ، حاصل على درجة زمالة المستشار الشرعي في فقه المالية الإسلامية وتسوية المنازعات المصرفية والتمويلية ، وأخصائي ائتمان ومعالجة ديون، وخبير مصرفي بخبرة عملية تتجاوز عشر سنوات في البنك الأهلي السعودي ، أخصائي معتمد في المالية الإسلامية ، وأخصائي معتمد في تسوية المنازعات المالية ، حاصل على الرخصة الدولية لمهارات تقنية المعلومات من أكاديمية كامبردج رقم الاعتماد : <span dir="ltr">JIH421164 TAGSA449</span> ، وشهادة اتمام برنامج الأمن السيبراني من أكاديمية سيسكو للشبكات</div>
 <div class="cach"><h3>أبرز الإنجازات</h3>${d.keyMetrics.map(m => `<div class="ca"><b>${m.title}</b><p>${m.description}</p></div>`).join('')}</div>
-<div class="contact"><span dir="ltr">${pi.phone}</span><span>${pi.email}</span><span>${pi.location}</span></div>
 </section>`; })();
 
 const ex = (e: any) => `<div class="role"><div class="rt">${e.roleAr}</div><div class="ren">${e.roleEn}</div><div class="meta">${e.companyAr} · ${e.periodAr}</div></div>
@@ -122,18 +121,18 @@ ul.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.2em 1.4em}
 .cv2 .topline{position:absolute;top:0;left:0;right:0;height:8px;background:linear-gradient(90deg,#c9a54a,#e8cf8a,#c9a54a)}
 .chead{display:flex;align-items:flex-end;position:relative}.chead>*{flex:1 1 50%}
 .chead b{font-size:32px;color:#fff;border-bottom:2px solid #c9a54a;padding-bottom:14px}.cbank{display:flex;justify-content:flex-end;padding-bottom:6px}.cbank img{height:96px}
-.hero{display:flex;gap:28px;position:relative;height:650px}
-.hphoto{width:440px;height:650px;object-fit:cover;-webkit-mask-image:linear-gradient(to left,#000 75%,transparent),linear-gradient(#000 80%,transparent);-webkit-mask-composite:source-in;mask-composite:intersect;position:relative;z-index:1}
+.hero{display:flex;gap:28px;position:relative;height:560px}
+.hphoto{width:400px;height:560px;object-fit:cover;-webkit-mask-image:linear-gradient(to left,#000 75%,transparent),linear-gradient(#000 80%,transparent);-webkit-mask-composite:source-in;mask-composite:intersect;position:relative;z-index:1}
 .hside{flex:1;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:20px}
-.bank{position:absolute;top:0;left:-30px;right:-90px;height:62%;background-size:cover;background-position:center;opacity:.95;-webkit-mask-image:linear-gradient(#000 60%,transparent),linear-gradient(to right,transparent,#000 10%,#000 80%,transparent);-webkit-mask-composite:source-in;mask-composite:intersect}
+.bank{position:absolute;top:-6px;left:-40px;right:-90px;height:40%;background-size:cover;background-position:center;opacity:.95;-webkit-mask-image:linear-gradient(#000 60%,transparent),linear-gradient(to right,transparent,#000 10%,#000 80%,transparent);-webkit-mask-composite:source-in;mask-composite:intersect}
 .hside>*:not(.bank){position:relative}
 .cv2 .cname{font-family:Cairo,sans-serif;font-weight:800;font-size:64px;white-space:nowrap;color:#fff;line-height:1.15;margin:0;text-shadow:0 4px 18px #000c}.cv2 .en{font-family:Cairo,sans-serif;font-weight:700;font-size:40px;color:#e8cf8a;margin:2px 0 0;opacity:1;direction:ltr;text-align:right;text-shadow:0 3px 12px #000c}
 .grule{height:2px;background:#c9a54a;margin:18px 0}
-.ctitles{list-style:none;padding:0;margin:0;font-size:38px;font-weight:800;color:#fff;display:flex;flex-direction:column;gap:16px;text-shadow:0 2px 8px rgba(0,0,0,.5)}.ctitles li::before{content:"";display:inline-block;width:16px;height:16px;background:#c9a54a;margin-left:16px;vertical-align:middle}.ctitles li.gold{color:#e8cf8a}
+.ctitles{list-style:none;padding:0;margin:0;font-size:38px;font-weight:800;color:#fff;display:flex;flex-direction:column;gap:4px;text-shadow:0 2px 8px rgba(0,0,0,.5)}.ctitles li::before{content:"";display:inline-block;width:16px;height:16px;background:#c9a54a;margin-left:16px;vertical-align:middle}.ctitles li.gold{color:#e8cf8a}
 .csum{position:relative;border:0;border-right:5px solid #c9a54a;background:none;padding:6px 26px 6px 0;font-size:27px;font-weight:600;line-height:1.85;color:#fff;text-align:justify;text-shadow:0 2px 8px #0006}
 .cach{position:relative;padding:4px 0;display:flex;flex-direction:column;gap:12px}
-.cach h3{margin:0;font-size:28px;color:#fff;border-right:6px solid #c9a54a;padding-right:12px}
-.ca{padding:4px 0 14px;border-bottom:1px solid #c9a54a66}.ca:last-child{border-bottom:0}.ca b{color:#e8cf8a;font-size:22px}.ca p{margin:2px 0 0;font-size:17px;color:#f3ecd9;line-height:1.6}
+.cach h3{margin:0 0 4px;font-size:34px;font-weight:800;color:#0b2719;background:linear-gradient(90deg,#c9a54a,#e8cf8a);padding:8px 20px;border-radius:6px}
+.ca{padding:2px 0 10px;border-bottom:1px solid #c9a54a66}.ca:last-child{border-bottom:0}.ca b{color:#e8cf8a;font-size:27px}.ca p{margin:2px 0 0;font-size:23px;font-weight:600;color:#f3ecd9;line-height:1.6}
 .cv2 .contact{position:relative;justify-content:center;font-size:20px;color:#e8cf8a}
 
 `;
