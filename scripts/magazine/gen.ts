@@ -25,14 +25,17 @@ const h2 = (t: string) => `<h2>${t}</h2>`;
 const ul = (a: string[]) => `<ul>${a.map(x => `<li>${x}</li>`).join('')}</ul>`;
 const pi = d.personalInfo;
 
-const cover = (() => { n++; return `<section class="page cover"><div class="cv-in">
-<div class="brand">SAUDI NATIONAL BANK · EXECUTIVE PROFILE</div>
-<img class="photo" src="${img(pi.photoUrl)}"/>
-<h1 class="cname">${pi.name}</h1><div class="en">${pi.nameEn}</div>
-<div class="titles">${pi.titles.map(t => `<span>${t}</span>`).join('')}</div>
-<div class="metrics">${d.keyMetrics.map(m => `<div>${m.title}</div>`).join('')}</div>
+// Cover backdrop /tmp/mag/bank.jpg = SNB building cropped from the user's reference design.
+const cover = (() => { n++; return `<section class="page cover cv2"><div class="topline"></div>
+<div class="chead"><b>السيرة الذاتية المهنية التنفيذية</b><div class="cbank"><span>البنك الأهلي السعودي (SNB)</span><span>المملكة العربية السعودية • 2026</span></div></div>
+<div class="hero"><img class="hphoto" src="${img(pi.photoUrl)}"/>
+<div class="hside"><div class="bank" style="background-image:url('${img('/tmp/mag/bank.jpg')}')"></div>
+<h1 class="cname">${pi.name}</h1><div class="en">${pi.nameEn}</div><div class="grule"></div>
+<ul class="ctitles">${pi.titles.map((t, i) => `<li${i === pi.titles.length - 1 ? ' class="gold"' : ''}>${t}</li>`).join('')}</ul></div></div>
+<div class="csum">${d.summary.paragraphs[0]}</div>
+<div class="cach"><h3>أبرز الإنجازات</h3>${d.keyMetrics.map(m => `<div class="ca"><b>${m.title}</b><p>${m.description}</p></div>`).join('')}</div>
 <div class="contact"><span dir="ltr">${pi.phone}</span><span>${pi.email}</span><span>${pi.location}</span></div>
-</div></section>`; })();
+</section>`; })();
 
 const ex = (e: any) => `<div class="role"><div class="rt">${e.roleAr}</div><div class="ren">${e.roleEn}</div><div class="meta">${e.companyAr} · ${e.periodAr}</div></div>
 ${e.paragraphs.map((p: string) => `<p>${p}</p>`).join('')}
@@ -115,6 +118,24 @@ header h1,h2,.card b,.edu b,td b,.tl b{color:#e8cf8a}footer{color:#d9c690;border
 ul.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.2em 1.4em}
 .crs{display:grid;grid-template-columns:1fr 1fr;gap:.6em}.cr{display:flex;gap:.7em;align-items:flex-start;background:#ffffff0d;border:1px solid #c9a54a88;border-radius:10px;padding:.6em .9em}
 .cr i{font-style:normal;font-weight:700;color:#0b2719;background:#c9a54a;border-radius:50%;min-width:2em;height:2em;display:flex;align-items:center;justify-content:center;font-size:.85em}.cr b{display:block}
+.cv2{justify-content:flex-start!important;align-items:stretch!important;text-align:right!important;padding:62px 70px 56px!important;gap:16px}
+.cv2 .topline{position:absolute;top:0;left:0;right:0;height:8px;background:linear-gradient(90deg,#c9a54a,#e8cf8a,#c9a54a)}
+.chead{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #c9a54a;padding-bottom:14px;position:relative}
+.chead b{font-size:32px;color:#fff}.cbank{display:flex;flex-direction:column;font-size:21px;color:#e8cf8a;text-align:left}
+.hero{display:flex;gap:28px;position:relative;height:520px}
+.hphoto{width:380px;height:520px;object-fit:cover;border-radius:22px;border:3px solid #c9a54a;box-shadow:0 20px 50px #0008}
+.hside{flex:1;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:20px;border-radius:22px;overflow:hidden}
+.bank{position:absolute;inset:0 0 45% 0;background-size:cover;background-position:center;opacity:.55;-webkit-mask-image:linear-gradient(#000 55%,transparent)}
+.hside>*:not(.bank){position:relative}
+.cv2 .cname{font-size:76px;color:#fff;line-height:1.15;margin:0;text-shadow:0 4px 18px #000a}.cv2 .en{font-size:36px;color:#e8cf8a;margin:4px 0 0;opacity:1}
+.grule{height:2px;background:#c9a54a;margin:18px 0}
+.ctitles{list-style:none;padding:0;margin:0;font-size:30px;display:flex;flex-direction:column;gap:10px}.ctitles li::before{content:'';display:inline-block;width:12px;height:12px;background:#c9a54a;margin-left:16px;vertical-align:middle}.ctitles li.gold{color:#e8cf8a}
+.csum{position:relative;border:2px solid #c9a54a;border-radius:20px;background:#ffffff0d;padding:22px 28px;font-size:19px;line-height:1.7;color:#f3ecd9;text-align:justify}
+.cach{position:relative;border:2px solid #c9a54a88;border-radius:20px;background:#06180f88;padding:18px 24px;display:flex;flex-direction:column;gap:12px}
+.cach h3{margin:0;font-size:28px;color:#fff;border-right:6px solid #c9a54a;padding-right:12px}
+.ca{background:#164a30;border-radius:12px;padding:9px 16px}.ca b{color:#e8cf8a;font-size:22px}.ca p{margin:2px 0 0;font-size:17px;color:#f3ecd9;line-height:1.6}
+.cv2 .contact{position:relative;justify-content:center;font-size:20px;color:#e8cf8a}
+
 `;
 const fit = `<script>document.fonts.ready.then(()=>{for(const c of document.querySelectorAll('.page:not(.fixed) .content')){let f=34;c.style.setProperty('--fs',f+'px');while(c.scrollHeight>c.clientHeight+1&&f>12){f-=.5;c.style.setProperty('--fs',f+'px')}}document.body.dataset.ready=1})</script>`;
 writeFileSync('/tmp/mag/mag.html', `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>${css}</style></head><body>${pages.join('')}${fit}</body></html>`);
