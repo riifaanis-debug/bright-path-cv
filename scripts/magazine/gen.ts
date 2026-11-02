@@ -125,11 +125,11 @@ ul.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.2em 1.4em}
 .hero{display:flex;gap:28px;position:relative;height:520px}
 .hphoto{width:380px;height:520px;object-fit:cover;border-radius:22px;border:3px solid #c9a54a;box-shadow:0 20px 50px #0008}
 .hside{flex:1;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:20px;border-radius:22px;overflow:hidden}
-.bank{position:absolute;inset:0 0 35% 0;background-size:cover;background-position:center;opacity:.85;-webkit-mask-image:linear-gradient(#000 55%,transparent)}
+.bank{position:absolute;inset:0 0 45% 0;background-size:cover;background-position:center;opacity:.55;-webkit-mask-image:linear-gradient(#000 55%,transparent)}
 .hside>*:not(.bank){position:relative}
 .cv2 .cname{font-size:76px;color:#fff;line-height:1.15;margin:0;text-shadow:0 4px 18px #000a}.cv2 .en{font-size:36px;color:#e8cf8a;margin:4px 0 0;opacity:1}
 .grule{height:2px;background:#c9a54a;margin:18px 0}
-.ctitles{list-style:none;padding:0;margin:0;font-size:30px;display:flex;flex-direction:column;gap:10px}.ctitles li::before{content:'\25AA';color:#c9a54a;margin-left:14px}.ctitles li.gold{color:#e8cf8a}
+.ctitles{list-style:none;padding:0;margin:0;font-size:30px;display:flex;flex-direction:column;gap:10px}.ctitles li::before{content:'';display:inline-block;width:12px;height:12px;background:#c9a54a;margin-left:16px;vertical-align:middle}.ctitles li.gold{color:#e8cf8a}
 .csum{position:relative;border:2px solid #c9a54a;border-radius:20px;background:#ffffff0d;padding:22px 28px;font-size:19px;line-height:1.7;color:#f3ecd9;text-align:justify}
 .cach{position:relative;border:2px solid #c9a54a88;border-radius:20px;background:#06180f88;padding:18px 24px;display:flex;flex-direction:column;gap:12px}
 .cach h3{margin:0;font-size:28px;color:#fff;border-right:6px solid #c9a54a;padding-right:12px}
