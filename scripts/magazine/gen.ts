@@ -129,7 +129,7 @@ ul.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.2em 1.4em}
 .hside>*:not(.bank){position:relative}
 .cv2 .cname{font-family:Cairo,sans-serif;font-weight:800;font-size:64px;white-space:nowrap;color:#fff;line-height:1.15;margin:0;text-shadow:0 4px 18px #000c}.cv2 .en{font-family:Cairo,sans-serif;font-weight:700;font-size:40px;color:#e8cf8a;margin:2px 0 0;opacity:1;direction:ltr;text-align:right;text-shadow:0 3px 12px #000c}
 .grule{height:2px;background:#c9a54a;margin:18px 0}
-.ctitles{list-style:none;padding:0;margin:0;font-size:30px;display:flex;flex-direction:column;gap:10px}.ctitles li::before{content:'';display:inline-block;width:12px;height:12px;background:#c9a54a;margin-left:16px;vertical-align:middle}.ctitles li.gold{color:#e8cf8a}
+.ctitles{list-style:none;padding:0;margin:0;font-size:38px;font-weight:800;color:#fff;display:flex;flex-direction:column;gap:16px;text-shadow:0 2px 8px rgba(0,0,0,.5)}.ctitles li::before{content:"";display:inline-block;width:16px;height:16px;background:#c9a54a;margin-left:16px;vertical-align:middle}.ctitles li.gold{color:#e8cf8a}
 .csum{position:relative;border:0;border-right:5px solid #c9a54a;background:none;padding:6px 26px 6px 0;font-size:27px;font-weight:600;line-height:1.85;color:#fff;text-align:justify;text-shadow:0 2px 8px #0006}
 .cach{position:relative;padding:4px 0;display:flex;flex-direction:column;gap:12px}
 .cach h3{margin:0;font-size:28px;color:#fff;border-right:6px solid #c9a54a;padding-right:12px}
