@@ -112,7 +112,7 @@ tr:nth-child(odd){background:#f4eedd}
 header h1,h2,.card b,.edu b,td b,.tl b{color:#e8cf8a}footer{color:#d9c690;border-color:#c9a54a66}
 .role,.km,.fel{background:#164a30}.edu,.card,.hc{background:#ffffff0d;border-color:#c9a54a88}
 .hx{background:#ffffff12;color:#f3ecd9}.ht h3{color:#e8cf8a}.hi{background:none!important;padding:0!important}.hx{color:#fff!important}
-.hx{background:#04140b!important}.hc.rev{flex-direction:row-reverse}
+.hx{background:none!important}.hc.rev{flex-direction:row-reverse}
 .en2{color:#cfc6ad}.pv{color:#d9b866}
 ul.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.2em 1.4em}
 .crs{display:grid;grid-template-columns:1fr 1fr;gap:.6em}.cr{display:flex;gap:.7em;align-items:flex-start;background:#ffffff0d;border:1px solid #c9a54a88;border-radius:10px;padding:.6em .9em}
