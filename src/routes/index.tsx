@@ -110,6 +110,7 @@ function App() {
       />
 
       {/* Mobile Ergonomic Bottom Tab Navigation */}
+      <DownloadChooser />
       <MobileBottomNav 
         onPrint={handleOpenPrint} 
         onOpenFullScreenMagazine={() => handleOpenFullScreen(1)}
