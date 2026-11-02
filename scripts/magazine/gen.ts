@@ -45,6 +45,17 @@ const specs = [
   ...d.certifications.specialists.filter(s => !s.titleAr.includes('مصرفية الأفراد')).map(s => ({ titleAr: s.titleAr, titleEn: s.titleEn, provider: '', codeOrDate: '' })),
   ...d.specializedCertifications,
 ];
+const certificateImages = [
+  { file: 'finance-specialist.webp', title: 'مستشار المالية الإسلامية' },
+  { file: 'finance-advisor.webp', title: 'أخصائي المالية الإسلامية' },
+  { file: 'disputes.webp', title: 'أخصائي تسوية المنازعات المالية' },
+  { file: 'retail-banking.jpeg', title: 'الاختبار المهني في أساسيات مصرفية الأفراد' },
+  { file: 'cambridge.png', title: 'الرخصة الدولية لمهارات تقنية المعلومات — كامبردج' },
+  { file: 'cybersecurity.jpeg', title: 'أساسيات الأمن السيبراني — أكاديمية سيسكو للشبكات' },
+  { file: 'investment.jpeg', title: 'مقدمة في الأوراق المالية والاستثمار (CME-1)' },
+  { file: 'collection-skills.jpeg', title: 'مهارات التحصيل' },
+];
+const certificateGrid = `<div class="certificate-grid">${certificateImages.map(c => `<figure><div class="certificate-image"><img src="file:///tmp/mag/certificates/${c.file}" alt="${c.title}"/></div><figcaption>${c.title}</figcaption></figure>`).join('')}</div>`;
 const pages = [
   cover,
   page('PROFILE', 'الملخص المهني', `${d.summary.paragraphs.map(p => `<p>${p}</p>`).join('')}
@@ -54,8 +65,7 @@ ${h2('أبرز الإنجازات')}<div class="kms">${d.keyMetrics.map(m => `<d
   page('EXECUTIVE HONORS & LEADERSHIP RECOGNITION', 'مميز', `<div class="hon">${honors.map((h,i) => `<div class="hc${i%2?' rev':''}"><div class="hi"><img src="${img(h.src)}"/></div><div class="ht"><h3>${h.t}</h3><div class="hx">${h.x}</div></div></div>`).join('')}</div>`, 'fixed'),
   page('PROFESSIONAL EXPERIENCE', 'الخبرات المهنية', ex(d.experiences[0])),
   page('PROFESSIONAL EXPERIENCE', 'الخبرات المهنية', ex(d.experiences[1])),
-  page('CERTIFICATIONS', 'الشهادات المهنية والمهارات', `<div class="fel"><b>${d.certifications.fellowship.titleAr}</b><span>${d.certifications.fellowship.titleEn}</span></div>
-<div class="grid2">${specs.map((c: any) => `<div class="card"><b>${c.titleAr}</b><span class="en2">${c.titleEn}</span>${c.provider ? `<span class="pv">${c.provider}${c.codeOrDate ? ' · ' + c.codeOrDate : ''}</span>` : ''}</div>`).join('')}</div>
+  page('CERTIFICATIONS', 'الشهادات المهنية والمهارات', certificateGrid + `
 ${h2('المهارات')}<div class="grid2">${d.skillCategories.map(c => `<div class="card"><b>${c.categoryName}</b>${ul(c.skills.slice(0, 4).map(s => s.split(/[:.،(]/)[0].trim()))}</div>`).join('')}</div>`),
   page('TRAINING', 'الدورات التدريبية', `<div class="crs">${d.courses.map((c, i) => `<div class="cr"><i dir="ltr">${String(i + 1).padStart(2, '0')}</i><div><b>${c.titleAr}</b><span class="en2">${c.titleEn}</span><span class="pv">${c.provider}</span></div></div>`).join('')}</div>`),
   page('PROJECTS & INNOVATION', 'المشاريع والابتكار', `<div class="role"><div class="rt">${ip.titleAr}</div><div class="ren">${ip.titleEn}</div><div class="meta">${ip.organization} · ${ip.competition} · ${ip.status}</div></div>
@@ -70,6 +80,11 @@ ${h2('مكونات الإطار')}${ul(ip.components)}<div class="ach">${ip.achi
 const css = `
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}body{background:#222;font-family:'IBM Plex Sans Arabic',sans-serif}
+.certificate-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 24px;margin-bottom:26px}
+.certificate-grid figure{min-width:0;text-align:center;display:flex;flex-direction:column;gap:10px}
+.certificate-image{height:236px;display:flex;align-items:center;justify-content:center}
+.certificate-image img{width:100%;height:100%;object-fit:contain;display:block}
+.certificate-grid figcaption{font-size:20px;font-weight:700;line-height:1.5}
 .page{width:1191px;height:1685px;background:#fbf8f1;color:#1d2a22;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:90px 90px 70px}
 header .kick{font-family:'Playfair Display';letter-spacing:6px;color:#b08a33;font-size:20px;direction:ltr;text-align:right}
 header h1{font-size:46px;color:#0b2719;font-weight:700;margin-top:6px}.rule{height:4px;width:140px;background:#c9a54a;margin:18px 0 30px}
