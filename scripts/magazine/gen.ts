@@ -124,7 +124,7 @@ ul.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.2em 1.4em}
 .hero{display:flex;gap:28px;position:relative;height:560px}
 .hphoto{width:400px;height:560px;object-fit:cover;-webkit-mask-image:linear-gradient(to left,#000 75%,transparent),linear-gradient(#000 80%,transparent);-webkit-mask-composite:source-in;mask-composite:intersect;position:relative;z-index:1}
 .hside{flex:1;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:20px}
-.bank{position:absolute;top:-6px;left:-40px;right:-90px;height:52%;background-size:cover;background-position:center;opacity:.95;-webkit-mask-image:linear-gradient(#000 60%,transparent),linear-gradient(to right,transparent,#000 10%,#000 80%,transparent);-webkit-mask-composite:source-in;mask-composite:intersect}
+.bank{position:absolute;top:-6px;left:-40px;right:-90px;height:40%;background-size:cover;background-position:center;opacity:.95;-webkit-mask-image:linear-gradient(#000 60%,transparent),linear-gradient(to right,transparent,#000 10%,#000 80%,transparent);-webkit-mask-composite:source-in;mask-composite:intersect}
 .hside>*:not(.bank){position:relative}
 .cv2 .cname{font-family:Cairo,sans-serif;font-weight:800;font-size:64px;white-space:nowrap;color:#fff;line-height:1.15;margin:0;text-shadow:0 4px 18px #000c}.cv2 .en{font-family:Cairo,sans-serif;font-weight:700;font-size:40px;color:#e8cf8a;margin:2px 0 0;opacity:1;direction:ltr;text-align:right;text-shadow:0 3px 12px #000c}
 .grule{height:2px;background:#c9a54a;margin:18px 0}
