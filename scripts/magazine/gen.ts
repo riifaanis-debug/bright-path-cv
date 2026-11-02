@@ -55,7 +55,7 @@ const certificateImages = [
   { file: 'investment.jpeg', title: 'مقدمة في الأوراق المالية والاستثمار (CME-1)' },
   { file: 'collection-skills.jpeg', title: 'مهارات التحصيل' },
 ];
-const certificateGrid = `<div class="certificate-grid">${certificateImages.map(c => `<figure><div class="certificate-image"><img src="file:///tmp/mag/certificates/${c.file}" alt="${c.title}"/></div><figcaption>${c.title}</figcaption></figure>`).join('')}</div>`;
+const certificateGrid = `<div class="certificate-grid">${certificateImages.map(c => `<figure><span class="cert-dot"></span><figcaption>${c.title}</figcaption></figure>`).join('')}</div>`;
 const pages = [
   cover,
   page('PROFILE', 'الملخص المهني', `${d.summary.paragraphs.map(p => `<p>${p}</p>`).join('')}
@@ -81,7 +81,7 @@ const css = `
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}body{background:#222;font-family:'IBM Plex Sans Arabic',sans-serif}
 .certificate-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 24px;margin-bottom:26px}
-.certificate-grid figure{min-width:0;text-align:center;display:flex;flex-direction:column;gap:10px}
+.certificate-grid figure{min-width:0;margin:0;display:flex;align-items:flex-start;gap:12px;padding:16px 14px;border-top:1px solid rgba(201,165,74,.45)}.cert-dot{flex:0 0 12px;height:12px;margin-top:12px;background:#c9a54a;transform:rotate(45deg)}
 .certificate-image{height:220px;display:flex;align-items:center;justify-content:center}
 .certificate-image img{width:100%;height:100%;object-fit:contain;display:block}
 .certificate-grid figcaption{font-size:20px;font-weight:700;line-height:1.5}
