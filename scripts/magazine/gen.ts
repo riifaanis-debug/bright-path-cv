@@ -66,7 +66,7 @@ ${h2('أبرز الإنجازات')}<div class="kms">${d.keyMetrics.map(m => `<d
   page('PROFESSIONAL EXPERIENCE', 'الخبرات المهنية', ex(d.experiences[0])),
   page('PROFESSIONAL EXPERIENCE', 'الخبرات المهنية', ex(d.experiences[1])),
   page('CERTIFICATIONS', 'الشهادات المهنية والمهارات', certificateGrid + `
-${h2('المهارات')}<div class="grid2">${d.skillCategories.map(c => `<div class="card"><b>${c.categoryName}</b>${ul(c.skills.slice(0, 4).map(s => s.split(/[:.،(]/)[0].trim()))}</div>`).join('')}</div>`),
+${h2('المهارات')}<div class="grid2">${d.skillCategories.map(c => `<div class="card"><b>${c.categoryName}</b>${ul(c.skills.slice(0, 2).map(s => s.split(/[:.،(]/)[0].trim()))}</div>`).join('')}</div>`),
   page('TRAINING', 'الدورات التدريبية', `<div class="crs">${d.courses.map((c, i) => `<div class="cr"><i dir="ltr">${String(i + 1).padStart(2, '0')}</i><div><b>${c.titleAr}</b><span class="en2">${c.titleEn}</span><span class="pv">${c.provider}</span></div></div>`).join('')}</div>`),
   page('PROJECTS & INNOVATION', 'المشاريع والابتكار', `<div class="role"><div class="rt">${ip.titleAr}</div><div class="ren">${ip.titleEn}</div><div class="meta">${ip.organization} · ${ip.competition} · ${ip.status}</div></div>
 <p>${ip.description}</p>${h2('المشكلة')}${ip.problem.split('\n\n').map(p => `<p>${p}</p>`).join('')}
@@ -82,7 +82,7 @@ const css = `
 *{box-sizing:border-box;margin:0;padding:0}body{background:#222;font-family:'IBM Plex Sans Arabic',sans-serif}
 .certificate-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 24px;margin-bottom:26px}
 .certificate-grid figure{min-width:0;text-align:center;display:flex;flex-direction:column;gap:10px}
-.certificate-image{height:236px;display:flex;align-items:center;justify-content:center}
+.certificate-image{height:220px;display:flex;align-items:center;justify-content:center}
 .certificate-image img{width:100%;height:100%;object-fit:contain;display:block}
 .certificate-grid figcaption{font-size:20px;font-weight:700;line-height:1.5}
 .page{width:1191px;height:1685px;background:#fbf8f1;color:#1d2a22;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:90px 90px 70px}
