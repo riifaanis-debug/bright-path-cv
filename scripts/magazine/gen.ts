@@ -27,7 +27,7 @@ const pi = d.personalInfo;
 
 // Cover backdrop /tmp/mag/bank.jpg = SNB building cropped from the user's reference design.
 const cover = (() => { n++; return `<section class="page cover cv2"><div class="topline"></div>
-<div class="chead"><b>السيرة الذاتية المهنية التنفيذية</b><div class="cbank"><span>البنك الأهلي السعودي (SNB)</span><span>المملكة العربية السعودية • 2026</span></div></div>
+<div class="chead"><b>السيرة الذاتية المهنية التنفيذية</b><div class="cbank"><img src="${img('/tmp/mag/logo.png')}"/></div></div>
 <div class="hero"><img class="hphoto" src="${img(pi.photoUrl)}"/>
 <div class="hside"><div class="bank" style="background-image:url('${img('/tmp/mag/bank.jpg')}')"></div>
 <h1 class="cname">${pi.name}</h1><div class="en">${pi.nameEn}</div><div class="grule"></div>
@@ -120,8 +120,8 @@ ul.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.2em 1.4em}
 .cr i{font-style:normal;font-weight:700;color:#0b2719;background:#c9a54a;border-radius:50%;min-width:2em;height:2em;display:flex;align-items:center;justify-content:center;font-size:.85em}.cr b{display:block}
 .cv2{justify-content:flex-start!important;align-items:stretch!important;text-align:right!important;padding:62px 70px 56px!important;gap:16px}
 .cv2 .topline{position:absolute;top:0;left:0;right:0;height:8px;background:linear-gradient(90deg,#c9a54a,#e8cf8a,#c9a54a)}
-.chead{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #c9a54a;padding-bottom:14px;position:relative}
-.chead b{font-size:32px;color:#fff}.cbank{display:flex;flex-direction:column;font-size:21px;color:#e8cf8a;text-align:left}
+.chead{display:flex;align-items:flex-end;position:relative}.chead>*{flex:1 1 50%}
+.chead b{font-size:32px;color:#fff;border-bottom:2px solid #c9a54a;padding-bottom:14px}.cbank{display:flex;justify-content:flex-end;padding-bottom:6px}.cbank img{height:96px}
 .hero{display:flex;gap:28px;position:relative;height:650px}
 .hphoto{width:430px;height:650px;object-fit:cover;border-radius:22px;border:3px solid #c9a54a;box-shadow:0 20px 50px #0008}
 .hside{flex:1;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:20px;border-radius:22px;overflow:hidden}
