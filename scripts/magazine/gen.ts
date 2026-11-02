@@ -17,7 +17,7 @@ const N = 9;
 let n = 0;
 const page = (kicker: string, title: string, body: string, cls = '') => {
   n++;
-  return `<section class="page ${cls}"><header data-n="${String(n).padStart(2, '0')}"><h1>${title}</h1><div class="rule"></div></header>
+  return `<section class="page ${cls}"><header><h1>${title}</h1><div class="rule"></div></header>
 <div class="content">${body}</div>
 <footer><span>${d.personalInfo.name}</span><span dir="ltr">${String(n).padStart(2, '0')} / ${String(N).padStart(2, '0')}</span></footer></section>`;
 };
@@ -158,37 +158,26 @@ ul.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.2em 1.4em}
 `;
 
 const LIGHT = process.env.THEME === 'light' ? `
-.page,.page:not(.cover),.cover{background:#ffffff!important;color:#24332a!important}
-.page::before{display:none!important}
-.page:not(.cover){padding:0 80px 56px!important}
-.page:not(.cover) header{margin:0 -80px 34px;padding:58px 80px 30px;background:#0b2719;position:relative;border-bottom:6px solid #b8913a}
-.page:not(.cover) header h1{color:#fff!important;font-size:44px}
-.page:not(.cover) header .rule{width:110px;height:3px;background:#b8913a;margin:14px 0 0}
-.page:not(.cover) header::after{content:attr(data-n);position:absolute;left:80px;top:50%;transform:translateY(-50%);color:#b8913a;font:700 54px 'Playfair Display'}
-footer{color:#0b2719!important;border-top:2px solid #b8913a!important;font-weight:600}
-h2{color:#0b2719!important;border:0!important;padding:0 0 .25em!important;display:inline-block;border-bottom:3px solid #b8913a!important;font-weight:800}
-.content{color:#24332a}
-.card b,.edu b,td b,.tl b,.km b,.fel b,.cr b{color:#0b2719!important}
-.edu,.card,.cr,.km,.fel,.certificate-grid figure{background:#f3f8f5!important;border:1px solid #cfe0d6!important;border-right:5px solid #0b2719!important;color:#24332a!important;border-radius:10px!important}
-.certificate-grid figure{border-top:1px solid #cfe0d6!important}.certificate-grid figcaption{color:#0b2719}.cert-dot{background:#b8913a!important}.cert-issuer{color:#9a7a2c!important}
-.role{background:#0b2719!important;color:#fff!important;border-right:8px solid #b8913a!important}.role .rt{color:#e8cf8a!important}.role .ren{color:#fff}.role .meta{color:#d9c690!important}
-.xs{background:#f3f8f5!important;border:1px solid #cfe0d6!important;border-right:5px solid #0b2719!important}
-.xh{background:none!important;color:#0b2719!important;padding:0 0 .15em!important;border-radius:0!important;border-bottom:3px solid #b8913a}
-li::marker{color:#b8913a}
-.hc{background:#f3f8f5!important;border:1px solid #cfe0d6!important}.ht h3{color:#0b2719!important}.hx{color:#24332a!important;border-right:4px solid #b8913a!important}.hx em{color:#9a7a2c!important}
-.cr i{background:#0b2719!important;color:#e8cf8a!important}.en2{color:#5d6a60!important}.pv{color:#9a7a2c!important}
-.ach{background:#0b2719!important;color:#e8cf8a!important}
-.cv2{padding:0 70px 50px!important}
-.cv2 .topline{display:none}
-.cv2 .hero{margin:0 -70px;padding:0;height:700px;background:#0b2719;border-bottom:6px solid #b8913a}
-.cv2 .hphoto{height:700px}
-.cv2 .bank{left:0!important;right:-120px!important;-webkit-mask-image:linear-gradient(#000 55%,transparent),linear-gradient(to right,transparent,#000 25%,#000 80%,transparent)!important}
-.cv2 .hside{padding-left:50px}
-.csum{color:#24332a!important;text-shadow:none!important;padding-top:34px!important}
-.cach h3{background:#0b2719!important;color:#e8cf8a!important}
-.ca{background:#f3f8f5;border:1px solid #cfe0d6!important;border-right:5px solid #0b2719!important;border-radius:10px;padding:12px 18px!important}
-.ca b{color:#0b2719!important}.ca p{color:#24332a!important}
-.back{background:#0b2719!important;color:#fff!important}.back::before{display:block!important}
+.page,.page:not(.cover),.cover{background:#ffffff!important;color:#1d2a22!important}
+.page::before{border-color:#c9a54a!important}
+.xs{border-color:rgba(22,90,56,.35)!important;background:rgba(22,90,56,.06)!important}.xh{background:#9a7a2c!important;color:#fff!important}
+header h1,h2,.card b,.edu b,td b,.tl b,.ht h3,.rt,.km b,.fel b,.ca b{color:#9a7a2c!important}
+footer{color:#7c6a3a!important}
+.role,.km,.fel,.edu,.card,.hc,.cr{background:rgba(11,39,25,.06)!important;color:#14261b!important;border:1px solid rgba(11,39,25,.18)!important;box-shadow:none!important}
+.role,.edu,.card{border-right:4px solid #0f4a2c!important}
+.meta{color:#5b6b5f!important}
+h2{border-color:#0f4a2c!important}
+.hx,.ca p,.csum,.ctitles,.cv2 .cname{color:#14261b!important;text-shadow:none!important}
+.cv2 .en,.cv2 .contact,.ctitles li.gold{color:#9a7a2c!important;text-shadow:none!important}
+.en2{color:#5d6a60!important}.pv{color:#0f4a2c!important}
+.chips span{color:#14261b}tr:nth-child(odd){background:rgba(11,39,25,.04)!important}
+.certificate-grid figure{background:rgba(11,39,25,.05)!important;border-color:rgba(11,39,25,.18)!important}
+.cbank img,.bank-logo{filter:invert(1) brightness(.25)}
+.cv2 .bank{height:100%!important;opacity:1!important;-webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 85%,transparent)!important;mask-image:linear-gradient(to right,transparent,#000 8%,#000 85%,transparent)!important}
+.cv2 .bank::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(6,28,17,.75) 75%,rgba(6,28,17,.85))}
+.cv2 .hside .cname,.cv2 .hside .ctitles{color:#fff!important;text-shadow:0 3px 12px #000c!important}
+.cv2 .hside .en,.cv2 .hside .ctitles li.gold{color:#e8cf8a!important;text-shadow:0 3px 12px #000c!important}
+.cr b{color:#0b2719}
 ` : '';
 const OUT = process.env.THEME === 'light' ? '/tmp/mag/mag-light.html' : '/tmp/mag/mag.html';
 const fit = `<script>document.fonts.ready.then(()=>{for(const c of document.querySelectorAll('.page:not(.fixed) .content')){let f=34;c.style.setProperty('--fs',f+'px');while(c.scrollHeight>c.clientHeight+1&&f>12){f-=.5;c.style.setProperty('--fs',f+'px')}}document.body.dataset.ready=1})</script>`;
