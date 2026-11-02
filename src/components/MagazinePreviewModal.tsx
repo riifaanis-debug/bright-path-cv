@@ -8,7 +8,7 @@ interface MagazinePreviewModalProps {
   onOpenFullScreen?: (page?: number) => void;
 }
 
-const TOTAL_PAGES = 18;
+const TOTAL_PAGES = 9;
 
 export const MagazinePreviewModal: React.FC<MagazinePreviewModalProps> = ({
   isOpen,
@@ -56,7 +56,7 @@ export const MagazinePreviewModal: React.FC<MagazinePreviewModalProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="text-sm sm:text-base font-bold text-white">
-                  معاينة المجلة التنفيذية الفاخرة (18 صفحة)
+                  معاينة المجلة التنفيذية الفاخرة (9 صفحات)
                 </h3>
                 <span className="text-[10px] bg-[#D9A441] text-[#072617] font-extrabold px-2 py-0.5 rounded-full">
                   الإصدار النهائي
@@ -183,7 +183,7 @@ export const MagazinePreviewModal: React.FC<MagazinePreviewModalProps> = ({
         {/* Modal Footer with Direct Download Actions */}
         <div className="px-4 sm:px-6 py-3.5 border-t border-[#D9A441]/30 bg-[#0C3823]/90 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="text-xs text-slate-300 text-center sm:text-right">
-            <span className="text-[#D9A441] font-bold">الملف بصيغة A4 عالي الدقة (18 صفحة كاملة)</span>
+            <span className="text-[#D9A441] font-bold">الملف بصيغة A4 عالي الدقة (9 صفحات كاملة)</span>
             <span className="block text-[11px] text-slate-400">حجم مثالي 13.1 ميجابايت • يدعم الطباعة والتمرير الفوري</span>
           </div>
 
