@@ -142,7 +142,7 @@ header h1{font-size:44px!important}h2{font-size:32px!important;margin:.9em 0 .5e
 .rt,.fel b{font-size:32px!important}.card b,.cr b,.edu b,.km b,.ht h3{font-size:27px!important;color:#e8cf8a}
 .hx,.km p,.en2,.pv,.chips span,.cr i,.ren,.meta,.fel span,.edu span{font-size:1em!important;font-weight:600}
 .hx{font-size:27px!important;color:#fff;line-height:1.85}.en2,.pv,.ren,.meta,.edu span,.fel span{color:#f3ecd9;opacity:1}
-.hon{display:block;height:auto;margin-bottom:26px}.hc{flex-direction:column}.hi{width:100%;height:420px}.hi img{object-fit:contain}
+.hon{display:block;height:auto;margin-bottom:26px}.hc{flex-direction:column}.hi{width:100%;height:330px}.hi img{object-fit:contain}
 .grid2,.crs{grid-template-columns:1fr}.cr i{min-width:1.8em;height:1.8em}
 .content p,.content li{color:#fff}
 `;
