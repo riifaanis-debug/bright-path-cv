@@ -146,7 +146,7 @@ header h1{font-size:44px!important}h2{font-size:32px!important;margin:.9em 0 .5e
 .grid2,.crs{grid-template-columns:1fr}.cr i{min-width:1.8em;height:1.8em}
 .content p,.content li{color:#fff}
 `;
-const fit = `<script>document.fonts.ready.then(()=>{
+const fit = `<script>Promise.all([document.fonts.ready,new Promise(r=>document.readyState==='complete'?r():addEventListener('load',r))]).then(()=>{
 const over=c=>c.scrollHeight>c.clientHeight+1;
 let pg=document.querySelector('.page:not(.cover)');
 for(let guard=0;guard<60;guard++){
