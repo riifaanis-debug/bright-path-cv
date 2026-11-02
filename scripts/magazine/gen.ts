@@ -51,7 +51,7 @@ const pages = [
 ${h2(d.objective.title)}${d.objective.paragraphs.map(p => `<p>${p}</p>`).join('')}
 ${h2('المؤهل العلمي')}<div class="edu"><b>${d.education.degree}</b><span>${d.education.institution} · ${d.education.year}</span></div>
 ${h2('أبرز الإنجازات')}<div class="kms">${d.keyMetrics.map(m => `<div class="km"><b>${m.title}</b><p>${m.description}</p></div>`).join('')}</div>`),
-  page('EXECUTIVE HONORS & LEADERSHIP RECOGNITION', 'مميز', `<div class="hon">${honors.map(h => `<div class="hc"><div class="hi"><img src="${img(h.src)}"/></div><div class="ht"><h3>${h.t}</h3><div class="hx">${h.x}</div></div></div>`).join('')}</div>`, 'fixed'),
+  page('EXECUTIVE HONORS & LEADERSHIP RECOGNITION', 'مميز', `<div class="hon">${honors.map((h,i) => `<div class="hc${i%2?' rev':''}"><div class="hi"><img src="${img(h.src)}"/></div><div class="ht"><h3>${h.t}</h3><div class="hx">${h.x}</div></div></div>`).join('')}</div>`, 'fixed'),
   page('PROFESSIONAL EXPERIENCE', 'الخبرات المهنية', ex(d.experiences[0])),
   page('PROFESSIONAL EXPERIENCE', 'الخبرات المهنية', ex(d.experiences[1])),
   page('CERTIFICATIONS', 'الشهادات المهنية والمهارات', `<div class="fel"><b>${d.certifications.fellowship.titleAr}</b><span>${d.certifications.fellowship.titleEn}</span></div>
@@ -112,6 +112,7 @@ tr:nth-child(odd){background:#f4eedd}
 header h1,h2,.card b,.edu b,td b,.tl b{color:#e8cf8a}footer{color:#d9c690;border-color:#c9a54a66}
 .role,.km,.fel{background:#164a30}.edu,.card,.hc{background:#ffffff0d;border-color:#c9a54a88}
 .hx{background:#ffffff12;color:#f3ecd9}.ht h3{color:#e8cf8a}.hi{background:none!important;padding:0!important}.hx{color:#fff!important}
+.hx{background:#04140b!important}.hc.rev{flex-direction:row-reverse}
 .en2{color:#cfc6ad}.pv{color:#d9b866}
 ul.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.2em 1.4em}
 .crs{display:grid;grid-template-columns:1fr 1fr;gap:.6em}.cr{display:flex;gap:.7em;align-items:flex-start;background:#ffffff0d;border:1px solid #c9a54a88;border-radius:10px;padding:.6em .9em}
