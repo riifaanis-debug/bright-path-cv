@@ -160,6 +160,7 @@ ul.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.2em 1.4em}
 const LIGHT = process.env.THEME === 'light' ? `
 .page,.page:not(.cover),.cover{background:#faf6ec!important;color:#1d2a22!important}
 .page::before{border-color:#c9a54a!important}
+.xs{border-color:rgba(22,90,56,.35)!important;background:rgba(22,90,56,.06)!important}.xh{background:#9a7a2c!important;color:#fff!important}
 header h1,h2,.card b,.edu b,td b,.tl b,.ht h3,.rt,.km b,.fel b,.ca b{color:#9a7a2c!important}
 footer{color:#7c6a3a!important}
 .role,.km,.fel,.edu,.card,.hc,.cr{background:rgba(11,39,25,.06)!important;color:#14261b!important;border:1px solid rgba(11,39,25,.18)!important;box-shadow:none!important}
