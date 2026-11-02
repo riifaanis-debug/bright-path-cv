@@ -3,7 +3,7 @@ from playwright.async_api import async_playwright
 async def main():
     async with async_playwright() as p:
         b = await p.chromium.launch(headless=True)
-        pg = await b.new_page(viewport={"width":1191,"height":1685})
+        pg = await b.new_page(viewport={"width":1191,"height":1685},device_scale_factor=2)
         await pg.goto("file:///tmp/mag/mag.html")
         await pg.wait_for_selector("body[data-ready]", timeout=30000)
         print(await pg.evaluate("[...document.querySelectorAll('.content')].map(c=>getComputedStyle(c).getPropertyValue('--fs')+' '+(c.scrollHeight>c.clientHeight+1?'OVER':'ok'))"))

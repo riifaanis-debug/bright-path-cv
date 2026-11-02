@@ -8,10 +8,10 @@ const img = (p: string) => 'file://' + ((p.startsWith('/tmp')||p.startsWith('/de
 const sharia = [...readFileSync('/dev-server/src/components/ShariaFellowshipSection.tsx', 'utf8').matchAll(/^\s{4}title: '([^']+)'/gm)].map(m => m[1]);
 const g = (t: string) => `<em>${t}</em>`;
 const honors = [
-  { src: '/assets/aistudio/2b5f7485-e301-46a5-81f5-b7d6e23ff318_d953eee4.jpeg', t: 'حاصل على المركز الأول لعامين متتاليين على إدارة تحصيل الأفراد', x: `حصاد الجد والاجتهاد .. حظيت بالتكريم من : ${g('سعادة الأستاذ صالح الصالح رئيس الخدمات المشتركة لمجموعة البنك الأهلي السعودي')} لحصولي على المركز الأول للعام الثاني على التوالي` },
-  { src: '/assets/aistudio/_________________757b7be5.png', t: 'تحقيق أعلى مبلغ استرداد بقيمة 7,500,000 خلال عام واحد', x: `نجم التحصيل .. حظيت بالتكريم من : ${g('سعادة الأستاذ وائل عرابي رئيس التحصيل بالبنك الأهلي السعودي')} لتحقيق أعلى أداء تحصيلي وكسر حاجز أعلى مبلغ استرداد على مستو إدارة تحصيل الأفراد` },
-  { src: '/assets/aistudio/IMG_7282_f95ad64c.jpeg', t: 'شهادة شكر وتقدير من البنك المركزي السعودي', x: `ثمرة جهود مستمرة وحرص على تقديم أفضل أداء تشغيلي .. كل الفخر بحصولي على : ${g('شهادة شكر وتقدير من البنك المركزي السعودي')} تقديراً للتميز في تنفيذ وإنجاز الإجراءات المصرفية القضائية` },
-  { src: '/dev-server/scripts/magazine/surge.jpg', t: 'التأهل في مسابقة SURGE CUP 2026', x: `${g('البنك الأهلي السعودي SNB')}، وتأهل فكرتي ضمن أفضل 10 أفكار من بين 128 فكرة مشاركة، كمرحلة جديدة للابتكار والتنافس لتقديم الأفكار التي تحقق قيمة ملموسة للبنك وتسهم في تشكيل مستقبل SNB، في إنجاز يعكس القدرة على الابتكار وتقديم حلول تطويرية تسهم في صناعة مستقبل البنك.` },
+  { src: '/dev-server/scripts/magazine/honors/h1.jpeg', t: 'حاصل على المركز الأول لعامين متتاليين على إدارة تحصيل الأفراد', x: `حصاد الجد والاجتهاد .. حظيت بالتكريم من : ${g('سعادة الأستاذ صالح الصالح رئيس الخدمات المشتركة لمجموعة البنك الأهلي السعودي')} لحصولي على المركز الأول للعام الثاني على التوالي` },
+  { src: '/dev-server/scripts/magazine/honors/h2.png', t: 'تحقيق أعلى مبلغ استرداد بقيمة 7,500,000 خلال عام واحد', x: `نجم التحصيل .. حظيت بالتكريم من : ${g('سعادة الأستاذ وائل عرابي رئيس التحصيل بالبنك الأهلي السعودي')} لتحقيق أعلى أداء تحصيلي وكسر حاجز أعلى مبلغ استرداد على مستو إدارة تحصيل الأفراد` },
+  { src: '/dev-server/scripts/magazine/honors/h3.jpeg', t: 'شهادة شكر وتقدير من البنك المركزي السعودي', x: `ثمرة جهود مستمرة وحرص على تقديم أفضل أداء تشغيلي .. كل الفخر بحصولي على : ${g('شهادة شكر وتقدير من البنك المركزي السعودي')} تقديراً للتميز في تنفيذ وإنجاز الإجراءات المصرفية القضائية` },
+  { src: '/dev-server/scripts/magazine/honors/h4.png', t: 'التأهل في مسابقة SURGE CUP 2026', x: `${g('البنك الأهلي السعودي SNB')}، وتأهل فكرتي ضمن أفضل 10 أفكار من بين 128 فكرة مشاركة، كمرحلة جديدة للابتكار والتنافس لتقديم الأفكار التي تحقق قيمة ملموسة للبنك وتسهم في تشكيل مستقبل SNB، في إنجاز يعكس القدرة على الابتكار وتقديم حلول تطويرية تسهم في صناعة مستقبل البنك.` },
 ];
 const N = 9;
 let n = 0;
@@ -86,7 +86,7 @@ footer{display:flex;justify-content:space-between;border-top:1px solid #d9c690;p
 .kms{display:grid;gap:.7em}.km{background:#0b2719;color:#fff;border-radius:12px;padding:.8em 1.1em}.km b{color:#e8cf8a;font-size:1.08em}.km p{margin:.2em 0 0;opacity:.92;font-size:.95em}
 .hon{display:grid;grid-template-rows:repeat(4,1fr);gap:26px;height:100%}
 .hc{display:flex;border:2px solid #d9c690;border-radius:16px;overflow:hidden;background:#fff;min-height:0}
-.hi{width:44%;background:#0b2719;padding:12px;display:flex}.hi img{width:100%;height:100%;object-fit:cover;border-radius:6px}
+.hi{width:44%;display:flex;align-items:center}.hi img{width:100%;height:auto;max-height:100%;object-fit:contain;display:block}
 .ht{flex:1;padding:22px 28px;display:flex;flex-direction:column;justify-content:center;gap:16px}
 .ht h3{color:#b08a33;font-size:26px;line-height:1.45}
 .hx{background:#f5efdf;border-right:5px solid #c9a54a;padding:14px 18px;font-size:19px;line-height:1.8;font-weight:600;color:#2b332d}
@@ -111,7 +111,7 @@ tr:nth-child(odd){background:#f4eedd}
 .page:not(.cover)::before{content:'';position:absolute;inset:40px;border:2px solid #c9a54a;border-radius:8px;pointer-events:none}
 header h1,h2,.card b,.edu b,td b,.tl b{color:#e8cf8a}footer{color:#d9c690;border-color:#c9a54a66}
 .role,.km,.fel{background:#164a30}.edu,.card,.hc{background:#ffffff0d;border-color:#c9a54a88}
-.hx{background:#ffffff12;color:#f3ecd9}.ht h3{color:#e8cf8a}.hi{background:#06180f}
+.hx{background:#ffffff12;color:#f3ecd9}.ht h3{color:#e8cf8a}.hi{background:none!important;padding:0!important}.hx{color:#fff!important}
 .en2{color:#cfc6ad}.pv{color:#d9b866}
 ul.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.2em 1.4em}
 .crs{display:grid;grid-template-columns:1fr 1fr;gap:.6em}.cr{display:flex;gap:.7em;align-items:flex-start;background:#ffffff0d;border:1px solid #c9a54a88;border-radius:10px;padding:.6em .9em}
