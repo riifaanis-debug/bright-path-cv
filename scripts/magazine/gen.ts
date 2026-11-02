@@ -50,16 +50,16 @@ const specs = [
   ...d.specializedCertifications,
 ];
 const certificateImages = [
-  { file: 'finance-specialist.webp', title: 'مستشار المالية الإسلامية' },
-  { file: 'finance-advisor.webp', title: 'أخصائي المالية الإسلامية' },
-  { file: 'disputes.webp', title: 'أخصائي تسوية المنازعات المالية' },
-  { file: 'retail-banking.jpeg', title: 'الاختبار المهني في أساسيات مصرفية الأفراد' },
-  { file: 'cambridge.png', title: 'الرخصة الدولية لمهارات تقنية المعلومات — كامبردج' },
-  { file: 'cybersecurity.jpeg', title: 'أساسيات الأمن السيبراني — أكاديمية سيسكو للشبكات' },
-  { file: 'investment.jpeg', title: 'مقدمة في الأوراق المالية والاستثمار (CME-1)' },
-  { file: 'collection-skills.jpeg', title: 'مهارات التحصيل' },
+  { file: 'finance-specialist.webp', title: 'مستشار المالية الإسلامية', issuer: 'Fadaa Center for Training' },
+  { file: 'finance-advisor.webp', title: 'أخصائي المالية الإسلامية', issuer: 'Fadaa Center for Training' },
+  { file: 'disputes.webp', title: 'أخصائي تسوية المنازعات المالية', issuer: 'Fadaa Center for Training' },
+  { file: 'retail-banking.jpeg', title: 'الاختبار المهني في أساسيات مصرفية الأفراد', issuer: 'The Financial Academy' },
+  { file: 'cambridge.png', title: 'الرخصة الدولية لمهارات تقنية المعلومات', issuer: 'Cambridge International' },
+  { file: 'cybersecurity.jpeg', title: 'أساسيات الأمن السيبراني', issuer: 'Cisco Networking Academy' },
+  { file: 'investment.jpeg', title: 'مقدمة في الأوراق المالية والاستثمار (CME-1)', issuer: 'Investment Academy' },
+  { file: 'collection-skills.jpeg', title: 'مهارات التحصيل', issuer: 'ITQAN – Positive Interaction' },
 ];
-const certificateGrid = `<div class="certificate-grid">${certificateImages.map(c => `<figure><span class="cert-dot"></span><figcaption>${c.title}</figcaption></figure>`).join('')}</div>`;
+const certificateGrid = `<div class="certificate-grid">${certificateImages.map(c => `<figure><span class="cert-dot"></span><figcaption>${c.title}<small class="cert-issuer" dir="ltr">${c.issuer}</small></figcaption></figure>`).join('')}</div>`;
 const pages = [
   cover,
   page('PROFILE', 'الملخص المهني', `${d.summary.paragraphs.map(p => `<p>${p}</p>`).join('')}
@@ -83,6 +83,7 @@ ${h2('مكونات الإطار')}${ul(ip.components)}<div class="ach">${ip.achi
 const css = `
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}body{background:#222;font-family:'IBM Plex Sans Arabic',sans-serif}
+.cert-issuer{display:block;color:#c9a54a;font-size:.78em;font-weight:600;margin-top:4px;font-family:"Plus Jakarta Sans",sans-serif}
 .certificate-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 24px;margin-bottom:26px}
 .certificate-grid figure{min-width:0;margin:0;display:flex;align-items:flex-start;gap:12px;padding:16px 14px;border-top:1px solid rgba(201,165,74,.45)}.cert-dot{flex:0 0 12px;height:12px;margin-top:12px;background:#c9a54a;transform:rotate(45deg)}
 .certificate-image{height:220px;display:flex;align-items:center;justify-content:center}
