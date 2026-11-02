@@ -156,13 +156,15 @@ const LIGHT = process.env.THEME === 'light' ? `
 .page::before{border-color:#c9a54a!important}
 header h1,h2,.card b,.edu b,td b,.tl b,.ht h3,.rt,.km b,.fel b,.ca b{color:#9a7a2c!important}
 footer{color:#7c6a3a!important}
-.role,.km,.fel{background:#fff!important;color:#1d2a22!important;border:1px solid #d9c690}
-.meta{color:#7c6a3a!important}
-.edu,.card,.hc,.cr{background:#fff!important;border-color:#d9c690!important}
-.hx,.ca p,.csum,.ctitles,.cv2 .cname{color:#1d2a22!important;text-shadow:none!important}
+.role,.km,.fel,.edu,.card,.hc,.cr{background:rgba(11,39,25,.06)!important;color:#14261b!important;border:1px solid rgba(11,39,25,.18)!important;box-shadow:none!important}
+.role,.edu,.card{border-right:4px solid #0f4a2c!important}
+.meta{color:#5b6b5f!important}
+h2{border-color:#0f4a2c!important}
+.hx,.ca p,.csum,.ctitles,.cv2 .cname{color:#14261b!important;text-shadow:none!important}
 .cv2 .en,.cv2 .contact,.ctitles li.gold{color:#9a7a2c!important;text-shadow:none!important}
-.en2{color:#5d6a60!important}.pv{color:#9a7a2c!important}
-.chips span{color:#1d2a22}tr:nth-child(odd){background:#f4eedd!important}
+.en2{color:#5d6a60!important}.pv{color:#0f4a2c!important}
+.chips span{color:#14261b}tr:nth-child(odd){background:rgba(11,39,25,.04)!important}
+.certificate-grid figure{background:rgba(11,39,25,.05)!important;border-color:rgba(11,39,25,.18)!important}
 .cbank img,.bank-logo{filter:invert(1) brightness(.25)}
 .cr b{color:#0b2719}
 ` : '';
