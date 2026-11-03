@@ -37,6 +37,7 @@ def opener(no, title):
 
 def dropcap(t, cls='cols'):
     return f'<p class="{cls} dc">{e(t)}</p>'
+def para(t): return f'<p class="{"cols" if len(t)>520 else ""}">{e(t)}</p>'
 
 # 1 Cover
 pages.append(f'''<section class="page cover">
@@ -58,7 +59,7 @@ pages.append(f'''<section class="page cover">
 toc = ['الملخص المهني','الهدف المهني','المؤهل العلمي','الشهادات المهنية','مميز','الخبرات المهنية','المهارات','الدورات التدريبية','المشاريع والابتكار']
 page(f'''<div class="tochead"><div class="kick">في هذا العدد</div><h1 class="big">المحتويات</h1></div>
 <ol class="toc">{''.join(f'<li><span class="tn">{i+1:02d}</span><span>{e(t)}</span></li>' for i,t in enumerate(toc))}</ol>
-<blockquote class="pull">{e(cover[5])}</blockquote>''', label='المحتويات')
+<blockquote class="pull sm">{e(cover[5])}</blockquote>''', label='المحتويات')
 
 # 3 Summary
 page(opener('01','الملخص المهني') + dropcap(summ[''][0]), label='الملخص المهني')
@@ -90,12 +91,13 @@ def role(no, r, c, p):
 def bullets(xs, cls='sk'): return f'<ul class="{cls}">' + ''.join(f'<li>{e(x)}</li>' for x in xs) + '</ul>'
 
 # Experience 1
-page(role('06','أخصائي تحصيل ديون الأفراد','البنك الأهلي السعودي','يوليو 2022 - الآن') + '<h2 class="sub">المهام والمسؤوليات</h2>' + dropcap(exp1[''][0]) + f'<p class="cols">{e(exp1[""][1])}</p>', label='الخبرات المهنية')
-page('<h2 class="sub">المهام والمسؤوليات — تتمة</h2>' + ''.join(f'<p class="cols">{e(x)}</p>' for x in exp1[''][2:]) + '<div class="rule"></div><h2 class="sub">أبرز الإنجازات</h2>' + bullets(exp1['أبرز الإنجازات'],'ach'), label='الخبرات المهنية')
+page(role('06','أخصائي تحصيل ديون الأفراد','البنك الأهلي السعودي','يوليو 2022 - الآن') + '<h2 class="sub">المهام والمسؤوليات</h2>' + dropcap(exp1[''][0]) + para(exp1[''][1]), label='الخبرات المهنية')
+page('<h2 class="sub">المهام والمسؤوليات — تتمة</h2>' + ''.join(para(x) for x in exp1[''][2:]) + '<div class="rule"></div><h2 class="sub">أبرز الإنجازات</h2>' + bullets(exp1['أبرز الإنجازات'],'ach'), label='الخبرات المهنية')
 page('<h2 class="sub">المهارات المكتسبة</h2>' + bullets(exp1['المهارات المكتسبة']), label='الخبرات المهنية')
 # Experience 2
-page(role('06','منفذ عمليات ساما - الإجراءات المصرفية القضائية','البنك الأهلي السعودي','سبتمبر 2017 - يوليو 2022') + '<h2 class="sub">المهام والمسؤوليات</h2>' + dropcap(exp2[''][0]) + ''.join(f'<p class="cols">{e(x)}</p>' for x in exp2[''][1:]), label='الخبرات المهنية')
-page('<h2 class="sub">أبرز الإنجازات</h2>' + bullets(exp2['أبرز الإنجازات'],'ach') + '<div class="rule"></div><h2 class="sub">المهارات المكتسبة</h2>' + bullets(exp2['المهارات المكتسبة']), label='الخبرات المهنية')
+page(role('06','منفذ عمليات ساما - الإجراءات المصرفية القضائية','البنك الأهلي السعودي','سبتمبر 2017 - يوليو 2022') + '<h2 class="sub">المهام والمسؤوليات</h2>' + dropcap(exp2[''][0]) + para(exp2[''][1]), label='الخبرات المهنية')
+page('<h2 class="sub">المهام والمسؤوليات — تتمة</h2>' + ''.join(para(x) for x in exp2[''][2:]) + '<div class="rule"></div><h2 class="sub">أبرز الإنجازات</h2>' + bullets(exp2['أبرز الإنجازات'],'ach'), label='الخبرات المهنية')
+page('<h2 class="sub">المهارات المكتسبة</h2>' + bullets(exp2['المهارات المكتسبة']), label='الخبرات المهنية')
 
 # Skills
 page(opener('07','المهارات') + bullets(skills,'sk big2'), label='المهارات')
@@ -108,8 +110,8 @@ page(opener('08','الدورات التدريبية') + ''.join(course(i+1,c) fo
 page('<div class="kick" style="margin-bottom:30px">الدورات التدريبية — تتمة</div>' + ''.join(course(i+8,c) for i,c in enumerate(courses[7:])), label='الدورات التدريبية')
 
 # Projects
-page(opener('09','المشاريع والابتكار') + dropcap(proj[''][0],'lead') + '<h2 class="sub">المشكلة</h2>' + ''.join(f'<p class="cols">{e(x)}</p>' for x in proj['المشكلة']), label='المشاريع والابتكار')
-page('<h2 class="sub">الحل</h2>' + ''.join(f'<p class="cols">{e(x)}</p>' for x in proj['الحل']) + '<div class="rule"></div><h2 class="sub">مكونات الإطار</h2>' + bullets(proj['مكونات الإطار'],'ach'), label='المشاريع والابتكار')
+page(opener('09','المشاريع والابتكار') + dropcap(proj[''][0],'lead') + '<h2 class="sub">المشكلة</h2>' + ''.join(para(x) for x in proj['المشكلة']), label='المشاريع والابتكار')
+page('<h2 class="sub">الحل</h2>' + ''.join(para(x) for x in proj['الحل']) + '<div class="rule"></div><h2 class="sub">مكونات الإطار</h2>' + bullets(proj['مكونات الإطار'],'ach'), label='المشاريع والابتكار')
 
 # Back cover
 pages.append(f'<section class="page back"><img src="file://{A}/logo.png"><h1>{e(NAME)}</h1><div class="cen">{e(NAME_EN)}</div></section>')
@@ -124,18 +126,18 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;color:#1c2620;background:#fff
 .op{display:flex;align-items:center;gap:36px;border-bottom:3px double #c9a54a;padding-bottom:30px;margin-bottom:46px}
 .op .no{font:400 150px/0.9 'Playfair Display',serif;color:#c9a54a}
 .op h1{font:800 66px/1.25 Cairo;color:#0b2719}
-p{font-size:25px;line-height:1.95;text-align:justify;margin-bottom:22px}
+p{font-size:26px;line-height:1.95;text-align:justify;margin-bottom:22px}
 .cols{column-count:2;column-gap:56px;column-rule:1px solid #e6dcc0}
 .lead{font-size:29px;line-height:1.9;color:#0b2719;font-weight:500;margin-bottom:30px}
-.dc::first-letter{float:right;font:800 118px/0.9 Cairo;color:#0b2719;margin:10px 0 0 16px;padding:0 10px 4px;border-bottom:4px solid #c9a54a}
+.dc{border-top:4px solid #0b2719;padding-top:26px}
 .sub{font:800 36px Cairo;color:#0b2719;margin:6px 0 26px;padding-right:22px;border-right:8px solid #c9a54a}
 .rule{height:1px;background:linear-gradient(90deg,transparent,#c9a54a,transparent);margin:44px 0}
-.pull{font:500 32px/1.85 'IBM Plex Sans Arabic';color:#0b2719;border-top:2px solid #c9a54a;border-bottom:2px solid #c9a54a;padding:40px 30px;position:relative;text-align:justify}
+.pull{padding-top:56px!important;font:500 32px/1.85 'IBM Plex Sans Arabic';color:#0b2719;border-top:2px solid #c9a54a;border-bottom:2px solid #c9a54a;padding:40px 30px;position:relative;text-align:justify}
 .pull.lg{font-size:30px}
-.pull:before{content:'”';position:absolute;top:-70px;right:10px;font:400 150px 'Playfair Display';color:#c9a54a;background:#fff;padding:0 16px;line-height:1}
+.pull:before{content:'”';position:absolute;top:-86px;right:10px;font:400 150px 'Playfair Display';color:#c9a54a;background:#fff;padding:0 16px;line-height:1}
 .edu{background:#0b2719;color:#fff;font:700 32px/1.6 Cairo;padding:40px 46px;border-right:10px solid #c9a54a}
 .big{font:800 120px/1 Cairo;color:#0b2719;margin:10px 0 40px}
-.toc{list-style:none;margin-bottom:70px}.toc li{display:flex;gap:30px;align-items:baseline;font:700 34px Cairo;color:#0b2719;padding:16px 0;border-bottom:1px solid #e6dcc0}
+.toc{list-style:none;margin-bottom:90px}.tochead .big{font-size:96px;margin-bottom:24px}.pull.sm{font-size:25px;padding:34px 24px 26px}.toc li{display:flex;gap:30px;align-items:baseline;font:700 30px Cairo;color:#0b2719;padding:9px 0;border-bottom:1px solid #e6dcc0}
 .tn{font:400 40px 'Playfair Display';color:#c9a54a;width:70px}
 .certs{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 .cert{border:1px solid #d9c690;border-top:6px solid #0b2719;padding:30px 30px 28px;min-height:170px}
@@ -171,7 +173,7 @@ ul{list-style:none}
 .cs b{display:block;font:800 36px/1.3 Cairo;color:#c9a54a}.cs span{font:600 22px/1.5 Cairo}
 .cbottom{position:absolute;bottom:110px;left:110px;right:110px;z-index:3;color:#fff}
 .ctag{font:700 26px Cairo;color:#c9a54a;margin-bottom:10px}
-.cname{font:900 120px/1.15 Cairo}
+.cname{font:900 104px/1.2 Cairo;white-space:nowrap}
 .cen{font:400 46px 'Playfair Display';color:#c9a54a;direction:ltr;text-align:right;margin-top:10px}
 .back{background:#0b2719;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center}
 .back img{width:420px;margin-bottom:80px}.back h1{font:800 72px Cairo}.back .cen{text-align:center}
