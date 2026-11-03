@@ -35,7 +35,7 @@ for i in range(1, len(files), 2):
     put(p, R, files[i])
     if i+1 < len(files): put(p, L, files[i+1])
     p.draw_line((W/2, 0), (W/2, H), color=gold, width=1)
-out.save('public/downloads/Majid_Al-Sofyani_CV_Magazine_Pro_Dark_Book.pdf' if DARK else 'public/downloads/Majid_Al-Sofyani_CV_Magazine_Pro.pdf', garbage=4, deflate=True)
+out.save('public/downloads/Majid_Al-Sofyani_CV_Magazine_Pro_Dark_Book.pdf' if DARK else 'public/downloads/Majid_Al-Sofyani_CV_Magazine_Pro_Book.pdf', garbage=4, deflate=True)
 print(len(files), 'pages,', len(out), 'sheets')
 if not DARK:
     a4 = pymupdf.open()
