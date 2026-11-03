@@ -41,7 +41,7 @@ const cover = (() => { n++; return `<section class="page cover cv2"><div class="
 
 const ex = (e: any) => `<div class="role"><div class="rt">${e.roleAr}</div><div class="ren">${e.roleEn}</div><div class="meta">${e.companyAr} · ${e.periodAr}</div></div>
 <section class="xs"><div class="xh">المهام والمسؤوليات</div>${e.paragraphs.map((p: string) => `<p>${p}</p>`).join('')}</section>
-<section class="xs"><div class="xh">أبرز الإنجازات</div>${ul(e.achievements)}</section>
+${e.achievements && e.achievements.length ? `<section class="xs"><div class="xh">أبرز الإنجازات</div>${ul(e.achievements)}</section>` : ''}
 <section class="xs"><div class="xh">المهارات المكتسبة</div><ul class="g3">${e.skillsList.map((s: string) => `<li>${s}</li>`).join('')}</ul></section>`;
 
 const ip = d.innovativeProject;
