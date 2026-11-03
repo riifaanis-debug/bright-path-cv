@@ -37,7 +37,7 @@ export function DownloadChooser() {
 
   return (
     <div dir="rtl" className="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 p-4" onClick={() => setOpen(false)}>
-      <div className="w-full max-w-sm rounded-2xl bg-[#0b2719] border border-[#c9a54a] p-5 text-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+      <div className="w-full max-w-sm max-h-[90vh] overflow-y-auto rounded-2xl bg-[#0b2719] border border-[#c9a54a] p-5 text-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-bold text-lg text-[#c9a54a]">اختر شكل التحميل</h3>
           <button aria-label="إغلاق" onClick={() => setOpen(false)}><X className="w-5 h-5" /></button>
