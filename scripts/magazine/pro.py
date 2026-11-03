@@ -81,7 +81,7 @@ page(opener('04','أبرز الإنجازات') + ''.join(f'<div class="stat"><d
 imgs = ['h1.jpeg','h2.png','h3.jpeg','h4.png']
 H = [(honors[i]['t'], honors[i+1]['t']) for i in range(0,8,2)]
 for k in (0,2):
-    body = opener('05','مميز') if k==0 else '<div class="kick" style="margin-bottom:30px">مميز — تتمة</div>'
+    body = opener('05','مميز') if k==0 else ''
     for j in (k,k+1):
         h,t = H[j]
         body += f'<article class="hon {"rev" if j%2 else ""}"><img src="file://{A}/honors/{imgs[j]}"><div><h3>{e(h)}</h3><p>{e(t)}</p></div></article>'
@@ -92,15 +92,17 @@ def role(no, r, c, p):
 def bullets(xs, cls='sk'): return f'<ul class="{cls}">' + ''.join('<li>'+re.sub(r'\(([A-Za-z][^)]*)\)', r'<bdi dir="ltr">(\1)</bdi>', e(x))+'</li>' for x in xs) + '</ul>'
 
 # Experience pages (data-driven; works whether or not an achievements block exists)
-def exp_pages(r, c, p, exp):
-    page(role('06', r, c, p) + '<h2 class="sub">المهام والمسؤوليات</h2>' + dropcap(exp[''][0]) + para(exp[''][1]), label='الخبرات المهنية')
-    body = '<h2 class="sub">المهام والمسؤوليات — تتمة</h2>' + ''.join(para(x) for x in exp[''][2:])
+def exp_pages(r, c, p, exp, drop):
+    sk=[x for x in exp['المهارات المكتسبة'] if not any(x.startswith(k) for k in drop)]
+    body = role('06', r, c, p) + '<h2 class="sub">المهام والمسؤوليات</h2>' + ''.join(para(x) for x in exp[''])
     if exp.get('أبرز الإنجازات'):
-        body += '<div class="rule"></div><h2 class="sub">أبرز الإنجازات</h2>' + bullets(exp['أبرز الإنجازات'],'ach')
-    page(body, label='الخبرات المهنية')
-    page('<h2 class="sub">المهارات المكتسبة</h2>' + bullets(exp['المهارات المكتسبة']), label='الخبرات المهنية')
-exp_pages('أخصائي تحصيل ديون الأفراد','البنك الأهلي السعودي','يوليو 2022 - الآن', exp1)
-exp_pages('منفذ عمليات ساما - الإجراءات المصرفية القضائية','البنك الأهلي السعودي','سبتمبر 2017 - يوليو 2022', exp2)
+        body += '<h2 class="sub">أبرز الإنجازات</h2>' + bullets(exp['أبرز الإنجازات'],'ach')
+    body += '<h2 class="sub">المهارات المكتسبة</h2>' + bullets(sk,'sk two')
+    page('<div class="xc">'+body+'</div>', label='الخبرات المهنية')
+D1=['متابعة المطالبات المالية','استرداد المديونيات ذات','التعامل مع الحسابات المعقدة','توثيق عمليات التحصيل']
+D2=['معالجة الطلبات الواردة','متابعة إجراءات الحجز','التحقق من دقة البيانات','الالتزام بالأنظمة واللوائح','إنجاز العمليات المصرفية']
+exp_pages('أخصائي تحصيل ديون الأفراد','البنك الأهلي السعودي','يوليو 2022 - الآن', exp1, D1)
+exp_pages('منفذ عمليات ساما - الإجراءات المصرفية القضائية','البنك الأهلي السعودي','سبتمبر 2017 - يوليو 2022', exp2, D2)
 
 # Skills
 page(opener('07','المهارات') + bullets(skills,'sk big2'), label='المهارات')
@@ -110,7 +112,7 @@ def course(i,c):
     p = c.split(' — ')
     return f'<div class="crs"><span class="cn">{i:02d}</span><div><b>{e(p[0])}</b>' + ''.join(f'<span>{e(x)}</span>' for x in p[1:]) + '</div></div>'
 page(opener('08','الدورات التدريبية') + ''.join(course(i+1,c) for i,c in enumerate(courses[:7])), label='الدورات التدريبية')
-page('<div class="kick" style="margin-bottom:30px">الدورات التدريبية — تتمة</div>' + ''.join(course(i+8,c) for i,c in enumerate(courses[7:])), label='الدورات التدريبية')
+page('' + ''.join(course(i+8,c) for i,c in enumerate(courses[7:])), label='الدورات التدريبية')
 
 # Projects
 page(opener('09','المشاريع والابتكار') + dropcap(proj[''][0],'lead') + '<h2 class="sub">المشكلة</h2>' + ''.join(para(x) for x in proj['المشكلة']), label='المشاريع والابتكار')
