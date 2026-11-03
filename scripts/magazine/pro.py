@@ -191,8 +191,8 @@ ul{list-style:none}
 
 .pn{font:400 26px 'Playfair Display';letter-spacing:.15em}
 .op{display:block}
-.certs{grid-template-columns:1fr;gap:18px}.cert{min-height:0;padding:22px 30px;display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid #d9c690;border-right:6px solid #0b2719}
-.cert b{white-space:nowrap;font-size:27px;margin:0}.cert span{white-space:nowrap;font-size:18px}
+.certs{grid-template-columns:1fr;gap:18px}.cert{min-height:0;padding:22px 30px;display:block;border-top:1px solid #d9c690;border-right:6px solid #0b2719}
+.cert b{white-space:nowrap;font-size:27px;margin:0 0 6px}.cert span{white-space:nowrap;font-size:18px}
 .three{grid-template-columns:1fr 1fr 1fr;gap:12px 16px}.three li{font-size:20px;line-height:1.5;padding:12px 16px;border-right-width:4px}
 .skx{display:grid;grid-template-columns:1fr 1fr;gap:22px 32px}
 .skx li{display:flex;align-items:center;gap:22px;padding:22px 24px;background:#f6f3ea;border-right:5px solid #c9a54a;font:700 28px/1.45 Cairo;color:#0b2719}
