@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MagazineProRouteImport } from './routes/magazine-pro'
 import { Route as MagazineTextRouteImport } from './routes/magazine-text'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MagazineProRoute = MagazineProRouteImport.update({
+  id: '/magazine-pro',
+  path: '/magazine-pro',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MagazineTextRoute = MagazineTextRouteImport.update({
@@ -25,27 +31,31 @@ const MagazineTextRoute = MagazineTextRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/magazine-pro': typeof MagazineProRoute
   '/magazine-text': typeof MagazineTextRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/magazine-pro': typeof MagazineProRoute
   '/magazine-text': typeof MagazineTextRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/magazine-pro': typeof MagazineProRoute
   '/magazine-text': typeof MagazineTextRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/magazine-text'
+  fullPaths: '/' | '/magazine-pro' | '/magazine-text'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/magazine-text'
-  id: '__root__' | '/' | '/magazine-text'
+  to: '/' | '/magazine-pro' | '/magazine-text'
+  id: '__root__' | '/' | '/magazine-pro' | '/magazine-text'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MagazineProRoute: typeof MagazineProRoute
   MagazineTextRoute: typeof MagazineTextRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/magazine-pro': {
+      id: '/magazine-pro'
+      path: '/magazine-pro'
+      fullPath: '/magazine-pro'
+      preLoaderRoute: typeof MagazineProRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/magazine-text': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MagazineProRoute: MagazineProRoute,
   MagazineTextRoute: MagazineTextRoute,
 }
 export const routeTree = rootRouteImport
