@@ -56,6 +56,11 @@ pages.append(f'''<section class="page cover">
   <div class="cen">{e(NAME_EN)}</div>
 </div></section>''')
 
+# 2 Bio facing cover (user text, accreditation number removed)
+BIO = cover[5].replace(' رقم الاعتماد : JIH421164 TAGSA449','')
+assert 'JIH' not in BIO
+page(f'<div class="biop"><blockquote class="pull bio">{e(BIO)}</blockquote></div>')
+
 # 3 Summary
 page(opener('01','الملخص المهني') + dropcap(summ[''][0]), label='الملخص المهني')
 
@@ -144,6 +149,7 @@ p{font-size:26px;line-height:1.95;text-align:justify;margin-bottom:22px}
 .rule{height:1px;background:linear-gradient(90deg,transparent,#c9a54a,transparent);margin:44px 0}
 .pull{padding-top:56px!important;font:500 32px/1.85 'IBM Plex Sans Arabic';color:#0b2719;border-top:2px solid #c9a54a;border-bottom:2px solid #c9a54a;padding:40px 30px;position:relative;text-align:justify}
 .pull.lg{font-size:30px}
+.biop{height:100%;display:flex;align-items:center}.pull.bio{font-size:36px;line-height:2;font-weight:600}
 .pull:before{content:'”';position:absolute;top:-86px;right:10px;font:400 150px 'Playfair Display';color:#c9a54a;background:#fff;padding:0 16px;line-height:1}
 .edu{background:#0b2719;color:#fff;font:700 32px/1.6 Cairo;padding:40px 46px;border-right:10px solid #c9a54a}
 .big{font:800 120px/1 Cairo;color:#0b2719;margin:10px 0 40px}

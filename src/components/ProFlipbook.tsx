@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 
-const COUNT = 19;
+const COUNT = 20;
 // Arabic reads right-to-left: feed pages reversed and open on the last one (the cover).
 const pages = Array.from({ length: COUNT }, (_, i) => `/assets/magazine_pro/page-${String(i + 1).padStart(2, '0')}.jpg`).reverse();
 
@@ -24,7 +24,7 @@ export default function ProFlipbook() {
   return (
     <div className="flex flex-col items-center gap-4">
       <Book key={`${size.w}-${size.portrait}`} ref={ref} width={size.w} height={size.h} size="fixed" usePortrait={size.portrait}
-        startPage={COUNT - 1} showCover drawShadow maxShadowOpacity={0.4} flippingTime={900} mobileScrollSupport className="shadow-2xl">
+        startPage={COUNT - 1} drawShadow maxShadowOpacity={0.4} flippingTime={900} mobileScrollSupport className="shadow-2xl">
         {pages.map((src, i) => (
           <div key={src} className="bg-white"><img src={src} alt={`صفحة ${COUNT - i}`} className="w-full h-full object-contain" draggable={false} /></div>
         ))}

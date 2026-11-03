@@ -23,13 +23,7 @@ out = pymupdf.open(); W, H = 842, 595
 gold = (0.79, 0.65, 0.29)
 def put(pg, rect, f): pg.insert_image(rect, filename=f, keep_proportion=True)
 R = pymupdf.Rect(W/2, 0, W, H); L = pymupdf.Rect(0, 0, W/2, H)
-p = out.new_page(width=W, height=H)
-if DARK: p.draw_rect(p.rect, color=None, fill=(11/255,39/255,25/255))
-put(p, R, files[0])
-lw = W/2*0.6; lh = lw*620/940
-p.insert_image(pymupdf.Rect(W/4-lw/2, H/2-lh/2, W/4+lw/2, H/2+lh/2), filename='scripts/magazine/logo.png' if DARK else 'scripts/magazine/snb-logo-color.png')
-p.draw_line((W/2, 0), (W/2, H), color=gold, width=1)
-for i in range(1, len(files), 2):
+for i in range(0, len(files), 2):
     p = out.new_page(width=W, height=H)
     if DARK: p.draw_rect(p.rect, color=None, fill=(11/255,39/255,25/255))
     put(p, R, files[i])
