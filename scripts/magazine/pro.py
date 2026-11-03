@@ -30,11 +30,11 @@ MAG = 'THE EXECUTIVE'
 pages = []
 def page(body, cls='', num=True, label=''):
     n = len(pages) + 1
-    foot = f'<div class="ft"><span>{MAG}</span><span>{e(label)}</span><span class="pn">{n:02d}</span></div>' if num else ''
+    foot = f'<div class="ft"><span class="pn">{n:02d}</span></div>' if num else ''
     pages.append(f'<section class="page {cls}">{body}{foot}</section>')
 
 def opener(no, title):
-    return f'<header class="op"><div class="no">{no}</div><div><div class="kick">القسم {no}</div><h1>{e(title)}</h1></div></header>'
+    return f'<header class="op"><h1>{e(title)}</h1></header>'
 
 def dropcap(t, cls='cols'):
     return f'<p class="{cls} dc">{e(t)}</p>'
@@ -56,12 +56,6 @@ pages.append(f'''<section class="page cover">
   <div class="cen">{e(NAME_EN)}</div>
 </div></section>''')
 
-# 2 Contents + cover bio
-toc = ['الملخص المهني','الهدف المهني','المؤهل العلمي','الشهادات المهنية','مميز','الخبرات المهنية','المهارات','الدورات التدريبية','المشاريع والابتكار']
-page(f'''<div class="tochead"><div class="kick">في هذا العدد</div><h1 class="big">المحتويات</h1></div>
-<ol class="toc">{''.join(f'<li><span class="tn">{i+1:02d}</span><span>{e(t)}</span></li>' for i,t in enumerate(toc))}</ol>
-<blockquote class="pull sm">{e(cover[5])}</blockquote>''', label='المحتويات')
-
 # 3 Summary
 page(opener('01','الملخص المهني') + dropcap(summ[''][0]), label='الملخص المهني')
 
@@ -70,12 +64,13 @@ page(opener('02','الهدف المهني') + f'<blockquote class="pull lg">{e(s
      + '<div class="rule"></div>' + f'<h2 class="sub">المؤهل العلمي</h2><div class="edu">{e(summ["المؤهل العلمي"][0])}</div>', label='الهدف المهني')
 
 # 5 Certificates
-certs = ''.join(f'<div class="cert"><b>{e(c.split(" — ")[0])}</b><span>{e(c.split(" — ")[1])}</span></div>' for c in summ['الشهادات المهنية'])
+CL = [c.replace('الاختبار المهني في أساسيات مصرفية الأفراد','أساسيات مصرفية الأفراد') for c in summ['الشهادات المهنية']] + ['زمالة المستشار الشرعي في فقه المالية الإسلامية وتسوية المنازعات — Saudi Judicial Scientific Society']
+certs = ''.join(f'<div class="cert"><b>{e(c.split(" — ")[0])}</b><span>{e(c.split(" — ")[1])}</span></div>' for c in CL)
 page(opener('03','الشهادات المهنية') + f'<div class="certs">{certs}</div>', label='الشهادات المهنية')
 
 # 6 Highlights (cover achievements, verbatim)
 ach = cover[7:10]; stats = ['01','7,500,000','10 / 128']
-page(opener('04','أبرز الإنجازات') + ''.join(f'<div class="stat"><div class="sn">{s}</div><p>{e(t)}</p></div>' for s,t in zip(stats,ach)), label='أبرز الإنجازات')
+page(''.join(f'<div class="stat"><div class="sn">{s}</div><p>{e(t)}</p></div>' for s,t in zip(stats,ach)), label='أبرز الإنجازات')
 
 # 7-8 Honors with photos
 imgs = ['h1.jpeg','h2.png','h3.jpeg','h4.png']
@@ -99,15 +94,18 @@ def exp_pages(r, c, p, exp, drop):
     b2 = ''
     if exp.get('أبرز الإنجازات'):
         b2 += '<h2 class="sub">أبرز الإنجازات</h2>' + bullets(exp['أبرز الإنجازات'],'ach')
-    b2 += '<h2 class="sub">المهارات المكتسبة</h2>' + bullets(sk,'sk two')
+    b2 += '<h2 class="sub">المهارات المكتسبة</h2>' + bullets(sk,'sk three')
     page(b2, label='الخبرات المهنية')
-D1=['متابعة المطالبات المالية','استرداد المديونيات ذات','التعامل مع الحسابات المعقدة','توثيق عمليات التحصيل']
+D1=[];_D1=['متابعة المطالبات المالية','استرداد المديونيات ذات','التعامل مع الحسابات المعقدة','توثيق عمليات التحصيل']
 D2=[];_D2=['معالجة الطلبات الواردة','متابعة إجراءات الحجز','التحقق من دقة البيانات','الالتزام بالأنظمة واللوائح','إنجاز العمليات المصرفية']
 exp_pages('أخصائي تحصيل ديون الأفراد','البنك الأهلي السعودي','يوليو 2022 - الآن', exp1, D1)
 exp_pages('منفذ عمليات ساما - الإجراءات المصرفية القضائية','البنك الأهلي السعودي','سبتمبر 2017 - يوليو 2022', exp2, D2)
 
 # Skills
-page(opener('07','المهارات') + bullets(skills,'sk big2'), label='المهارات')
+IC = json.load(open(A+'/skill_icons.json'))
+ICN = ['landmark','gavel','shield-check','chart-pie','book-open','scale','chart-column','file-text','handshake','brain-circuit']
+def svg(n): return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">{IC[n]}</svg>'
+page(opener('07','المهارات') + '<ul class="skx">' + ''.join(f'<li><i>{svg(ICN[i % len(ICN)])}</i><span>{e(x)}</span></li>' for i,x in enumerate(skills)) + '</ul>', label='المهارات')
 
 # Courses
 def course(i,c):
@@ -119,6 +117,11 @@ page('' + ''.join(course(i+8,c) for i,c in enumerate(courses[7:])), label='ال�
 # Projects
 page(opener('09','المشاريع والابتكار') + dropcap(proj[''][0],'lead') + '<h2 class="sub">المشكلة</h2>' + ''.join(para(x) for x in proj['المشكلة']), label='المشاريع والابتكار')
 page('<h2 class="sub">الحل</h2>' + ''.join(para(x) for x in proj['الحل']) + '<div class="rule"></div><h2 class="sub">مكونات الإطار</h2>' + bullets(proj['مكونات الإطار'],'ach'), label='المشاريع والابتكار')
+SL = ['التأهل للمرحلة الثانية - إعداد نموذج إثبات المفهوم','التأهل ضمن أفضل 10 أفكار - الانتقال للمرحلة الثالثة','ورشة العمل التعريفية لعرض إثبات المفهوم (POC Pitch)','التأهل لمرحلة التصويت العام - مسابقة SURGE CUP 2026','الانتقال إلى المرحلة الثالثة - من إثبات المفهوم إلى النموذج الأولي','قائمة المتأهلين في مسار XPERIENCETHON - ماجد عامر السفياني','جوائز ومراحل المسابقة - البنك الأهلي السعودي (SNB)','رحلة المسابقة الشاملة وقائمة المرشحين المتأهلين']
+CPF = os.path.abspath('src/assets/cpf')
+def gal(r): return '<div class="gal">' + ''.join(f'<figure><div class="gi"><img src="file://{CPF}/slide-{i+1}.png"></div><figcaption>{e(SL[i])}</figcaption></figure>' for i in r) + '</div>'
+page(gal(range(0,4)), label='المشاريع والابتكار')
+page(gal(range(4,8)), label='المشاريع والابتكار')
 
 # Back cover
 pages.append(f'<section class="page back"><img src="file://{A}/logo.png"><h1>{e(NAME)}</h1><div class="cen">{e(NAME_EN)}</div></section>')
@@ -126,8 +129,8 @@ pages.append(f'<section class="page back"><img src="file://{A}/logo.png"><h1>{e(
 CSS = '''
 @page{size:1191px 1685px;margin:0}*{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'IBM Plex Sans Arabic',sans-serif;color:#1c2620;background:#fff}
-.page{width:1191px;height:1685px;position:relative;overflow:hidden;background:#fff;padding:120px 110px 140px;page-break-after:always}
-.ft{position:absolute;bottom:56px;left:110px;right:110px;display:flex;justify-content:space-between;border-top:1px solid #c9a54a;padding-top:16px;font:600 17px 'Plus Jakarta Sans',sans-serif;letter-spacing:.2em;color:#0b2719}
+.page{width:1191px;height:1685px;position:relative;overflow:hidden;background:#fff;padding:120px 80px 140px;page-break-after:always}
+.ft{position:absolute;bottom:56px;left:80px;right:80px;display:flex;justify-content:center;border-top:1px solid #c9a54a;padding-top:16px;font:600 17px 'Plus Jakarta Sans',sans-serif;letter-spacing:.2em;color:#0b2719}
 .ft span:nth-child(2){font-family:Cairo;letter-spacing:0;color:#8a6d2a}.pn{color:#c9a54a}
 .kick{font:700 20px Cairo;color:#a8862f;letter-spacing:.05em}
 .op{display:flex;align-items:center;gap:36px;border-bottom:3px double #c9a54a;padding-bottom:30px;margin-bottom:46px}
@@ -185,6 +188,19 @@ ul{list-style:none}
 .cen{font:400 46px 'Playfair Display';color:#c9a54a;direction:ltr;text-align:right;margin-top:10px}
 .back{background:#0b2719;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center}
 .back img{width:420px;margin-bottom:80px}.back h1{font:800 72px Cairo}.back .cen{text-align:center}
+
+.pn{font:400 26px 'Playfair Display';letter-spacing:.15em}
+.op{display:block}
+.certs{grid-template-columns:1fr;gap:18px}.cert{min-height:0;padding:22px 30px;display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid #d9c690;border-right:6px solid #0b2719}
+.cert b{white-space:nowrap;font-size:27px;margin:0}.cert span{white-space:nowrap;font-size:18px}
+.three{grid-template-columns:1fr 1fr 1fr;gap:12px 16px}.three li{font-size:20px;line-height:1.5;padding:12px 16px;border-right-width:4px}
+.skx{display:grid;grid-template-columns:1fr 1fr;gap:22px 32px}
+.skx li{display:flex;align-items:center;gap:22px;padding:22px 24px;background:#f6f3ea;border-right:5px solid #c9a54a;font:700 28px/1.45 Cairo;color:#0b2719}
+.skx i{flex:none;width:64px;height:64px;border:1.5px solid #c9a54a;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#0b2719}.skx svg{width:34px;height:34px}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:40px 32px}
+.gal figure{border:1px solid #d9c690;padding:14px;background:#fff}
+.gi{height:500px;background:#f6f3ea;display:flex;align-items:center;justify-content:center}.gi img{max-width:100%;max-height:100%;object-fit:contain}
+.gal figcaption{font:700 22px/1.5 Cairo;color:#0b2719;margin-top:14px;padding-right:14px;border-right:4px solid #c9a54a}
 '''
 FONTS = "https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap"
 DARK = os.environ.get('DARK') == '1'
@@ -202,6 +218,7 @@ body{color:#eae4d3;background:#0b2719}.page{background:#0b2719}
 .ach li{border-bottom-color:rgba(201,165,74,.2)}
 .sk li{background:rgba(255,255,255,.05)}
 .hon img{box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.skx li,.gal figcaption{color:#fff}.skx li{background:rgba(255,255,255,.05)}.skx i{color:#c9a54a}.gal figure{background:rgba(255,255,255,.03);border-color:rgba(201,165,74,.45)}.gi{background:rgba(0,0,0,.2)}.cert{border-right-color:#c9a54a}
 '''
 os.makedirs('/tmp/pro', exist_ok=True)
 open('/tmp/pro/pro.html','w').write(f'<!doctype html><html dir="rtl" lang="ar"><head><meta charset="utf-8"><link href="{FONTS}" rel="stylesheet"><style>{CSS}</style></head><body>{"".join(pages)}</body></html>')
