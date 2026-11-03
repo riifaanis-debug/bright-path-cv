@@ -44,7 +44,7 @@ pages.append(f'''<section class="page cover">
 <img class="cphoto" src="file://{A}/cover-photo.jpeg">
 <div class="cgrad"></div>
 <div class="cside">
-  <div class="cs"><b>7,500,000</b><span>{e(cover[8][:47])}</span></div>
+  <div class="cs"><b>7,500,000</b><span>أعلى مبلغ استرداد خلال عام واحد</span></div>
   <div class="cs"><b>SURGE CUP 2026</b><span>أفضل 10 أفكار من بين 128 فكرة</span></div>
   <div class="cs"><b>المركز الأول</b><span>لعامين متتاليين</span></div>
 </div>
