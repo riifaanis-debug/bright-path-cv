@@ -162,6 +162,7 @@ ul{list-style:none}
 .sk li{font:700 26px/1.5 Cairo;color:#0b2719;padding:20px 26px;background:#f6f3ea;border-right:5px solid #c9a54a}
 .big2 li{font-size:30px;padding:28px 30px}
 .ach li{font-size:25px;line-height:1.9;padding:18px 60px 18px 0;position:relative;border-bottom:1px solid #eee5cc;text-align:justify}
+.xc .sub{font-size:28px;margin:14px 0 12px}.xc p{font-size:19px!important;line-height:1.7!important;margin-bottom:8px!important}.xc .role{padding:18px 30px;margin-bottom:18px;font-size:19px}.xc .role h2{font-size:30px}.xc .ach li{font-size:18px;line-height:1.6;padding:8px 44px 8px 0}.xc .ach li:before{top:16px;width:14px;height:14px}.xc .sk{gap:10px 24px}.xc .sk li{font-size:18px;padding:10px 18px}.xc .op h1{font-size:60px}.xc .op{margin-bottom:10px}
 .ach li:before{content:'';position:absolute;right:8px;top:32px;width:20px;height:20px;background:#c9a54a;transform:rotate(45deg)}
 .crs{display:flex;gap:34px;padding:24px 0;border-bottom:1px solid #e6dcc0}
 .cn{font:400 52px/1 'Playfair Display';color:#c9a54a;min-width:80px}
