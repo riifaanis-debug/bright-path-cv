@@ -179,6 +179,22 @@ ul{list-style:none}
 .back img{width:420px;margin-bottom:80px}.back h1{font:800 72px Cairo}.back .cen{text-align:center}
 '''
 FONTS = "https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap"
+DARK = os.environ.get('DARK') == '1'
+if DARK: CSS += '''
+body{color:#eae4d3;background:#0b2719}.page{background:#0b2719}
+.page:not(.cover):not(.back):before{content:'';position:absolute;inset:34px;border:1.5px solid rgba(201,165,74,.55);pointer-events:none}
+.ft{color:#eae4d3}.ft span:nth-child(2){color:#c9a54a}.kick{color:#c9a54a}
+.op h1,.lead,.sub,.pull,.big,.toc li,.cert b,.hon h3,.sk li,.crs b{color:#fff}
+.dc{border-top-color:#c9a54a}.cols{column-rule-color:rgba(201,165,74,.3)}
+.pull:before{background:#0b2719}
+.edu,.role{background:#062014;border:1px solid rgba(201,165,74,.5);border-right:10px solid #c9a54a}
+.cert{border-color:rgba(201,165,74,.45);border-top-color:#c9a54a;background:rgba(255,255,255,.03)}
+.cert span,.crs span:last-child{color:#d9b95e}.crs span{color:#bdb59f}
+.sn{border-left-color:#c9a54a}.stat,.toc li,.crs{border-bottom-color:rgba(201,165,74,.25)}
+.ach li{border-bottom-color:rgba(201,165,74,.2)}
+.sk li{background:rgba(255,255,255,.05)}
+.hon img{box-shadow:0 18px 40px rgba(0,0,0,.45)}
+'''
 os.makedirs('/tmp/pro', exist_ok=True)
 open('/tmp/pro/pro.html','w').write(f'<!doctype html><html dir="rtl" lang="ar"><head><meta charset="utf-8"><link href="{FONTS}" rel="stylesheet"><style>{CSS}</style></head><body>{"".join(pages)}</body></html>')
 print(len(pages), 'pages')
