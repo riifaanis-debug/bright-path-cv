@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FileText, BookOpen, Sun, X, ClipboardCopy } from 'lucide-react';
+import { FileText, BookOpen, Sun, X, ClipboardCopy, Newspaper } from 'lucide-react';
 
 const SINGLE = '/downloads/Majid_Al-Sofyani_CV_Magazine.pdf';
 const BOOK = '/downloads/Majid_Al-Sofyani_CV_Magazine_Book.pdf';
@@ -62,6 +62,16 @@ export function DownloadChooser() {
           <ClipboardCopy className="w-6 h-6 text-[#c9a54a] shrink-0" />
           <span><span className="block font-bold">فتح الملف</span><span className="text-sm text-white/70">نصوص المجلة مع زر نسخ لكل جزء</span></span>
         </a>
+        <div className="w-full rounded-xl border border-[#c9a54a] bg-[#c9a54a]/10 p-4 mt-3 text-right">
+          <div className="flex items-center gap-3 mb-3">
+            <Newspaper className="w-6 h-6 text-[#c9a54a] shrink-0" />
+            <span><span className="block font-bold">مجلة احترافية</span><span className="text-sm text-white/70">تصميم مجلة تنفيذية فاخرة بصفحات متقابلة</span></span>
+          </div>
+          <div className="flex gap-2">
+            <a href="/magazine-pro" data-direct="1" onClick={() => setOpen(false)} className="flex-1 text-center rounded-lg bg-[#c9a54a] text-[#0b2719] font-bold py-2 text-sm">تصفح بتقليب الصفحات</a>
+            <button onClick={() => pick('/downloads/Majid_Al-Sofyani_CV_Magazine_Pro.pdf')} className="flex-1 rounded-lg border border-[#c9a54a] font-bold py-2 text-sm">تحميل PDF</button>
+          </div>
+        </div>
       </div>
     </div>
   );
