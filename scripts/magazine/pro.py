@@ -73,9 +73,11 @@ CL = [c.replace('الاختبار المهني في أساسيات مصرفية 
 certs = ''.join(f'<div class="cert"><b>{e(c.split(" — ")[0])}</b><span>{e(c.split(" — ")[1])}</span></div>' for c in CL)
 page(opener('03','الشهادات المهنية') + f'<div class="certs">{certs}</div>', label='الشهادات المهنية')
 
-# 6 Highlights (cover achievements, verbatim)
-ach = cover[7:10]; stats = ['01','7,500,000','10 / 128']
-page(''.join(f'<div class="stat"><div class="sn">{s}</div><p>{e(t)}</p></div>' for s,t in zip(stats,ach)), label='أبرز الإنجازات')
+# Skills
+IC = json.load(open(A+'/skill_icons.json'))
+ICN = ['landmark','gavel','shield-check','chart-pie','book-open','scale','chart-column','file-text','handshake','brain-circuit']
+def svg(n): return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">{IC[n]}</svg>'
+page(opener('07','المهارات') + '<ul class="skx">' + ''.join(f'<li><i>{svg(ICN[i % len(ICN)])}</i><span>{e(x)}</span></li>' for i,x in enumerate(skills)) + '</ul>', label='المهارات')
 
 # 7-8 Honors with photos
 imgs = ['h1.jpeg','h2.png','h3.jpeg','h4.png']
@@ -105,12 +107,6 @@ D1=[];_D1=['متابعة المطالبات المالية','استرداد ال
 D2=[];_D2=['معالجة الطلبات الواردة','متابعة إجراءات الحجز','التحقق من دقة البيانات','الالتزام بالأنظمة واللوائح','إنجاز العمليات المصرفية']
 exp_pages('أخصائي تحصيل ديون الأفراد','البنك الأهلي السعودي','يوليو 2022 - الآن', exp1, D1)
 exp_pages('منفذ عمليات ساما - الإجراءات المصرفية القضائية','البنك الأهلي السعودي','سبتمبر 2017 - يوليو 2022', exp2, D2)
-
-# Skills
-IC = json.load(open(A+'/skill_icons.json'))
-ICN = ['landmark','gavel','shield-check','chart-pie','book-open','scale','chart-column','file-text','handshake','brain-circuit']
-def svg(n): return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">{IC[n]}</svg>'
-page(opener('07','المهارات') + '<ul class="skx">' + ''.join(f'<li><i>{svg(ICN[i % len(ICN)])}</i><span>{e(x)}</span></li>' for i,x in enumerate(skills)) + '</ul>', label='المهارات')
 
 # Courses
 def course(i,c):
