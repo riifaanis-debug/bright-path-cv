@@ -90,14 +90,16 @@ def role(no, r, c, p):
     return opener(no,'الخبرات المهنية') + f'<div class="role"><h2>{e(r)}</h2><div>{e(c)} · {e(p)}</div></div>'
 def bullets(xs, cls='sk'): return f'<ul class="{cls}">' + ''.join(f'<li>{e(x)}</li>' for x in xs) + '</ul>'
 
-# Experience 1
-page(role('06','أخصائي تحصيل ديون الأفراد','البنك الأهلي السعودي','يوليو 2022 - الآن') + '<h2 class="sub">المهام والمسؤوليات</h2>' + dropcap(exp1[''][0]) + para(exp1[''][1]), label='الخبرات المهنية')
-page('<h2 class="sub">المهام والمسؤوليات — تتمة</h2>' + ''.join(para(x) for x in exp1[''][2:]) + '<div class="rule"></div><h2 class="sub">أبرز الإنجازات</h2>' + bullets(exp1['أبرز الإنجازات'],'ach'), label='الخبرات المهنية')
-page('<h2 class="sub">المهارات المكتسبة</h2>' + bullets(exp1['المهارات المكتسبة']), label='الخبرات المهنية')
-# Experience 2
-page(role('06','منفذ عمليات ساما - الإجراءات المصرفية القضائية','البنك الأهلي السعودي','سبتمبر 2017 - يوليو 2022') + '<h2 class="sub">المهام والمسؤوليات</h2>' + dropcap(exp2[''][0]) + para(exp2[''][1]), label='الخبرات المهنية')
-page('<h2 class="sub">المهام والمسؤوليات — تتمة</h2>' + ''.join(para(x) for x in exp2[''][2:]) + '<div class="rule"></div><h2 class="sub">أبرز الإنجازات</h2>' + bullets(exp2['أبرز الإنجازات'],'ach'), label='الخبرات المهنية')
-page('<h2 class="sub">المهارات المكتسبة</h2>' + bullets(exp2['المهارات المكتسبة']), label='الخبرات المهنية')
+# Experience pages (data-driven; works whether or not an achievements block exists)
+def exp_pages(r, c, p, exp):
+    page(role('06', r, c, p) + '<h2 class="sub">المهام والمسؤوليات</h2>' + dropcap(exp[''][0]) + para(exp[''][1]), label='الخبرات المهنية')
+    body = '<h2 class="sub">المهام والمسؤوليات — تتمة</h2>' + ''.join(para(x) for x in exp[''][2:])
+    if exp.get('أبرز الإنجازات'):
+        body += '<div class="rule"></div><h2 class="sub">أبرز الإنجازات</h2>' + bullets(exp['أبرز الإنجازات'],'ach')
+    page(body, label='الخبرات المهنية')
+    page('<h2 class="sub">المهارات المكتسبة</h2>' + bullets(exp['المهارات المكتسبة']), label='الخبرات المهنية')
+exp_pages('أخصائي تحصيل ديون الأفراد','البنك الأهلي السعودي','يوليو 2022 - الآن', exp1)
+exp_pages('منفذ عمليات ساما - الإجراءات المصرفية القضائية','البنك الأهلي السعودي','سبتمبر 2017 - يوليو 2022', exp2)
 
 # Skills
 page(opener('07','المهارات') + bullets(skills,'sk big2'), label='المهارات')
