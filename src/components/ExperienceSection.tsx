@@ -46,7 +46,7 @@ export const ExperienceSection: React.FC = () => {
                 المهارات والكفاءات المهنية:
               </span>
               <span className="text-xs text-slate-600 leading-relaxed">
-                {exp.skillsList.join(' | ')}
+                {exp.skillsList.map((s) => s.replace(/\(([A-Za-z][^)]*)\)/g, '\u2066($1)\u2069')).join(' | ')}
               </span>
             </div>
 

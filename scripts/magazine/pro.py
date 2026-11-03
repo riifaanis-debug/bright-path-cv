@@ -1,3 +1,4 @@
+import re
 # Professional Magazine generator (independent export style).
 # Text comes verbatim from src/data/magazineText.json; only organisational labels are added.
 import json, html, os
@@ -88,7 +89,7 @@ for k in (0,2):
 
 def role(no, r, c, p):
     return opener(no,'الخبرات المهنية') + f'<div class="role"><h2>{e(r)}</h2><div>{e(c)} · {e(p)}</div></div>'
-def bullets(xs, cls='sk'): return f'<ul class="{cls}">' + ''.join(f'<li>{e(x)}</li>' for x in xs) + '</ul>'
+def bullets(xs, cls='sk'): return f'<ul class="{cls}">' + ''.join('<li>'+re.sub(r'\(([A-Za-z][^)]*)\)', r'<bdi dir="ltr">(\1)</bdi>', e(x))+'</li>' for x in xs) + '</ul>'
 
 # Experience pages (data-driven; works whether or not an achievements block exists)
 def exp_pages(r, c, p, exp):
