@@ -52,11 +52,11 @@ assert 'JIH' not in BIO
 page(f'<div class="biop"><blockquote class="pull bio">{e(BIO)}</blockquote></div>')
 
 # 3 Summary
-page(opener('01','الملخص المهني') + dropcap(summ[''][0]), label='الملخص المهني')
+page(opener('01','الملخص المهني') + '<div class="mid">' + dropcap(summ[''][0]) + '</div>', label='الملخص المهني')
 
 # 4 Objective + education
-page(opener('02','الهدف المهني') + f'<blockquote class="pull lg">{e(summ["الهدف المهني"][0])}</blockquote>'
-     + '<div class="rule"></div>' + f'<h2 class="sub">المؤهل العلمي</h2><div class="edu">{e(summ["المؤهل العلمي"][0])}</div>', label='الهدف المهني')
+page(opener('02','الهدف المهني') + f'<blockquote class="pull lg obj">{e(summ["الهدف المهني"][0])}</blockquote>'
+     + '<div class="eduw">' + opener('','المؤهل العلمي') + '<div class="edu">' + ''.join(f'<span>{e(x)}</span>' for x in summ["المؤهل العلمي"][0].split(' جامعة ',1)[:1]) + f'<small>جامعة {e(summ["المؤهل العلمي"][0].split(" جامعة ",1)[1].replace(" · "," "))}</small></div></div>', label='الهدف المهني')
 
 # 5 Certificates
 CL = [c.replace('الاختبار المهني في أساسيات مصرفية الأفراد','أساسيات مصرفية الأفراد') for c in summ['الشهادات المهنية']] + ['زمالة المستشار الشرعي في فقه المالية الإسلامية وتسوية المنازعات — Saudi Judicial Scientific Society']
@@ -67,17 +67,17 @@ page(opener('03','الشهادات المهنية') + f'<div class="certs">{cert
 IC = json.load(open(A+'/skill_icons.json'))
 ICN = ['landmark','gavel','shield-check','chart-pie','book-open','scale','chart-column','file-text','handshake','brain-circuit']
 def svg(n): return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">{IC[n]}</svg>'
-page(opener('07','المهارات') + '<ul class="skx">' + ''.join(f'<li><i>{svg(ICN[i % len(ICN)])}</i><span>{e(x)}</span></li>' for i,x in enumerate(skills)) + '</ul>', label='المهارات')
+page(opener('07','المهارات') + '<div class="mid"><ul class="skx">' + ''.join(f'<li><i>{svg(ICN[i % len(ICN)])}</i><span>{e(x)}</span></li>' for i,x in enumerate(skills)) + '</ul></div>', label='المهارات')
 
 # 7-8 Honors with photos
 imgs = ['h1.jpeg','h2.png','h3.jpeg','h4.png']
 H = [(honors[i]['t'], honors[i+1]['t']) for i in range(0,8,2)]
 for k in (0,2):
-    body = opener('05','مميز') if k==0 else ''
+    body = ''
     for j in (k,k+1):
         h,t = H[j]
         body += f'<article class="hon {"rev" if j%2 else ""}"><img src="file://{A}/honors/{imgs[j]}"><div><h3>{e(h)}</h3><p>{e(t)}</p></div></article>'
-    page(body, label='مميز')
+    page((opener('05','مميز') if k==0 else '') + f'<div class="mid">{body}</div>', label='مميز')
 
 def role(no, r, c, p):
     return opener(no,'الخبرات المهنية') + f'<div class="role"><h2>{e(r)}</h2><div>{e(c)} · {e(p)}</div></div>'
@@ -89,8 +89,7 @@ def exp_pages(r, c, p, exp, drop):
     bl = [role('06', r, c, p) + '<h2 class="sub">المهام والمسؤوليات</h2>' + para(exp[''][0])] + [para(x) for x in exp[''][1:]]
     if exp.get('أبرز الإنجازات'):
         A_=exp['أبرز الإنجازات']; bl.append('<h2 class="sub">أبرز الإنجازات</h2>' + bullets(A_[:1],'ach')); bl += [bullets([t],'ach') for t in A_[1:]]
-    ch=[sk[i:i+3] for i in range(0,len(sk),3)]
-    bl += ['<h2 class="sub">المهارات المكتسبة</h2>'*(i==0) + bullets(c_,'sk three') for i,c_ in enumerate(ch)]
+    bl.append('<h2 class="sub">المهارات المكتسبة</h2>' + bullets(sk[:6],'sk three'))
     flow(bl, 'الخبرات المهنية')
 D1=[];_D1=['متابعة المطالبات المالية','استرداد المديونيات ذات','التعامل مع الحسابات المعقدة','توثيق عمليات التحصيل']
 D2=[];_D2=['معالجة الطلبات الواردة','متابعة إجراءات الحجز','التحقق من دقة البيانات','الالتزام بالأنظمة واللوائح','إنجاز العمليات المصرفية']
@@ -115,7 +114,7 @@ def cpblk(x):
         if it['t'] is not None: parts.append(para(it['t']))
     parts[0] = f'<h2 class="sub">{e(x["heading"])}</h2>' + parts[0]
     return parts
-pb = [q for x in CS for q in cpblk(x)]
+pb = [''.join(cpblk(x)) for x in CS]
 pb[0] = opener('09','المشاريع والابتكار') + f'<p class="lead"><b>{e(CPJ["title"])}</b><br>{e(CPJ["subtitle"])}</p>' + pb[0]
 flow(pb, 'المشاريع والابتكار')
 SL = ['التأهل للمرحلة الثانية - إعداد نموذج إثبات المفهوم','التأهل ضمن أفضل 10 أفكار - الانتقال للمرحلة الثالثة','ورشة العمل التعريفية لعرض إثبات المفهوم (POC Pitch)','التأهل لمرحلة التصويت العام - مسابقة SURGE CUP 2026','الانتقال إلى المرحلة الثالثة - من إثبات المفهوم إلى النموذج الأولي','قائمة المتأهلين في مسار XPERIENCETHON - ماجد عامر السفياني','جوائز ومراحل المسابقة - البنك الأهلي السعودي (SNB)','رحلة المسابقة الشاملة وقائمة المرشحين المتأهلين']
@@ -134,13 +133,15 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;color:#1c2620;background:#fff
 .ft{position:absolute;bottom:56px;left:80px;right:80px;display:flex;justify-content:center;border-top:1px solid #c9a54a;padding-top:16px;font:600 17px 'Plus Jakarta Sans',sans-serif;letter-spacing:.2em;color:#0b2719}
 .ft span:nth-child(2){font-family:Cairo;letter-spacing:0;color:#8a6d2a}.pn{color:#c9a54a}
 .kick{font:700 20px Cairo;color:#a8862f;letter-spacing:.05em}
-.op{display:flex;align-items:center;gap:36px;border-bottom:3px double #c9a54a;padding-bottom:30px;margin-bottom:46px}
+.op{display:flex;align-items:center;gap:36px;border-bottom:2px solid #c9a54a;padding-bottom:30px;margin-bottom:46px}
 .op .no{font:400 150px/0.9 'Playfair Display',serif;color:#c9a54a}
 .op h1{font:800 66px/1.25 Cairo;color:#0b2719}
 p{font-size:26px;line-height:1.95;text-align:justify;margin-bottom:22px}
 .cols{column-count:2;column-gap:56px;column-rule:1px solid #e6dcc0}
 .lead{font-size:29px;line-height:1.9;color:#0b2719;font-weight:500;margin-bottom:30px}
-.dc{border-top:4px solid #0b2719;padding-top:26px}
+.dc{}
+.mid{position:absolute;top:290px;bottom:150px;left:80px;right:80px;display:flex;flex-direction:column;justify-content:center}
+.pull.obj{border-top:none;margin-top:90px}.eduw{margin-top:110px}.edu span{display:block}.edu small{display:block;font:600 28px Cairo;color:#c9a54a;margin-top:8px}
 .sub{font:800 36px Cairo;color:#0b2719;margin:6px 0 26px;padding-right:22px;border-right:8px solid #c9a54a}
 .rule{height:1px;background:linear-gradient(90deg,transparent,#c9a54a,transparent);margin:44px 0}
 .pull{padding-top:56px!important;font:500 32px/1.85 'IBM Plex Sans Arabic';color:#0b2719;border-top:2px solid #c9a54a;border-bottom:2px solid #c9a54a;padding:40px 30px;position:relative;text-align:justify}
