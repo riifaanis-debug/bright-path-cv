@@ -4,7 +4,8 @@ import { lazy, Suspense } from 'react';
 import { Download } from 'lucide-react';
 
 const ProFlipbook = lazy(() => import('@/components/ProFlipbook'));
-const PDF = '/downloads/Majid_Al-Sofyani_CV_Magazine_Pro.pdf';
+import magProBook from '@/assets/docs/magazine_Pro_Book.pdf.asset.json';
+const PDF = magProBook.url;
 
 export const Route = createFileRoute('/magazine-pro')({
   head: () => ({

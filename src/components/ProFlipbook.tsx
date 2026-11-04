@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 
-const COUNT = 19;
+const COUNT = 24;
 // Arabic reads right-to-left: feed pages reversed and open on the last one (the cover).
 const pages = Array.from({ length: COUNT }, (_, i) => `/assets/magazine_pro/page-${String(i + 1).padStart(2, '0')}.jpg`).reverse();
 

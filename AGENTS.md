@@ -14,3 +14,4 @@
 - Magazine certificate images are read from the asset pointers in src/assets/certificates by the generator; render them locally from temporary downloads. Why: preserve original resolution without adding uploaded binaries to the repository.
 - The «مجلة احترافية» export is standalone: scripts/magazine/pro.py (text verbatim from src/data/magazineText.json) + pro_render.py → public/assets/magazine_pro/*.jpg and the Pro PDF. Why: must not affect other export styles; update ProFlipbook COUNT if page count changes.
 - Every magazine cover is the single image scripts/magazine/cover-composed.jpg built by make_cover.py (user's cover design + cut-out photo). Why: user supplied the finished cover design.
+- Pro magazine PDFs exceed 10 MB: after pro_render.py, upload them with lovable-assets to src/assets/docs/magazine_Pro_*.pdf.asset.json and delete the local files. Why: repo per-file limit.

@@ -103,8 +103,18 @@ page(opener('08','الدورات التدريبية') + ''.join(course(i+1,c) fo
 page('' + ''.join(course(i+8,c) for i,c in enumerate(courses[7:])), label='الدورات التدريبية')
 
 # Projects
-page(opener('09','المشاريع والابتكار') + dropcap(proj[''][0],'lead') + '<h2 class="sub">المشكلة</h2>' + ''.join(para(x) for x in proj['المشكلة']), label='المشاريع والابتكار')
-page('<h2 class="sub">الحل</h2>' + ''.join(para(x) for x in proj['الحل']) + '<div class="rule"></div><h2 class="sub">مكونات الإطار</h2>' + bullets(proj['مكونات الإطار'],'ach'), label='المشاريع والابتكار')
+PSPLIT = json.loads(os.environ.get('PSPLIT','[[0,2],[2,4],[4,6],[6,8],[8,10],[10,12],[12,14]]'))
+CPJ = json.load(open('src/data/collectionPersona.json')); CS = CPJ['sections']
+def cpblk(x):
+    out = f'<h2 class="sub">{e(x["heading"])}</h2>'; lis = []
+    for it in x['items'] + [{'li': False, 't': None}]:
+        if it['li']: lis.append(it['t']); continue
+        if lis: out += bullets(lis, 'ach'); lis = []
+        if it['t'] is not None: out += para(it['t'])
+    return out
+for k, (a_, b_) in enumerate(PSPLIT):
+    head = (opener('09','المشاريع والابتكار') + f'<p class="lead"><b>{e(CPJ["title"])}</b><br>{e(CPJ["subtitle"])}</p>') if k == 0 else ''
+    page(head + ''.join(cpblk(x) for x in CS[a_:b_]), label='المشاريع والابتكار')
 SL = ['التأهل للمرحلة الثانية - إعداد نموذج إثبات المفهوم','التأهل ضمن أفضل 10 أفكار - الانتقال للمرحلة الثالثة','ورشة العمل التعريفية لعرض إثبات المفهوم (POC Pitch)','التأهل لمرحلة التصويت العام - مسابقة SURGE CUP 2026','الانتقال إلى المرحلة الثالثة - من إثبات المفهوم إلى النموذج الأولي','قائمة المتأهلين في مسار XPERIENCETHON - ماجد عامر السفياني','جوائز ومراحل المسابقة - البنك الأهلي السعودي (SNB)','رحلة المسابقة الشاملة وقائمة المرشحين المتأهلين']
 CPF = os.path.abspath('src/assets/cpf')
 def gal(r): return '<div class="gal">' + ''.join(f'<figure><div class="gi"><img src="file://{CPF}/slide-{i+1}.png"></div><figcaption>{e(SL[i])}</figcaption></figure>' for i in r) + '</div>'

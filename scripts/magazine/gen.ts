@@ -1,3 +1,4 @@
+import CP from '../../src/data/collectionPersona.json';
 // Generates the 9-page CV magazine HTML (/tmp/mag/mag.html) from resumeData.
 // Run: mkdir -p /tmp/mag && curl surge image to /dev-server/scripts/magazine/surge.jpg, bun scripts/magazine/gen.ts, python3 scripts/magazine/render.py
 import { resumeData as d } from '../../src/data/resumeData.ts';
@@ -13,7 +14,7 @@ const honors = [
   { src: '/dev-server/scripts/magazine/honors/h3.jpeg', t: 'شهادة شكر وتقدير من البنك المركزي السعودي', x: `ثمرة جهود مستمرة وحرص على تقديم أفضل أداء تشغيلي .. كل الفخر بحصولي على : ${g('شهادة شكر وتقدير من البنك المركزي السعودي')} تقديراً للتميز في تنفيذ وإنجاز الإجراءات المصرفية القضائية` },
   { src: '/dev-server/scripts/magazine/honors/h4.png', t: 'التأهل في مسابقة SURGE CUP 2026', x: `${g('البنك الأهلي السعودي SNB')}، وتأهل فكرتي ضمن أفضل 10 أفكار من بين 128 فكرة مشاركة، كمرحلة جديدة للابتكار والتنافس لتقديم الأفكار التي تحقق قيمة ملموسة للبنك وتسهم في تشكيل مستقبل SNB، في إنجاز يعكس القدرة على الابتكار وتقديم حلول تطويرية تسهم في صناعة مستقبل البنك.` },
 ];
-const N = 9;
+const N = 11;
 let n = 0;
 const page = (kicker: string, title: string, body: string, cls = '') => {
   n++;
@@ -60,10 +61,8 @@ ${h2('الشهادات المهنية')}${certificateGrid}`),
   page('PROFESSIONAL EXPERIENCE', 'الخبرات المهنية', ex(d.experiences[1])),
   page('SKILLS', 'المهارات', `<div class="grid2">${d.skillCategories.map(c => `<div class="card"><b>${c.categoryName}</b>${ul(c.skills.slice(0, 2).map(s => s.split(/[:.،(]/)[0].trim()))}</div>`).join('')}</div>`),
   page('TRAINING', 'الدورات التدريبية', `<div class="crs">${d.courses.map((c, i) => `<div class="cr"><i dir="ltr">${String(i + 1).padStart(2, '0')}</i><div><b>${c.titleAr}</b><span class="en2">${c.titleEn}</span><span class="pv">${c.provider}</span></div></div>`).join('')}</div>`),
-  page('PROJECTS & INNOVATION', 'المشاريع والابتكار', `<div class="role"><div class="rt">${ip.titleAr}</div><div class="ren">${ip.titleEn}</div><div class="meta">${ip.organization} · ${ip.competition} · ${ip.status}</div></div>
-<p>${ip.description}</p>${h2('المشكلة')}${ip.problem.split('\n\n').map(p => `<p>${p}</p>`).join('')}
-${h2('الحل')}${ip.solution.split('\n\n').map(p => `<p>${p}</p>`).join('')}
-${h2('مكونات الإطار')}${ul(ip.components)}<div class="ach">${ip.achievement}</div>`),
+  ...(() => { const S = CP.sections; const blk = (x: any) => `${h2(x.heading)}${x.items.map((i: any) => i.li ? `<ul><li>${i.t}</li></ul>` : `<p>${i.t}</p>`).join('')}`;
+    return [[0, 4], [4, 9], [9, S.length]].map(([a, b], k) => page('PROJECTS & INNOVATION', 'المشاريع والابتكار', (k === 0 ? `<div class="role"><div class="rt">${CP.title}</div><div class="ren">${CP.subtitle}</div><div class="meta">${ip.organization} · ${ip.competition}</div></div>` : '') + S.slice(a, b).map(blk).join(''))); })(),
   (() => { n++; return `<section class="page cover back"><div class="cv-in"><div class="brand">CONTACT</div><h1 class="cname">${pi.name}</h1><div class="en">${pi.nameEn}</div>
 <div class="titles">${pi.titles.map(t => `<span>${t}</span>`).join('')}</div>
 <div class="contact big"><span dir="ltr">${pi.phone}</span><span>${pi.email}</span><span>${pi.location}</span><span>${pi.bankOrganization}</span></div></div></section>`; })(),
