@@ -78,6 +78,7 @@ export function DownloadChooser() {
             <button onClick={() => pick(magPro_Book.url)} className="flex-1 rounded-lg border border-[#c9a54a] font-bold py-2 text-sm">كتاب مفتوح – الوضع الفاتح</button>
             <button onClick={() => pick(magPro_Dark_Book.url)} className="flex-1 rounded-lg border border-[#c9a54a] font-bold py-2 text-sm">كتاب مفتوح – الوضع الداكن</button>
           </div>
+          <a href="/downloads/Majid_Al-Sofyani_Pro_Magazine_Light.docx" download="Majid_Al-Sofyani_Pro_Magazine_Light.docx" data-direct="1" onClick={() => setOpen(false)} className="block w-full text-center rounded-lg border border-[#c9a54a] font-bold py-2 text-sm mt-2">ملف وورد قابل للتعديل – الوضع الفاتح</a>
           <p className="text-xs text-white/70 mt-1 text-center">للطباعة على الوجهين والتدبيس من المنتصف</p>
         </div>
       </div>
