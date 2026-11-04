@@ -6,6 +6,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { SectionHeader } from './SectionHeader';
 import { resumeData } from '../data/resumeData.ts';
+import cp from '../data/collectionPersona.json';
 import { Play, Maximize2, ChevronRight, ChevronLeft, X, ExternalLink, Video } from 'lucide-react';
 
 import slide1Webp from '../assets/cpf/slide-1.webp';
@@ -85,11 +86,9 @@ export const ProjectCpfSection: React.FC = () => {
         {/* Project Header */}
         <div>
           <h3 className="text-sm sm:text-base md:text-lg font-bold text-[#0C3823]">
-            {project.titleAr}
-            <span className="text-xs sm:text-sm font-semibold text-[#0D472A] mr-2" dir="ltr">
-              - {project.titleEn}
-            </span>
+            {cp.title}
           </h3>
+          <p className="text-xs sm:text-sm font-semibold text-[#0D472A] mt-0.5">{cp.subtitle}</p>
 
           <div className="mt-1 text-xs text-slate-500 font-medium flex flex-wrap items-center gap-x-2.5 gap-y-1">
             <span><strong>الجهة:</strong> {project.organization}</span>
@@ -310,54 +309,19 @@ export const ProjectCpfSection: React.FC = () => {
           </div>
         )}
 
-        {/* وصف المشروع */}
-        <div className="pt-2">
-          <h4 className="font-bold text-[#0C3823] mb-1">
-            وصف المشروع :
-          </h4>
-          <p className="text-justify">
-            {project.description}
-          </p>
-        </div>
-
-        {/* المشكلة التي يعالجها المشروع */}
-        <div className="pt-1">
-          <h4 className="font-bold text-[#0C3823] mb-1">
-            المشكلة التي يعالجها المشروع :
-          </h4>
-          <div className="space-y-1.5 text-justify">
-            {project.problem.split('\n\n').map((p, idx) => (
-              <p key={idx}>{p}</p>
-            ))}
+        {cp.sections.map((sec, i) => (
+          <div key={i} className="pt-1">
+            <h4 className="font-bold text-[#0C3823] mb-1">{sec.heading}</h4>
+            <div className="space-y-1 text-justify">
+              {sec.items.map((it, j) => it.li ? (
+                <div key={j} className="flex items-start gap-1.5 pr-1">
+                  <span className="text-[#D9A441] font-bold select-none leading-none mt-0.5">•</span>
+                  <span>{it.t}</span>
+                </div>
+              ) : <p key={j}>{it.t}</p>)}
+            </div>
           </div>
-        </div>
-
-        {/* الحل المقترح */}
-        <div className="pt-1">
-          <h4 className="font-bold text-[#0C3823] mb-1">
-            الحل المقترح :
-          </h4>
-          <div className="space-y-1.5 text-justify">
-            {project.solution.split('\n\n').map((p, idx) => (
-              <p key={idx}>{p}</p>
-            ))}
-          </div>
-        </div>
-
-        {/* المكونات الرئيسية */}
-        <div className="pt-1">
-          <h4 className="font-bold text-[#0C3823] mb-1.5">
-            المكونات الرئيسية :
-          </h4>
-          <ul className="space-y-1 pr-1">
-            {project.components.map((comp, idx) => (
-              <li key={idx} className="flex items-start gap-1.5">
-                <span className="text-[#D9A441] font-bold select-none leading-none mt-0.5">•</span>
-                <span>{comp}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        ))}
 
         {/* الإنجاز */}
         <div className="pt-2 border-t border-slate-100">
