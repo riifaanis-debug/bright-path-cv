@@ -115,7 +115,7 @@ def cpblk(x):
     parts[0] = f'<h2 class="sub">{e(x["heading"])}</h2>' + parts[0]
     return parts
 pb = [''.join(cpblk(x)) for x in CS]
-pb[0] = opener('09','المشاريع والابتكار') + f'<p class="lead"><b>{e(CPJ["title"])}</b><br>{e(CPJ["subtitle"])}</p>' + pb[0]
+pb[0] = opener('09','المشاريع والابتكار') + f'<p class="leadbig">تأهل فكرتي ضمن أفضل 10 أفكار من بين 128 فكرة مشاركة، كمرحلة جديدة للابتكار والتنافس لتقديم الأفكار التي تحقق قيمة ملموسة للبنك وتسهم في تشكيل مستقبل SNB، في إنجاز يعكس القدرة على الابتكار وتقديم حلول تطويرية تسهم في صناعة مستقبل البنك.</p><p class="lead"><b>{e(CPJ["title"])}</b><br>{e(CPJ["subtitle"])}</p>' + pb[0]
 flow(pb, 'المشاريع والابتكار')
 SL = ['التأهل للمرحلة الثانية - إعداد نموذج إثبات المفهوم','التأهل ضمن أفضل 10 أفكار - الانتقال للمرحلة الثالثة','ورشة العمل التعريفية لعرض إثبات المفهوم (POC Pitch)','التأهل لمرحلة التصويت العام - مسابقة SURGE CUP 2026','الانتقال إلى المرحلة الثالثة - من إثبات المفهوم إلى النموذج الأولي','قائمة المتأهلين في مسار XPERIENCETHON - ماجد عامر السفياني','جوائز ومراحل المسابقة - البنك الأهلي السعودي (SNB)','رحلة المسابقة الشاملة وقائمة المرشحين المتأهلين']
 CPF = os.path.abspath('src/assets/cpf')
@@ -138,6 +138,7 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;color:#1c2620;background:#fff
 .op h1{font:800 66px/1.25 Cairo;color:#0b2719}
 p{font-size:26px;line-height:1.95;text-align:justify;margin-bottom:22px}
 .cols{column-count:2;column-gap:56px;column-rule:1px solid #e6dcc0}
+.leadbig{font-size:33px;line-height:1.85;color:#0b2719;font-weight:700;margin-bottom:26px}
 .lead{font-size:29px;line-height:1.9;color:#0b2719;font-weight:500;margin-bottom:30px}
 .dc{}
 .mid{position:absolute;top:290px;bottom:150px;left:80px;right:80px;display:flex;flex-direction:column;justify-content:center}
@@ -210,7 +211,7 @@ if DARK: CSS += '''
 body{color:#eae4d3;background:#0b2719}.page{background:#0b2719}
 .page:not(.cover):not(.back):before{content:'';position:absolute;inset:34px;border:1.5px solid rgba(201,165,74,.55);pointer-events:none}
 .ft{color:#eae4d3}.ft span:nth-child(2){color:#c9a54a}.kick{color:#c9a54a}
-.op h1,.lead,.sub,.pull,.big,.toc li,.cert b,.hon h3,.sk li,.crs b{color:#fff}
+.op h1,.lead,.leadbig,.sub,.pull,.big,.toc li,.cert b,.hon h3,.sk li,.crs b{color:#fff}
 .dc{border-top-color:#c9a54a}.cols{column-rule-color:rgba(201,165,74,.3)}
 .pull:before{background:#0b2719}
 .edu,.role{background:#062014;border:1px solid rgba(201,165,74,.5);border-right:10px solid #c9a54a}
