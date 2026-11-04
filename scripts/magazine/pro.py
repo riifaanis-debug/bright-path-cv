@@ -86,11 +86,11 @@ def bullets(xs, cls='sk'): return f'<ul class="{cls}">' + ''.join('<li>'+re.sub(
 # Experience pages (data-driven; works whether or not an achievements block exists)
 def exp_pages(r, c, p, exp, drop):
     sk=[x for x in exp['المهارات المكتسبة'] if not any(x.startswith(k) for k in drop)]
-    bl = [role('06', r, c, p) + '<h2 class="sub">المهام والمسؤوليات</h2>' + para(exp[''][0])] + [para(x) for x in exp[''][1:]]
+    bl = ['<style>.xc p{line-height:1.75!important;margin-bottom:12px!important}.xc .sub{margin-top:22px!important;margin-bottom:14px!important}</style><div class="xc">' + role('06', r, c, p) + '<h2 class="sub">المهام والمسؤوليات</h2>' + ''.join(para(x) for x in exp['']) + '<h2 class="sub">المهارات المكتسبة</h2>' + bullets(sk[:6],'sk three') + '</div>']
+    flow(bl, 'الخبرات المهنية'); bl=[]
     if exp.get('أبرز الإنجازات'):
         A_=exp['أبرز الإنجازات']; bl.append('<h2 class="sub">أبرز الإنجازات</h2>' + bullets(A_[:1],'ach')); bl += [bullets([t],'ach') for t in A_[1:]]
-    bl.append('<h2 class="sub">المهارات المكتسبة</h2>' + bullets(sk[:6],'sk three'))
-    flow(bl, 'الخبرات المهنية')
+    if bl: flow(bl, 'الخبرات المهنية')
 D1=[];_D1=['متابعة المطالبات المالية','استرداد المديونيات ذات','التعامل مع الحسابات المعقدة','توثيق عمليات التحصيل']
 D2=[];_D2=['معالجة الطلبات الواردة','متابعة إجراءات الحجز','التحقق من دقة البيانات','الالتزام بالأنظمة واللوائح','إنجاز العمليات المصرفية']
 exp_pages('أخصائي تحصيل ديون الأفراد','البنك الأهلي السعودي','يوليو 2022 - الآن', exp1, D1)
