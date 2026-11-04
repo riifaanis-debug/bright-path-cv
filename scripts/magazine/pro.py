@@ -120,8 +120,6 @@ flow(pb, 'المشاريع والابتكار')
 SL = ['التأهل للمرحلة الثانية - إعداد نموذج إثبات المفهوم','التأهل ضمن أفضل 10 أفكار - الانتقال للمرحلة الثالثة','ورشة العمل التعريفية لعرض إثبات المفهوم (POC Pitch)','التأهل لمرحلة التصويت العام - مسابقة SURGE CUP 2026','الانتقال إلى المرحلة الثالثة - من إثبات المفهوم إلى النموذج الأولي','قائمة المتأهلين في مسار XPERIENCETHON - ماجد عامر السفياني','جوائز ومراحل المسابقة - البنك الأهلي السعودي (SNB)','رحلة المسابقة الشاملة وقائمة المرشحين المتأهلين']
 CPF = os.path.abspath('src/assets/cpf')
 def gal(r): return '<div class="gal">' + ''.join(f'<figure><div class="gi"><img src="file://{CPF}/slide-{i+1}.png"></div><figcaption>{e(SL[i])}</figcaption></figure>' for i in r) + '</div>'
-page(gal(range(0,4)), label='المشاريع والابتكار')
-page(gal(range(4,8)), label='المشاريع والابتكار')
 
 # Back cover
 pages.append(f'<section class="page back"><img src="file://{A}/logo.png"><h1>{e(NAME)}</h1><div class="cen">{e(NAME_EN)}</div></section>')
