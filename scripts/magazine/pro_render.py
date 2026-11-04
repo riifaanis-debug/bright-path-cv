@@ -17,18 +17,24 @@ async def main():
         for i, el in enumerate(await pg.query_selector_all('.page')):
             await el.screenshot(path=f'{OUT}/page-{i+1:02d}.jpg', type='jpeg', quality=90)
         await b.close()
-asyncio.run(main())
+if os.environ.get('BOOK_ONLY') != '1': asyncio.run(main())
 files = sorted(glob.glob(OUT + '/*.jpg'))
 out = pymupdf.open(); W, H = 842, 595
 gold = (0.79, 0.65, 0.29)
-def put(pg, rect, f): pg.insert_image(rect, filename=f, keep_proportion=True)
+def put(pg, rect, f):
+    if f: pg.insert_image(rect, filename=f, keep_proportion=True)
 R = pymupdf.Rect(W/2, 0, W, H); L = pymupdf.Rect(0, 0, W/2, H)
-for i in range(0, len(files), 2):
-    p = out.new_page(width=W, height=H)
-    if DARK: p.draw_rect(p.rect, color=None, fill=(11/255,39/255,25/255))
-    put(p, R, files[i])
-    if i+1 < len(files): put(p, L, files[i+1])
-    p.draw_line((W/2, 0), (W/2, H), color=gold, width=1)
+# Saddle-stitch booklet order: pad with blanks before the back cover to a multiple of 4.
+seq = list(files)
+while len(seq) % 4: seq.insert(len(seq)-1, None)
+n = len(seq)
+for k in range(n // 4):
+    a = 2*k
+    for right, left in ((a, n-1-a), (n-2-a, a+1)):
+        p = out.new_page(width=W, height=H)
+        p.draw_rect(p.rect, color=None, fill=(11/255,39/255,25/255) if DARK else (1,1,1))
+        put(p, R, seq[right]); put(p, L, seq[left])
+        p.draw_line((W/2, 0), (W/2, H), color=gold, width=1)
 out.save('public/downloads/Majid_Al-Sofyani_CV_Magazine_Pro_Dark_Book.pdf' if DARK else 'public/downloads/Majid_Al-Sofyani_CV_Magazine_Pro_Book.pdf', garbage=4, deflate=True)
 print(len(files), 'pages,', len(out), 'sheets')
 if not DARK:
