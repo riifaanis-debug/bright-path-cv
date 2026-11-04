@@ -75,6 +75,7 @@ export function DownloadChooser() {
             <button onClick={() => pick('/downloads/Majid_Al-Sofyani_CV_Magazine_Pro_Book.pdf')} className="flex-1 rounded-lg border border-[#c9a54a] font-bold py-2 text-sm">كتاب مفتوح – الوضع الفاتح</button>
             <button onClick={() => pick('/downloads/Majid_Al-Sofyani_CV_Magazine_Pro_Dark_Book.pdf')} className="flex-1 rounded-lg border border-[#c9a54a] font-bold py-2 text-sm">كتاب مفتوح – الوضع الداكن</button>
           </div>
+          <p className="text-xs text-white/70 mt-1 text-center">للطباعة على الوجهين والتدبيس من المنتصف</p>
         </div>
       </div>
     </div>
