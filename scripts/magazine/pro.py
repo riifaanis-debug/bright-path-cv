@@ -41,20 +41,7 @@ def dropcap(t, cls='cols'):
 def para(t): return f'<p class="{"cols" if len(t)>520 else ""}">{e(t)}</p>'
 
 # 1 Cover
-pages.append(f'''<section class="page cover">
-<div class="mast">{MAG}<small>EXECUTIVE LEADERSHIP · BANKING · ISLAMIC FINANCE · 2026</small></div>
-<img class="cphoto" src="file://{A}/cover-photo.jpeg">
-<div class="cgrad"></div>
-<div class="cside">
-  <div class="cs"><b>7,500,000</b><span>أعلى مبلغ استرداد خلال عام واحد</span></div>
-  <div class="cs"><b>SURGE CUP 2026</b><span>أفضل 10 أفكار من بين 128 فكرة</span></div>
-  <div class="cs"><b>المركز الأول</b><span>لعامين متتاليين</span></div>
-</div>
-<div class="cbottom">
-  <div class="ctag">{e(cover[2])} · {e(cover[3])} · {e(cover[4])}</div>
-  <h1 class="cname">{e(NAME)}</h1>
-  <div class="cen">{e(NAME_EN)}</div>
-</div></section>''')
+pages.append(f'<section class="page cover" style="padding:0"><img src="file://{A}/cover-composed.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5"></section>')
 
 # 2 Bio facing cover (user text, accreditation number removed)
 BIO = cover[5].replace(' رقم الاعتماد : JIH421164 TAGSA449','')

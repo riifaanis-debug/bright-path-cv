@@ -26,18 +26,7 @@ const ul = (a: string[]) => `<ul>${a.map(x => `<li>${x}</li>`).join('')}</ul>`;
 const pi = d.personalInfo;
 
 // Cover backdrop /dev-server/scripts/magazine/bank.jpg = SNB building cropped from the user's reference design.
-const cover = (() => { n++; return `<section class="page cover cv2"><div class="topline"></div>
-<div class="hero"><img class="hphoto" src="file:///dev-server/scripts/magazine/cover-photo.jpeg"/>
-<div class="hside"><div class="bank" style="background-image:url('${img('/dev-server/scripts/magazine/bank.jpg')}')"></div>
-<h1 class="cname">${pi.name}</h1><div class="en">${pi.nameEn}</div><div class="grule"></div>
-<ul class="ctitles">${pi.titles.map((t, i) => `<li${i === pi.titles.length - 1 ? ' class="gold"' : ''}>${t}</li>`).join('')}</ul></div></div>
-<div class="csum">مستشار شرعي معتمد ، حاصل على درجة زمالة المستشار الشرعي في فقه المالية الإسلامية وتسوية المنازعات المصرفية والتمويلية ، وأخصائي ائتمان ومعالجة ديون، وخبير مصرفي بخبرة عملية تتجاوز عشر سنوات في البنك الأهلي السعودي ، أخصائي معتمد في المالية الإسلامية ، وأخصائي معتمد في تسوية المنازعات المالية ، حاصل على الرخصة الدولية لمهارات تقنية المعلومات من أكاديمية كامبردج رقم الاعتماد : <span dir="ltr">JIH421164 TAGSA449</span> ، وشهادة اتمام برنامج الأمن السيبراني من أكاديمية سيسكو للشبكات</div>
-<div class="cach"><h3>أبرز الإنجازات</h3>${[
-  { title: 'حاصل على المركز الأول لعامين متتاليين', description: 'حظيت بالتكريم من : سعادة الأستاذ : صالح الصالح رئيس الخدمات المشتركة لمجموعة البنك الأهلي السعودي لحصولي على المركز الأول للعام الثاني على التوالي على مستوى إدارة تحصيل الأفراد بالبنك الأهلي السعودي' },
-  { title: 'تحقيق أعلى مبلغ استرداد بقيمة 7,500,000 خلال عام واحد', description: 'حظيت بالتكريم من : سعادة الأستاذ وائل عرابي رئيس التحصيل بالبنك الأهلي السعودي لتحقيق أعلى أداء تحصيلي وكسر حاجز أعلى مبلغ استرداد على مستو إدارة تحصيل الأفراد' },
-  { title: 'التأهل في مسابقة SURGE CUP 2026', description: 'التأهل في مسابقة SURGE CUP 2026 - البنك الأهلي السعودي (SNB) واختيار الفكرة ضمن أفضل 10 أفكار من بين 128 فكرة مشاركة لتعزيز الابتكار وتقديم حلول تطويرية تسهم في صناعة مستقبل البنك.' },
-].map(m => `<div class="ca"><b>${m.title}</b><p>${m.description}</p></div>`).join('')}</div>
-</section>`; })();
+const cover = (() => { n++; return `<section class="page cover fixed" style="padding:0"><img src="file:///dev-server/scripts/magazine/cover-composed.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5"/></section>`; })();
 
 const ex = (e: any) => `<div class="role"><div class="rt">${e.roleAr}</div><div class="ren">${e.roleEn}</div><div class="meta">${e.companyAr} · ${e.periodAr}</div></div>
 <section class="xs"><div class="xh">المهام والمسؤوليات</div>${e.paragraphs.map((p: string) => `<p>${p}</p>`).join('')}</section>
