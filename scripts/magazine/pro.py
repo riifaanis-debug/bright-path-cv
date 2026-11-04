@@ -103,7 +103,7 @@ page(opener('08','الدورات التدريبية') + ''.join(course(i+1,c) fo
 page('' + ''.join(course(i+8,c) for i,c in enumerate(courses[7:])), label='الدورات التدريبية')
 
 # Projects
-PSPLIT = json.loads(os.environ.get('PSPLIT','[[0,2],[2,4],[4,7],[7,9],[9,11],[11,14]]'))
+PSPLIT = json.loads(os.environ.get('PSPLIT','[[0,2],[2,4],[4,6],[6,8],[8,10],[10,14]]'))
 CPJ = json.load(open('src/data/collectionPersona.json')); CS = CPJ['sections']
 def cpblk(x):
     out = f'<h2 class="sub">{e(x["heading"])}</h2>'; lis = []
