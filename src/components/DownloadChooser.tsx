@@ -1,3 +1,6 @@
+import magPro_A4 from '@/assets/docs/magazine_Pro_A4.pdf.asset.json';
+import magPro_Book from '@/assets/docs/magazine_Pro_Book.pdf.asset.json';
+import magPro_Dark_Book from '@/assets/docs/magazine_Pro_Dark_Book.pdf.asset.json';
 import { useEffect, useState } from 'react';
 import { FileText, BookOpen, Sun, X, ClipboardCopy, Newspaper } from 'lucide-react';
 
@@ -69,11 +72,11 @@ export function DownloadChooser() {
           </div>
           <div className="flex gap-2">
             <a href="/magazine-pro" data-direct="1" onClick={() => setOpen(false)} className="flex-1 text-center rounded-lg bg-[#c9a54a] text-[#0b2719] font-bold py-2 text-sm">تصفح بتقليب الصفحات</a>
-            <button onClick={() => pick('/downloads/Majid_Al-Sofyani_CV_Magazine_Pro_A4.pdf')} className="flex-1 rounded-lg border border-[#c9a54a] font-bold py-2 text-sm">صفحات A4 منفردة</button>
+            <button onClick={() => pick(magPro_A4.url)} className="flex-1 rounded-lg border border-[#c9a54a] font-bold py-2 text-sm">صفحات A4 منفردة</button>
           </div>
           <div className="flex gap-2 mt-2">
-            <button onClick={() => pick('/downloads/Majid_Al-Sofyani_CV_Magazine_Pro_Book.pdf')} className="flex-1 rounded-lg border border-[#c9a54a] font-bold py-2 text-sm">كتاب مفتوح – الوضع الفاتح</button>
-            <button onClick={() => pick('/downloads/Majid_Al-Sofyani_CV_Magazine_Pro_Dark_Book.pdf')} className="flex-1 rounded-lg border border-[#c9a54a] font-bold py-2 text-sm">كتاب مفتوح – الوضع الداكن</button>
+            <button onClick={() => pick(magPro_Book.url)} className="flex-1 rounded-lg border border-[#c9a54a] font-bold py-2 text-sm">كتاب مفتوح – الوضع الفاتح</button>
+            <button onClick={() => pick(magPro_Dark_Book.url)} className="flex-1 rounded-lg border border-[#c9a54a] font-bold py-2 text-sm">كتاب مفتوح – الوضع الداكن</button>
           </div>
           <p className="text-xs text-white/70 mt-1 text-center">للطباعة على الوجهين والتدبيس من المنتصف</p>
         </div>
