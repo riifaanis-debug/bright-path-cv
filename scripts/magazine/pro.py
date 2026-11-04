@@ -38,7 +38,10 @@ def opener(no, title):
 
 def dropcap(t, cls='cols'):
     return f'<p class="{cls} dc">{e(t)}</p>'
-def para(t): return f'<p class="{"cols" if len(t)>520 else ""}">{e(t)}</p>'
+def para(t): return f'<p>{e(t)}</p>'
+FLOWS = []
+def flow(blocks, label):
+    FLOWS.append(blocks); pages.append(('FLOW', len(FLOWS)-1, label))
 
 # 1 Cover
 pages.append(f'<section class="page cover" style="padding:0"><img src="file://{A}/cover-composed.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5"></section>')
@@ -83,13 +86,12 @@ def bullets(xs, cls='sk'): return f'<ul class="{cls}">' + ''.join('<li>'+re.sub(
 # Experience pages (data-driven; works whether or not an achievements block exists)
 def exp_pages(r, c, p, exp, drop):
     sk=[x for x in exp['المهارات المكتسبة'] if not any(x.startswith(k) for k in drop)]
-    body = role('06', r, c, p) + '<h2 class="sub">المهام والمسؤوليات</h2>' + ''.join(para(x) for x in exp[''])
-    page(body, label='الخبرات المهنية')
-    b2 = ''
+    bl = [role('06', r, c, p) + '<h2 class="sub">المهام والمسؤوليات</h2>' + para(exp[''][0])] + [para(x) for x in exp[''][1:]]
     if exp.get('أبرز الإنجازات'):
-        b2 += '<h2 class="sub">أبرز الإنجازات</h2>' + bullets(exp['أبرز الإنجازات'],'ach')
-    b2 += '<h2 class="sub">المهارات المكتسبة</h2>' + bullets(sk,'sk three')
-    page(b2, label='الخبرات المهنية')
+        A_=exp['أبرز الإنجازات']; bl.append('<h2 class="sub">أبرز الإنجازات</h2>' + bullets(A_[:1],'ach')); bl += [bullets([t],'ach') for t in A_[1:]]
+    ch=[sk[i:i+3] for i in range(0,len(sk),3)]
+    bl += ['<h2 class="sub">المهارات المكتسبة</h2>'*(i==0) + bullets(c_,'sk three') for i,c_ in enumerate(ch)]
+    flow(bl, 'الخبرات المهنية')
 D1=[];_D1=['متابعة المطالبات المالية','استرداد المديونيات ذات','التعامل مع الحسابات المعقدة','توثيق عمليات التحصيل']
 D2=[];_D2=['معالجة الطلبات الواردة','متابعة إجراءات الحجز','التحقق من دقة البيانات','الالتزام بالأنظمة واللوائح','إنجاز العمليات المصرفية']
 exp_pages('أخصائي تحصيل ديون الأفراد','البنك الأهلي السعودي','يوليو 2022 - الآن', exp1, D1)
@@ -106,15 +108,16 @@ page('' + ''.join(course(i+8,c) for i,c in enumerate(courses[7:])), label='ال�
 PSPLIT = json.loads(os.environ.get('PSPLIT','[[0,2],[2,4],[4,6],[6,8],[8,10],[10,12],[12,14]]'))
 CPJ = json.load(open('src/data/collectionPersona.json')); CS = CPJ['sections']
 def cpblk(x):
-    out = f'<h2 class="sub">{e(x["heading"])}</h2>'; lis = []
+    parts = []; lis = []
     for it in x['items'] + [{'li': False, 't': None}]:
         if it['li']: lis.append(it['t']); continue
-        if lis: out += bullets(lis, 'ach'); lis = []
-        if it['t'] is not None: out += para(it['t'])
-    return out
-for k, (a_, b_) in enumerate(PSPLIT):
-    head = (opener('09','المشاريع والابتكار') + f'<p class="lead"><b>{e(CPJ["title"])}</b><br>{e(CPJ["subtitle"])}</p>') if k == 0 else ''
-    page(head + ''.join(cpblk(x) for x in CS[a_:b_]), label='المشاريع والابتكار')
+        if lis: parts += [bullets([t],'ach') for t in lis]; lis = []
+        if it['t'] is not None: parts.append(para(it['t']))
+    parts[0] = f'<h2 class="sub">{e(x["heading"])}</h2>' + parts[0]
+    return parts
+pb = [q for x in CS for q in cpblk(x)]
+pb[0] = opener('09','المشاريع والابتكار') + f'<p class="lead"><b>{e(CPJ["title"])}</b><br>{e(CPJ["subtitle"])}</p>' + pb[0]
+flow(pb, 'المشاريع والابتكار')
 SL = ['التأهل للمرحلة الثانية - إعداد نموذج إثبات المفهوم','التأهل ضمن أفضل 10 أفكار - الانتقال للمرحلة الثالثة','ورشة العمل التعريفية لعرض إثبات المفهوم (POC Pitch)','التأهل لمرحلة التصويت العام - مسابقة SURGE CUP 2026','الانتقال إلى المرحلة الثالثة - من إثبات المفهوم إلى النموذج الأولي','قائمة المتأهلين في مسار XPERIENCETHON - ماجد عامر السفياني','جوائز ومراحل المسابقة - البنك الأهلي السعودي (SNB)','رحلة المسابقة الشاملة وقائمة المرشحين المتأهلين']
 CPF = os.path.abspath('src/assets/cpf')
 def gal(r): return '<div class="gal">' + ''.join(f'<figure><div class="gi"><img src="file://{CPF}/slide-{i+1}.png"></div><figcaption>{e(SL[i])}</figcaption></figure>' for i in r) + '</div>'
@@ -166,7 +169,6 @@ ul{list-style:none}
 .sk li{font:700 26px/1.5 Cairo;color:#0b2719;padding:20px 26px;background:#f6f3ea;border-right:5px solid #c9a54a}
 .big2 li{font-size:30px;padding:28px 30px}
 .ach li{font-size:25px;line-height:1.9;padding:18px 60px 18px 0;position:relative;border-bottom:1px solid #eee5cc;text-align:justify}
-.xc .sub{font-size:28px;margin:14px 0 12px}.xc p{font-size:19px!important;line-height:1.7!important;margin-bottom:8px!important}.xc .role{padding:18px 30px;margin-bottom:18px;font-size:19px}.xc .role h2{font-size:30px}.xc .ach li{font-size:18px;line-height:1.6;padding:8px 44px 8px 0}.xc .ach li:before{top:16px;width:14px;height:14px}.xc .sk{gap:10px 24px}.xc .sk li{font-size:18px;padding:10px 18px}.xc .op h1{font-size:46px}.xc .op .no{font-size:90px}.xc .op{margin-bottom:16px;padding-bottom:14px;gap:24px}.xc .cols{column-count:1}.xc .ach li{font-size:17px;padding:5px 40px 5px 0}.xc .ach li:before{top:12px}.xc .sk li{font-size:16px;padding:7px 14px}.xc .sub{font-size:24px;margin:10px 0 8px}
 .ach li:before{content:'';position:absolute;right:8px;top:32px;width:20px;height:20px;background:#c9a54a;transform:rotate(45deg)}
 .crs{display:flex;gap:34px;padding:24px 0;border-bottom:1px solid #e6dcc0}
 .cn{font:400 52px/1 'Playfair Display';color:#c9a54a;min-width:80px}
@@ -192,7 +194,7 @@ ul{list-style:none}
 .op{display:block}
 .certs{grid-template-columns:1fr;gap:18px}.cert{min-height:0;padding:22px 30px;display:block;border-top:1px solid #d9c690;border-right:6px solid #0b2719}
 .cert b{white-space:nowrap;font-size:27px;margin:0 0 6px}.cert span{white-space:nowrap;font-size:18px}
-.three{grid-template-columns:1fr 1fr 1fr;gap:12px 16px}.three li{font-size:20px;line-height:1.5;padding:12px 16px;border-right-width:4px}
+.three+.three{margin-top:12px}.three{grid-template-columns:1fr 1fr 1fr;gap:12px 16px}.three li{font-size:20px;line-height:1.5;padding:12px 16px;border-right-width:4px}
 .skx{display:grid;grid-template-columns:1fr 1fr;gap:22px 32px}
 .skx li{display:flex;align-items:center;gap:22px;padding:22px 24px;background:#f6f3ea;border-right:5px solid #c9a54a;font:700 28px/1.45 Cairo;color:#0b2719}
 .skx i{flex:none;width:64px;height:64px;border:1.5px solid #c9a54a;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#0b2719}.skx svg{width:34px;height:34px}
@@ -220,5 +222,21 @@ body{color:#eae4d3;background:#0b2719}.page{background:#0b2719}
 .skx li,.gal figcaption{color:#fff}.skx li{background:rgba(255,255,255,.05)}.skx i{color:#c9a54a}.gal figure{background:rgba(255,255,255,.03);border-color:rgba(201,165,74,.45)}.gi{background:rgba(0,0,0,.2)}.cert{border-right-color:#c9a54a}
 '''
 os.makedirs('/tmp/pro', exist_ok=True)
+from playwright.sync_api import sync_playwright
+with sync_playwright() as P:
+    b = P.chromium.launch(headless=True); pg = b.new_page(viewport={"width":1191,"height":1685})
+    pg.set_content(f'<!doctype html><html dir="rtl" lang="ar"><head><meta charset="utf-8"><link href="{FONTS}" rel="stylesheet"><style>{CSS}</style></head><body></body></html>'); pg.wait_for_load_state('networkidle'); pg.evaluate('document.fonts.ready')
+    PACK = pg.evaluate("""(flows)=>flows.map(bl=>{const out=[];let cur=[];const pgEl=document.createElement('section');pgEl.className='page';document.body.appendChild(pgEl);
+      const fits=a=>{pgEl.innerHTML=a.join('');const lim=pgEl.getBoundingClientRect().bottom-110;return ![...pgEl.querySelectorAll('*')].some(x=>x.getBoundingClientRect().bottom>lim+1)};
+      for(const x of bl){if(cur.length&&!fits([...cur,x])){out.push(cur);cur=[x]}else cur.push(x)}out.push(cur);pgEl.remove();return out.map(a=>a.join(''))})""", FLOWS)
+    b.close()
+np=[]
+for x in pages:
+    if isinstance(x, tuple): np += [f'<section class="page">{h}<div class="ft"><span class="pn">00</span></div></section>' for h in PACK[x[1]]]
+    else: np.append(x)
+cnt=[0]
+def rn(m): cnt[0]+=1; return f'<span class="pn">{m.group(1) if False else ""}'
+pages=[]
+for i,x in enumerate(np): pages.append(re.sub(r'<span class="pn">\d+</span>', f'<span class="pn">{i+1:02d}</span>', x))
 open('/tmp/pro/pro.html','w').write(f'<!doctype html><html dir="rtl" lang="ar"><head><meta charset="utf-8"><link href="{FONTS}" rel="stylesheet"><style>{CSS}</style></head><body>{"".join(pages)}</body></html>')
 print(len(pages), 'pages')
