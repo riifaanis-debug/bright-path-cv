@@ -118,10 +118,8 @@ def cpblk(x):
     parts[0] = f'<h2 class="sub">{e(x["heading"])}</h2>' + parts[0]
     return parts
 pb = [''.join(cpblk(x)) for x in CS]
-_g = CS[1]; _gi=[i for i in _g['items'] if i['li']]
-pb[1] = f'<h2 class="sub">{e(_g["heading"])}</h2>' + ''.join(para(i['t']) for i in _g['items'] if not i['li']) + bullets([i['t'] for i in _gi],'ach two')
-pb = [pb[0]+pb[1]] + pb[2:]
-pb[0] = opener('09','المشاريع والابتكار') + f'<p class="leadbig">تأهل فكرتي ضمن أفضل 10 أفكار من بين 128 فكرة مشاركة، كمرحلة جديدة للابتكار والتنافس لتقديم الأفكار التي تحقق قيمة ملموسة للبنك وتسهم في تشكيل مستقبل SNB، في إنجاز يعكس القدرة على الابتكار وتقديم حلول تطويرية تسهم في صناعة مستقبل البنك.</p><p class="lead"><b>{e(CPJ["title"])}</b><br>{e(CPJ["subtitle"])}</p>' + pb[0]
+pb = [''.join(pb[k:k+2]) for k in range(0,len(pb),2)]
+pb[0] = opener('09','المشاريع والابتكار') + ''.join(f'<p class="leadbig">{e(t)}</p>' for t in CPJ['intro'][:8]) + ''.join(para(t) for t in CPJ['intro'][8:]) + pb[0]
 flow(pb, 'المشاريع والابتكار')
 SL = ['التأهل للمرحلة الثانية - إعداد نموذج إثبات المفهوم','التأهل ضمن أفضل 10 أفكار - الانتقال للمرحلة الثالثة','ورشة العمل التعريفية لعرض إثبات المفهوم (POC Pitch)','التأهل لمرحلة التصويت العام - مسابقة SURGE CUP 2026','الانتقال إلى المرحلة الثالثة - من إثبات المفهوم إلى النموذج الأولي','قائمة المتأهلين في مسار XPERIENCETHON - ماجد عامر السفياني','جوائز ومراحل المسابقة - البنك الأهلي السعودي (SNB)','رحلة المسابقة الشاملة وقائمة المرشحين المتأهلين']
 CPF = os.path.abspath('src/assets/cpf')
