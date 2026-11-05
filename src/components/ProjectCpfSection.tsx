@@ -85,10 +85,9 @@ export const ProjectCpfSection: React.FC = () => {
         
         {/* Project Header */}
         <div>
-          <h3 className="text-sm sm:text-base md:text-lg font-bold text-[#0C3823]">
-            {cp.title}
-          </h3>
-          <p className="text-xs sm:text-sm font-semibold text-[#0D472A] mt-0.5">{cp.subtitle}</p>
+          <div className="space-y-1 text-justify font-semibold text-[#0C3823]">
+            {cp.intro.map((t, k) => <p key={k}>{t}</p>)}
+          </div>
 
           <div className="mt-1 text-xs text-slate-500 font-medium flex flex-wrap items-center gap-x-2.5 gap-y-1">
             <span><strong>الجهة:</strong> {project.organization}</span>
@@ -323,15 +322,6 @@ export const ProjectCpfSection: React.FC = () => {
           </div>
         ))}
 
-        {/* الإنجاز */}
-        <div className="pt-2 border-t border-slate-100">
-          <span className="font-bold text-[#0C3823] ml-1.5">
-            الإنجاز :
-          </span>
-          <span className="font-semibold text-slate-800">
-            {project.achievement}
-          </span>
-        </div>
 
       </div>
     </section>
