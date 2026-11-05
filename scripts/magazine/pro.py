@@ -21,7 +21,7 @@ summ = split_sec(S['الملخص المهني'][0])
 honors = S['مميز'][0]
 exp1 = split_sec(S['الخبرات المهنية'][0])
 exp2 = split_sec(S['الخبرات المهنية'][1])
-skills = T(S['المهارات'][0])
+skills = [x for x in T(S['المهارات'][0]) if x not in ('تنفيذ الإجراءات المصرفية القضائية','فقه المعاملات المالية الإسلامية','التأصيل الشرعي للمعاملات المالية')]
 courses = T(S['الدورات التدريبية'][0])
 proj = split_sec(S['المشاريع والابتكار'][0])
 NAME, NAME_EN = cover[0], cover[1]
@@ -77,7 +77,7 @@ for k in (0,2):
     for j in (k,k+1):
         h,t = H[j]
         body += f'<article class="hon {"rev" if j%2 else ""}"><img src="file://{A}/honors/{imgs[j]}"><div><h3>{e(h)}</h3><p>{e(t)}</p></div></article>'
-    page((opener('05','مميز') if k==0 else '') + f'<div class="mid">{body}</div>', label='مميز')
+    page(opener('05','مميز') + f'<div class="mid">{body}</div>', label='مميز')
 
 def role(no, r, c, p):
     return opener(no,'الخبرات المهنية') + f'<div class="role"><h2>{e(r)}</h2><div>{e(c)} · {e(p)}</div></div>'
@@ -87,6 +87,9 @@ def bullets(xs, cls='sk'): return f'<ul class="{cls}">' + ''.join('<li>'+re.sub(
 def exp_pages(r, c, p, exp, drop):
     sk=[x for x in exp['المهارات المكتسبة'] if not any(x.startswith(k) for k in drop)]
     bl = ['<style>.xc p{line-height:1.75!important;margin-bottom:12px!important}.xc .sub{margin-top:22px!important;margin-bottom:14px!important}</style><div class="xc">' + role('06', r, c, p) + '<h2 class="sub">المهام والمسؤوليات</h2>' + ''.join(para(x) for x in exp['']) + '<h2 class="sub">المهارات المكتسبة</h2>' + bullets(sk[:6],'sk three') + '</div>']
+    if exp.get('أبرز الإنجازات') and exp is exp1:
+        bl[0] = bl[0][:-6] + '<h2 class="sub">أبرز الإنجازات</h2>' + bullets(exp['أبرز الإنجازات'],'ach') + '</div>'
+        flow(bl, 'الخبرات المهنية'); return
     flow(bl, 'الخبرات المهنية'); bl=[]
     if exp.get('أبرز الإنجازات'):
         A_=exp['أبرز الإنجازات']; bl.append('<h2 class="sub">أبرز الإنجازات</h2>' + bullets(A_[:1],'ach')); bl += [bullets([t],'ach') for t in A_[1:]]
@@ -115,6 +118,9 @@ def cpblk(x):
     parts[0] = f'<h2 class="sub">{e(x["heading"])}</h2>' + parts[0]
     return parts
 pb = [''.join(cpblk(x)) for x in CS]
+_g = CS[1]; _gi=[i for i in _g['items'] if i['li']]
+pb[1] = f'<h2 class="sub">{e(_g["heading"])}</h2>' + ''.join(para(i['t']) for i in _g['items'] if not i['li']) + bullets([i['t'] for i in _gi],'ach two')
+pb = [pb[0]+pb[1]] + pb[2:]
 pb[0] = opener('09','المشاريع والابتكار') + f'<p class="leadbig">تأهل فكرتي ضمن أفضل 10 أفكار من بين 128 فكرة مشاركة، كمرحلة جديدة للابتكار والتنافس لتقديم الأفكار التي تحقق قيمة ملموسة للبنك وتسهم في تشكيل مستقبل SNB، في إنجاز يعكس القدرة على الابتكار وتقديم حلول تطويرية تسهم في صناعة مستقبل البنك.</p><p class="lead"><b>{e(CPJ["title"])}</b><br>{e(CPJ["subtitle"])}</p>' + pb[0]
 flow(pb, 'المشاريع والابتكار')
 SL = ['التأهل للمرحلة الثانية - إعداد نموذج إثبات المفهوم','التأهل ضمن أفضل 10 أفكار - الانتقال للمرحلة الثالثة','ورشة العمل التعريفية لعرض إثبات المفهوم (POC Pitch)','التأهل لمرحلة التصويت العام - مسابقة SURGE CUP 2026','الانتقال إلى المرحلة الثالثة - من إثبات المفهوم إلى النموذج الأولي','قائمة المتأهلين في مسار XPERIENCETHON - ماجد عامر السفياني','جوائز ومراحل المسابقة - البنك الأهلي السعودي (SNB)','رحلة المسابقة الشاملة وقائمة المرشحين المتأهلين']
@@ -170,6 +176,7 @@ ul{list-style:none}
 .big2 li{font-size:30px;padding:28px 30px}
 .ach li{font-size:25px;line-height:1.9;padding:18px 60px 18px 0;position:relative;border-bottom:1px solid #eee5cc;text-align:justify}
 .ach li:before{content:'';position:absolute;right:8px;top:32px;width:20px;height:20px;background:#c9a54a;transform:rotate(45deg)}
+.ach.two{display:grid;grid-template-columns:1fr 1fr;column-gap:40px}.xc .ach li{font-size:23px;line-height:1.7;padding-top:10px;padding-bottom:10px}.xc .ach li:before{top:22px}
 .crs{display:flex;gap:34px;padding:24px 0;border-bottom:1px solid #e6dcc0}
 .cn{font:400 52px/1 'Playfair Display';color:#c9a54a;min-width:80px}
 .crs b{display:block;font:800 29px/1.5 Cairo;color:#0b2719}
